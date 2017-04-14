@@ -21,6 +21,15 @@ public class PublisherBO {
 		return publisher;
 	}
 	
+	public List<PublisherBean> getPublisherList() {
+		List<PublisherBean> listPublisher = new ArrayList<PublisherBean>();
+		
+		PublisherDAO publisherDAO = new PublisherDAO();
+		listPublisher = publisherDAO.getListPublisher();
+		
+		return listPublisher;
+	}
+	
 	public List<PublisherBean> getPublisherList(String name) {
 		List<PublisherBean> listPublisher = new ArrayList<PublisherBean>();
 		

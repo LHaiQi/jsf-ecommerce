@@ -15,6 +15,31 @@ public class PublisherDAO {
 	private ResultSet resultSet = null;
 	private String sqlCommand = "";
 	
+	public List<PublisherBean> getListPublisher(){
+		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
+		
+		connection = ConnectionFactory.getConnection();
+		sqlCommand = "Select * From Publisher";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sqlCommand);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				int rsID = resultSet.getInt("publisherID");
+				String rsName = resultSet.getString("name");
+				
+				listPublishers.add(new PublisherBean(rsID, rsName));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao Buscar Lista de Editoras: " + e);
+		}
+		
+		return listPublishers;
+	}
+	
 	public List<PublisherBean> getListPublisher(String name){
 		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
 		
