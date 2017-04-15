@@ -3,92 +3,46 @@ package br.com.fiap.ecommerce.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
 public class PublisherDAO {
-	private Connection connection = null;
-	private PreparedStatement preparedStatement = null;
-	private ResultSet resultSet = null;
-	private String sqlCommand = "";
+	private Connection connection;
+	private PreparedStatement preparedStatement;
+	private ResultSet resultSet;
+	private String sql;
 	
-	public List<PublisherBean> getListPublisher(){
-		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
+	public PublisherBean getPublisher(PublisherBean publisher){
+		PublisherBean newPublisher = null;
 		
 		connection = ConnectionFactory.getConnection();
-		sqlCommand = "Select * From Publisher";
+		sql = "Select * From Publisher Where Publisher = ?";
 		
 		try {
-			preparedStatement = connection.prepareStatement(sqlCommand);
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			while (resultSet.next()) {
-				int rsID = resultSet.getInt("publisherID");
-				String rsName = resultSet.getString("name");
-				
-				listPublishers.add(new PublisherBean(rsID, rsName));
-				
-			}
-		} catch (Exception e) {
-			System.out.println("Erro ao Buscar Lista de Editoras: " + e);
-		}
-		
-		return listPublishers;
-	}
-	
-	public List<PublisherBean> getListPublisher(String name){
-		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
-		
-		connection = ConnectionFactory.getConnection();
-		sqlCommand = "Select * From Publisher Where Publisher like ?";
-		
-		try {
-			preparedStatement = connection.prepareStatement(sqlCommand);
-			preparedStatement.setString(1, '%' + name + '%');
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			while (resultSet.next()) {
-				int rsID = resultSet.getInt("publisherID");
-				String rsName = resultSet.getString("name");
-				
-				listPublishers.add(new PublisherBean(rsID, rsName));
-				
-			}
-		} catch (Exception e) {
-			System.out.println("Erro ao Buscar Lista de Editoras: " + e);
-		}
-		
-		return listPublishers;
-	}
-	
-	public PublisherBean getPublisher(String name){
-		PublisherBean publisher = null;
-		
-		connection = ConnectionFactory.getConnection();
-		sqlCommand = "Select * From Publisher Where Publisher = ?";
-		
-		try {
-			preparedStatement = connection.prepareStatement(sqlCommand);
-			preparedStatement.setString(1, name);
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, publisher.getPublisher());
 			
 			resultSet = preparedStatement.executeQuery();
 			
 			if (resultSet.next()) {
-				int rsID = resultSet.getInt("publisherID");
-				String rsName = resultSet.getString("publisher");
+				int id = resultSet.getInt("PublisherID");
+				String publisherName = resultSet.getString("Publisher");
+				int cpf = resultSet.getInt("cnpj");
+				String email = resultSet.getString("Email");;
+				int phoneNumber = resultSet.getInt("PhoneNumber");
+				String country = resultSet.getString("Country");;
+				String state = resultSet.getString("State");;
+				String street = resultSet.getString("Street");;
+				int zipCode = resultSet.getInt("ZipCode");
+				int addressNumber = resultSet.getInt("AddressNumber");
 				
-				publisher = new PublisherBean(rsID, rsName);
-				
+				newPublisher = new PublisherBean(id, publisherName, cpf, email, phoneNumber, country, state, street, zipCode, addressNumber);
 			}
 		} catch (Exception e) {
-			System.out.println("Erro ao Buscar Editora: " + e);
+			System.out.println("Erro ao buscar editora: " + e);
 		}
-		
-		return publisher;
+	
+		return newPublisher;
 	}
 }
