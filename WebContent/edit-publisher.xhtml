@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Edit Publisher</title>
+	</h:head>
+	<h:body>
+		<b:container>
+			<b:row>
+				<b:column>
+					<h1>Edit Publisher</h1>
+				</b:column>
+			</b:row>
+		</b:container>
+		<b:container>
+			<b:row>
+				<b:column col-md="8" offset="2">
+					<b:form>
+						<p>Name:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
+						<p>Email:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.email}" />
+						<p>Phone Number:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.phoneNumber}" />
+						<p>CNPJ:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.cnpj}" />
+						<p>Country:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.country}" />
+						<p>State:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.state}" />
+						<p>Street:</p>
+						<b:inputText value="#{publisherManagedBean.publisher.street}" />
+						<p>Address Number</p>
+						<b:inputText value="#{publisherManagedBean.publisher.addressNumber}" />
+						<p>Zip Code</p>
+						<b:inputText value="#{publisherManagedBean.publisher.zipCode}" />
+						<b:commandButton look="success" value="Alterar"></b:commandButton>
+					</b:form>
+				</b:column>
+			</b:row>
+		</b:container>
+	</h:body>
+</html>
