@@ -1,11 +1,13 @@
 package br.com.fiap.ecommerce.bo;
 
+import java.util.List;
+
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.dao.PublisherDAO;
 
 public class PublisherBO {
-	public PublisherBean getPubliser(PublisherBean publisherBean){
+	public List<PublisherBean> getPubliser(PublisherBean publisherBean){
 		PublisherDAO publisherDAO = new PublisherDAO();
-		return publisherDAO.getPublisher(publisherBean);		
+		return publisherDAO.getAllPublishers(publisherBean);		
 	}
 }
