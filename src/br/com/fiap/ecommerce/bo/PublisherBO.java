@@ -16,4 +16,10 @@ public class PublisherBO {
 		
 		publisherDAO.setPublisher(publisherBean);
 	}
+	
+	public void deletePublisher(PublisherBean publisherBean){
+		PublisherDAO publisherDAO = new PublisherDAO();
+		
+		publisherDAO.deletePublisher(publisherBean);
+	}
 }
