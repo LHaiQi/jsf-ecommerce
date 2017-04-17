@@ -107,4 +107,20 @@ public class PublisherDAO {
 		}
 		
 	}
+	
+	public void deletePublisher(PublisherBean publisherBean){
+		connection = ConnectionFactory.getConnection();
+		sql = "DELETE FROM PUBLISHER WHERE PUBLISHERID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, publisherBean.getId());
+			
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao apagar editor(a): " + e);
+		}
+	}
 }
