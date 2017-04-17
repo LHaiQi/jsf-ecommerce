@@ -35,4 +35,11 @@ public class PublisherManagedBean {
 		
 		return "search-publisher";
 	}
+	
+	public String insertPublisherController(){
+		PublisherBO publisherBO = new PublisherBO();
+		publisherBO.setPublisher(publisher);
+		
+		return "insert-publisher";
+	}
 }

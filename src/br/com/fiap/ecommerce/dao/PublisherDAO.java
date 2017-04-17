@@ -3,6 +3,7 @@ package br.com.fiap.ecommerce.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,5 +80,31 @@ public class PublisherDAO {
 		}
 		
 		return listPublishers;
+	}
+
+	public void setPublisher(PublisherBean publisherBean) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Insert Into Publisher Values ((select max(publisherId)+1 from publisher),?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setString(1, publisherBean.getPublisher());
+			preparedStatement.setInt(2, publisherBean.getCnpj());
+			preparedStatement.setString(3, publisherBean.getEmail());
+			preparedStatement.setInt(4, publisherBean.getPhoneNumber());
+			preparedStatement.setString(5, publisherBean.getCountry());
+			preparedStatement.setString(6, publisherBean.getState());
+			preparedStatement.setString(7, publisherBean.getStreet());
+			preparedStatement.setInt(8, publisherBean.getZipCode());
+			preparedStatement.setInt(9, publisherBean.getAddressNumber());
+			
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao inserir editor(a): " + e);
+
+		}
+		
 	}
 }

@@ -10,4 +10,10 @@ public class PublisherBO {
 		PublisherDAO publisherDAO = new PublisherDAO();
 		return publisherDAO.getAllPublishers(publisherBean);		
 	}
+	
+	public void setPublisher(PublisherBean publisherBean){
+		PublisherDAO publisherDAO = new PublisherDAO();
+		
+		publisherDAO.setPublisher(publisherBean);
+	}
 }
