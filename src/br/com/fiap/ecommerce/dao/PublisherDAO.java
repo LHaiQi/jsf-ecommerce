@@ -20,11 +20,11 @@ public class PublisherDAO {
 		PublisherBean newPublisher = null;
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select * From Publisher Where Publisher = ?";
+		sql = "Select * From Publisher Where PublisherID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, publisher.getPublisher());
+			preparedStatement.setInt(1, publisher.getId());
 			
 			resultSet = preparedStatement.executeQuery();
 			

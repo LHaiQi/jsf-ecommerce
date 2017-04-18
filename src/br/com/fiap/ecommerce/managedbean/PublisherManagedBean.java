@@ -33,16 +33,15 @@ public class PublisherManagedBean {
 	
 	public String searchPubliserController(){
 		PublisherBO publisherBO = new PublisherBO();
-		listPublishers = publisherBO.getPubliser(publisher);
+		listPublishers = publisherBO.getListPubliser(publisher);
 		
 		return "search-publisher";
 	}
 	
 	public String editPublisherController(){
-		//PublisherBO publisherBO = new PublisherBO();
-		//publisherBO.alterPublisher(publisher);
-		int id = publisher.getId();
-		System.out.println("ID: " + id);
+		PublisherBO publisherBO = new PublisherBO();
+		publisher = publisherBO.getPublisher(publisher);
+		
 		return "edit-publisher";
 	}
 }
