@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.bo.PublisherBO;
 
 @ManagedBean
+@SessionScoped
 public class PublisherManagedBean {
 	PublisherBean publisher = new PublisherBean();
 	List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
@@ -41,5 +43,12 @@ public class PublisherManagedBean {
 		publisherBO.setPublisher(publisher);
 		
 		return "insert-publisher";
+	}
+	
+	public String deletePublisherController(){
+		PublisherBO publisherBO = new PublisherBO();
+		publisherBO.deletePublisher(publisher);
+		
+		return "search-publisher";
 	}
 }
