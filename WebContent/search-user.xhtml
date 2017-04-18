@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Search User</title>
+	</h:head>
+	<h:body>
+		<b:container>
+			<b:row>
+				<b:column>
+					<h1>Search User</h1>
+				</b:column>
+			</b:row>
+		</b:container>
+		
+		<b:container>
+			<b:row>
+				<b:column col-md="8" offset="2">
+					<b:form>
+						<b:column col-md="3">
+							<h5>User's Name:</h5>
+						</b:column>
+						<b:column col-md="7">
+							<b:inputText value="#{userManagedBean.user.name}" />
+						</b:column>
+						<b:column col-md="2">
+							<b:commandButton action="#{userManagedBean.searchUserController}" value="Search"></b:commandButton>
+						</b:column>
+					</b:form>					
+				</b:column>
+			</b:row>
+		</b:container>
+		<b:container>
+			<b:row>
+				<b:column>
+					<b:dataTable var="user" value="#{userManagedBean.listUsers}" searching="false" paginated="false">
+					     	<b:dataTableColumn label="Name" value="#{user.name}"></b:dataTableColumn>
+					     	<b:dataTableColumn label="CPF" value="#{user.cpf}"></b:dataTableColumn>
+					     	<b:dataTableColumn label="LastName" value="#{user.lastname}"></b:dataTableColumn>
+							<b:dataTableColumn label="Email" value="#{user.email}"></b:dataTableColumn>
+							<b:dataTableColumn label="Gender" value="#{user.email}"></b:dataTableColumn>
+							<b:dataTableColumn label="BirthDate" value="#{user.birthdate}"></b:dataTableColumn>
+							<b:dataTableColumn label="Phone Number" value="#{user.phonenumber}"></b:dataTableColumn>
+							<b:dataTableColumn label="Zip Code" value="#{user.zipcode}"></b:dataTableColumn>
+							<b:dataTableColumn label="City" value="#{user.city}"></b:dataTableColumn>
+							<b:dataTableColumn label="State" value="#{user.state}"></b:dataTableColumn>
+							<b:dataTableColumn label="Street" value="#{user.street}"></b:dataTableColumn>
+							<b:dataTableColumn label="HouseNumber" value="#{user.housenumber}"></b:dataTableColumn>
+							
+							<b:column label="Edit" value="">
+								<a href="#">Edit</a>
+							</b:column>
+							<b:column label="Delete" value="">
+								<a href="#">Delete</a>
+							</b:column>				
+					</b:dataTable>	
+				</b:column>
+			</b:row>
+		</b:container>	
+	</h:body>
+</html>
