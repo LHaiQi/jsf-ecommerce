@@ -39,25 +39,41 @@
 			<b:row>
 				<b:column>
 					<b:form>
-						<b:dataTable var="publisher" value="#{publisherManagedBean.listPublishers}" searching="false" paginated="false">
-						     	<b:dataTableColumn label="Name" value="#{publisher.publisher}"></b:dataTableColumn>
-								<b:dataTableColumn label="Email" value="#{publisher.email}"></b:dataTableColumn>
-								<b:dataTableColumn label="Phone Number" value="#{publisher.phoneNumber}"></b:dataTableColumn>
-								<b:dataTableColumn label="CNPJ" value="#{publisher.cnpj}"></b:dataTableColumn>
-								<b:dataTableColumn label="Country" value="#{publisher.country}"></b:dataTableColumn>
-								<b:dataTableColumn label="State" value="#{publisher.state}"></b:dataTableColumn>
-								<b:dataTableColumn label="Street" value="#{publisher.street}"></b:dataTableColumn>
-								<b:dataTableColumn label="Address Number" value="#{publisher.addressNumber}"></b:dataTableColumn>
-								<b:dataTableColumn label="Zip Code" value="#{publisher.zipCode}"></b:dataTableColumn>
-								<b:column label="Edit" value="">
-									<a href="#">Edit</a>
-								</b:column>
-								<b:column label="Delete" value="">
-									<h:commandLink value="Delete" action="#(publisherManagedBean.deletePublisherController)">
-										<f:setPropertyActionListener value="#(publisher.id)" target="#(publisherManagedBean.publisher.id)"/>
-									</h:commandLink>
-								</b:column>	
-						</b:dataTable>	
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Email</th>
+									<th>Phone Number</th>
+									<th>CNPJ</th>
+									<th>Country</th>
+									<th>State</th>
+									<th>Street</th>
+									<th>Address</th>
+									<th>Zip Code</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="publisher" value="#{publisherManagedBean.listPublishers}">
+									<tr>
+										<td>#{publisher.publisher}</td>
+										<td>#{publisher.email}</td>
+										<td>#{publisher.phoneNumber}</td>
+										<td>#{publisher.cnpj}</td>
+										<td>#{publisher.country}</td>
+										<td>#{publisher.state}</td>
+										<td>#{publisher.street}</td>
+										<td>#{publisher.addressNumber}</td>
+										<td>#{publisher.zipCode}</td>
+										<td>
+											<h:commandLink value="Delete" action="#{publisherManagedBean.deletePublisherController}" onClick="window.location.reload()">
+												<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
+											</h:commandLink>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>	
 					</b:form>
 				</b:column>
 			</b:row>
