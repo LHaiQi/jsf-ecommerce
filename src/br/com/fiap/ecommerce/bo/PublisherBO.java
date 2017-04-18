@@ -10,4 +10,9 @@ public class PublisherBO {
 		PublisherDAO publisherDAO = new PublisherDAO();
 		return publisherDAO.getAllPublishers(publisherBean);		
 	}
+
+	public void alterPublisher(PublisherBean publisher) {
+		PublisherDAO publisherDAO = new PublisherDAO();
+		publisherDAO.alterPublisher(publisher);
+	}
 }

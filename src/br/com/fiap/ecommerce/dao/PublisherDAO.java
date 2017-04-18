@@ -8,6 +8,7 @@ import java.util.List;
 
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
+import oracle.net.aso.p;
 
 public class PublisherDAO {
 	private Connection connection;
@@ -79,5 +80,30 @@ public class PublisherDAO {
 		}
 		
 		return listPublishers;
+	}
+
+	public void alterPublisher(PublisherBean publisher) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Update Publisher set Publisher = ?, Cnpj = ?, Email = ?,"
+				+ "PhoneNumber = ?, Country = ?, State = ?, Street = ?"
+				+ "ZipCode = ?, AddressNumber = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, publisher.getPublisher());
+			preparedStatement.setInt(2, publisher.getCnpj());
+			preparedStatement.setString(3, publisher.getEmail());
+			preparedStatement.setInt(4, publisher.getPhoneNumber());
+			preparedStatement.setString(5, publisher.getCountry());
+			preparedStatement.setString(6, publisher.getState());
+			preparedStatement.setString(7, publisher.getStreet());
+			preparedStatement.setInt(8, publisher.getZipCode());
+			preparedStatement.setInt(9, publisher.getAddressNumber());
+			
+			preparedStatement.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar lista editora: " + e);
+		}
 	}
 }

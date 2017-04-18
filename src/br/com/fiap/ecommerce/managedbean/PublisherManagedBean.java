@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.bo.PublisherBO;
 
 @ManagedBean
+@SessionScoped
 public class PublisherManagedBean {
 	PublisherBean publisher = new PublisherBean();
 	List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
@@ -34,5 +36,13 @@ public class PublisherManagedBean {
 		listPublishers = publisherBO.getPubliser(publisher);
 		
 		return "search-publisher";
+	}
+	
+	public String editPublisherController(){
+		//PublisherBO publisherBO = new PublisherBO();
+		//publisherBO.alterPublisher(publisher);
+		int id = publisher.getId();
+		System.out.println("ID: " + id);
+		return "edit-publisher";
 	}
 }

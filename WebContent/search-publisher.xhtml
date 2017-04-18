@@ -38,7 +38,8 @@
 		<b:container>
 			<b:row>
 				<b:column>
-					<b:dataTable var="publisher" value="#{publisherManagedBean.listPublishers}" searching="false" paginated="false">
+					<b:form>
+						<b:dataTable var="publisher" value="#{publisherManagedBean.listPublishers}" searching="false" paginated="false">
 					     	<b:dataTableColumn label="Name" value="#{publisher.publisher}"></b:dataTableColumn>
 							<b:dataTableColumn label="Email" value="#{publisher.email}"></b:dataTableColumn>
 							<b:dataTableColumn label="Phone Number" value="#{publisher.phoneNumber}"></b:dataTableColumn>
@@ -48,15 +49,23 @@
 							<b:dataTableColumn label="Street" value="#{publisher.street}"></b:dataTableColumn>
 							<b:dataTableColumn label="Address Number" value="#{publisher.addressNumber}"></b:dataTableColumn>
 							<b:dataTableColumn label="Zip Code" value="#{publisher.zipCode}"></b:dataTableColumn>
-							<b:column label="Edit" value="">
-								<a href="edit-publisher.jsf?id=#{publisher.id}">Edit</a>
+							<b:column label="Edit">
+								<h:commandLink value="Edit" action="#{publisherManagedBean.editPublisherController}">
+									<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
+								</h:commandLink>
 							</b:column>
 							<b:column label="Delete" value="">
 								<a href="#">Delete</a>
 							</b:column>				
-					</b:dataTable>	
+						</b:dataTable>
+						<h:commandLink value="Edit" action="#{publisherManagedBean.editPublisherController}">
+							<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
+						</h:commandLink>
+					</b:form>	
 				</b:column>
 			</b:row>
-		</b:container>	
+			
+		</b:container>
+			
 	</h:body>
 </html>
