@@ -38,12 +38,59 @@
 		<b:container>
 			<b:row>
 				<b:column>
-					<b:dataTable var="user" value="#{userManagedBean.listUsers}" searching="false" paginated="false">
+				  			<b:form>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>CPF</th>
+									<th>Last Name</th>
+									<th>Email</th>
+									<th>Gender</th>
+									<th>Birth Date</th>
+									<th>Phone Number</th>
+									<th>Zip Code</th>
+									<th>City</th>
+									<th>State</th>
+									<th>Street</th>
+									<th>House Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="user" value="#{userManagedBean.listUsers}">
+									<tr>
+										<td>#{user.name}</td>
+										<td>#{user.cpf}</td>
+										<td>#{user.lastname}</td>
+										<td>#{user.email}</td>
+										<td>#{user.gender}</td>
+										<td>#{user.birthdate}</td>
+										<td>#{user.phonenumber}</td>
+										<td>#{user.zipcode}</td>
+										<td>#{user.city}</td>
+										<td>#{user.state}</td>
+										<td>#{user.street}</td>
+										<td>#{user.housenumber}</td>
+										<td>
+											<h:commandLink value="Delete" action="#{userManagedBean.deletarUserController}" onClick="window.location.reload()">
+												<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />
+											</h:commandLink>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>	
+					</b:form>
+				</b:column>
+			</b:row>
+		</b:container>	
+	</h:body>
+					<!--  <b:dataTable var="user" value="#{userManagedBean.listUsers}" searching="false" paginated="false">
 					     	<b:dataTableColumn label="Name" value="#{user.name}"></b:dataTableColumn>
 					     	<b:dataTableColumn label="CPF" value="#{user.cpf}"></b:dataTableColumn>
 					     	<b:dataTableColumn label="LastName" value="#{user.lastname}"></b:dataTableColumn>
 							<b:dataTableColumn label="Email" value="#{user.email}"></b:dataTableColumn>
-							<b:dataTableColumn label="Gender" value="#{user.email}"></b:dataTableColumn>
+							<b:dataTableColumn label="Gender" value="#{user.gender}"></b:dataTableColumn>
 							<b:dataTableColumn label="BirthDate" value="#{user.birthdate}"></b:dataTableColumn>
 							<b:dataTableColumn label="Phone Number" value="#{user.phonenumber}"></b:dataTableColumn>
 							<b:dataTableColumn label="Zip Code" value="#{user.zipcode}"></b:dataTableColumn>
@@ -62,5 +109,5 @@
 				</b:column>
 			</b:row>
 		</b:container>	
-	</h:body>
+	</h:body> -->
 </html>

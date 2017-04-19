@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,6 +117,21 @@ public class UserDAO {
 			System.out.println("Erro ao inserir User: " + e);
 		}
 		
+	}
+	
+	public void deletarUser(UserBean user){
+		connection = ConnectionFactory.getConnection();
+		sql = "DELETE FROM USUARIO WHERE USERID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, user.getId());
+			
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao apagar User(a): " + e);
+		}
 	}
 	
 }

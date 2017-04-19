@@ -43,5 +43,12 @@ public String insertUserController(){
 	return "insert-user";
 }
 
+public String deletarUserController(){
+	UserBO userBO = new UserBO();
+	userBO.deletarUser(user);;
+	
+	return "search-user";
+}
+
 
 }

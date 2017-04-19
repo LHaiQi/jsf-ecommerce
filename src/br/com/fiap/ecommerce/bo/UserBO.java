@@ -18,4 +18,11 @@ public class UserBO {
 		userDAO.inserirUser(userBean);
 	}
 	
+	public void deletarUser(UserBean userBean){
+		UserDAO userDAO = new UserDAO();
+		
+		userDAO.deletarUser(userBean);
+
+	}
+	
 }
