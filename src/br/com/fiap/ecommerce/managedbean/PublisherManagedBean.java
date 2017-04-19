@@ -38,10 +38,17 @@ public class PublisherManagedBean {
 		return "search-publisher";
 	}
 	
-	public String editPublisherController(){
+	public String fillEditPublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
 		publisher = publisherBO.getPublisher(publisher);
 		
 		return "edit-publisher";
+	}
+	
+	public String editPublisherController(){
+		PublisherBO publisherBO = new PublisherBO();
+		publisherBO.alterPublisher(publisher);
+		
+		return "search-publisher";
 	}
 }

@@ -67,7 +67,7 @@
 										<td>#{publisher.addressNumber}</td>
 										<td>#{publisher.zipCode}</td>
 										<td>
-											<h:commandLink value="Editar" action="#{publisherManagedBean.editPublisherController}">
+											<h:commandLink value="Edit" action="#{publisherManagedBean.fillEditPublisherController}">
 												<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
 											</h:commandLink>
 										</td>

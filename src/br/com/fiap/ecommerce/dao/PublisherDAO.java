@@ -86,7 +86,7 @@ public class PublisherDAO {
 		connection = ConnectionFactory.getConnection();
 		sql = "Update Publisher set Publisher = ?, Cnpj = ?, Email = ?,"
 				+ "PhoneNumber = ?, Country = ?, State = ?, Street = ?"
-				+ "ZipCode = ?, AddressNumber = ?";
+				+ "ZipCode = ?, AddressNumber = ? Where PublisherID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -99,11 +99,12 @@ public class PublisherDAO {
 			preparedStatement.setString(7, publisher.getStreet());
 			preparedStatement.setInt(8, publisher.getZipCode());
 			preparedStatement.setInt(9, publisher.getAddressNumber());
+			preparedStatement.setInt(10, publisher.getId());
 			
 			preparedStatement.execute();
 			
 		} catch (Exception e) {
-			System.out.println("Erro ao buscar lista editora: " + e);
+			System.out.println("Erro ao Editar editora: " + e);
 		}
 	}
 }
