@@ -38,7 +38,47 @@
 		<b:container>
 			<b:row>
 				<b:column>
-					<b:dataTable var="genre" value="#{genreManagedBean.listGenres}" searching="false" paginated="false">
+					<b:form>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>GENRE</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="genre" value="#{genreManagedBean.listGenres}">
+									<tr>
+										<td>#{genre.id}</td>
+										<td>#{genre.genre}</td>
+                                        <td>
+											<h:commandLink value="Edit">
+												<!--  <f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />-->
+											</h:commandLink>
+										</td>
+										
+										<td>
+											<h:commandLink value="Delete" onClick="window.location.reload()">
+											<!-- 	<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />-->
+											</h:commandLink>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>	
+					</b:form>
+				</b:column>
+			</b:row>
+		</b:container>	
+	</h:body>
+					
+					
+					
+					
+					
+					
+					
+					<!--  <b:dataTable var="genre" value="#{genreManagedBean.listGenres}" searching="false" paginated="false">
 					     	<b:dataTableColumn label="Name" value="#{genre.genre}"></b:dataTableColumn>
 							<b:column label="Edit" value="">
 								<a href="#">Edit</a>
@@ -50,5 +90,5 @@
 				</b:column>
 			</b:row>
 		</b:container>	
-	</h:body>
+	  </h:body>-->
 </html>

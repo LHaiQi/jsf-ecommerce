@@ -27,7 +27,6 @@ public class GenreManagedBean {
 	}
 	
 	public String procurarGenreController(){
-		System.out.println("teste");
 		GenreBO genreBO = new GenreBO();
 		listGenres = genreBO.getGenre(genre);
 		
