@@ -35,7 +35,7 @@ public class PublisherDAO {
 				String email = resultSet.getString("Email");;
 				int phoneNumber = resultSet.getInt("PhoneNumber");
 				String country = resultSet.getString("Country");;
-				String state = resultSet.getString("State");;
+				String state = resultSet.getString("cState");;
 				String street = resultSet.getString("Street");;
 				int zipCode = resultSet.getInt("ZipCode");
 				int addressNumber = resultSet.getInt("AddressNumber");
@@ -68,7 +68,7 @@ public class PublisherDAO {
 				String email = resultSet.getString("Email");;
 				int phoneNumber = resultSet.getInt("PhoneNumber");
 				String country = resultSet.getString("Country");;
-				String state = resultSet.getString("State");;
+				String state = resultSet.getString("cState");;
 				String street = resultSet.getString("Street");;
 				int zipCode = resultSet.getInt("ZipCode");
 				int addressNumber = resultSet.getInt("AddressNumber");
@@ -85,23 +85,23 @@ public class PublisherDAO {
 	public void alterPublisher(PublisherBean publisher) {
 		connection = ConnectionFactory.getConnection();
 		sql = "Update Publisher set Publisher = ?, Cnpj = ?, Email = ?,"
-				+ "PhoneNumber = ?, Country = ?, State = ?, Street = ?"
-				+ "ZipCode = ?, AddressNumber = ? Where PublisherID = ?";
+			+ " PhoneNumber = ?, Country = ?, cState = ?, Street = ?,"
+			+ " ZipCode = ?, AddressNumber = ? Where PublisherID = ?";
 		
 		try {
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, publisher.getPublisher());
-			preparedStatement.setInt(2, publisher.getCnpj());
-			preparedStatement.setString(3, publisher.getEmail());
-			preparedStatement.setInt(4, publisher.getPhoneNumber());
-			preparedStatement.setString(5, publisher.getCountry());
-			preparedStatement.setString(6, publisher.getState());
-			preparedStatement.setString(7, publisher.getStreet());
-			preparedStatement.setInt(8, publisher.getZipCode());
-			preparedStatement.setInt(9, publisher.getAddressNumber());
-			preparedStatement.setInt(10, publisher.getId());
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, publisher.getPublisher());
+			ps.setInt(2, publisher.getCnpj());
+			ps.setString(3, publisher.getEmail());
+			ps.setInt(4, publisher.getPhoneNumber());
+			ps.setString(5, publisher.getCountry());
+			ps.setString(6, publisher.getState());
+			ps.setString(7, publisher.getStreet());
+			ps.setInt(8, publisher.getZipCode());
+			ps.setInt(9, publisher.getAddressNumber());
+			ps.setInt(10, publisher.getId());
 			
-			preparedStatement.execute();
+			ps.execute();
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao Editar editora: " + e);
