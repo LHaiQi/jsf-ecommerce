@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
+@SessionScoped
 public class UserManagedBean {
   UserBean user = new UserBean();
   List<UserBean> listUsers = new ArrayList<UserBean>();
@@ -33,7 +35,6 @@ public String searchUserController(){
 	
 	return "search-user";
 }
-
 
 
 public String insertUserController(){

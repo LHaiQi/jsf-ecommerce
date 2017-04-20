@@ -32,7 +32,8 @@
 <p>Gender:</p>
 <b:inputText value="#{userManagedBean.user.gender}" />
 <p>Birth Date:</p>
-<b:inputText value="#{userManagedBean.user.birthdate}" ><f:convertDateTime  pattern="dd/MM/yyyy" />
+<b:inputText value="#{userManagedBean.user.birthdate}" >
+<f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
 </b:inputText>
 <p>Phone Number:</p>
 <b:inputText value="#{userManagedBean.user.phonenumber}" />
