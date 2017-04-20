@@ -25,4 +25,9 @@ public class UserBO {
 
 	}
 	
+	public void alterarUser(UserBean userBean) {
+		UserDAO userDAO = new UserDAO();
+		userDAO.alterarUser(userBean);
+	}
+	
 }

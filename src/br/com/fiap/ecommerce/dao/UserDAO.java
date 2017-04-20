@@ -134,4 +134,33 @@ public class UserDAO {
 		}
 	}
 	
+	public void alterarUser(UserBean user) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Update USUARIO set NAME = ?, CPF = ?, LASTNAME = ?,"
+				+ "EMAIL = ?, GENDER = ?, BIRTHDATE = ?, PHONENUMBER = ?"
+				+ "ZIPCODE = ?, CITY = ?,state = ?,STREET = ?,HOUSENUMBER = ? Where USERID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,user.getName());
+			preparedStatement.setInt(2,user.getCpf());
+			preparedStatement.setString(3, user.getLastname());
+			preparedStatement.setString(4, user.getEmail());
+			preparedStatement.setString(5, user.getGender());
+			java.sql.Date data = new java.sql.Date(user.getBirthdate().getTime());
+			preparedStatement.setDate(6,data);
+			preparedStatement.setInt(7, user.getPhonenumber());
+			preparedStatement.setInt(8, user.getZipcode());
+			preparedStatement.setString(9, user.getCity());
+			preparedStatement.setString(10, user.getState());
+			preparedStatement.setString(11, user.getStreet());
+			preparedStatement.setInt(12, user.getHousenumber());
+			
+			preparedStatement.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao Editar User: " + e);
+		}
+	}
+	
 }

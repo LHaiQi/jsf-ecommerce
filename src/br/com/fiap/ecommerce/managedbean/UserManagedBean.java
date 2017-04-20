@@ -51,5 +51,12 @@ public String deletarUserController(){
 	return "search-user";
 }
 
+public String editUserController(){
+	UserBO userBO = new UserBO();
+    userBO.alterarUser(user);
+	
+	return "search-publisher";
+}
+
 
 }
