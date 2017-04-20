@@ -21,11 +21,11 @@ public class UserDAO {
 		UserBean newUser = null;
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select * from USUARIO Where CPF = ?";
+		sql = "Select * from USUARIO Where USERID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, user.getCpf());
+			preparedStatement.setInt(1, user.getId());
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -40,7 +40,7 @@ public class UserDAO {
 				  int phonenumber = resultSet.getInt("PHONENUMBER");
 				  int zipcode = resultSet.getInt("ZIPCODE");
 				  String city = resultSet.getString("CITY");
-				  String state = resultSet.getString("state");
+				  String state = resultSet.getString("CSTATE");
 				  String street = resultSet.getString("STREET");
 				  int housenumber = resultSet.getInt("HOUSENUMBER");
 				  
@@ -77,7 +77,7 @@ public class UserDAO {
 				  int phonenumber = resultSet.getInt("PHONENUMBER");
 				  int zipcode = resultSet.getInt("ZIPCODE");
 				  String city = resultSet.getString("CITY");
-				  String state = resultSet.getString("state");
+				  String state = resultSet.getString("CSTATE");
 				  String street = resultSet.getString("STREET");
 				  int housenumber = resultSet.getInt("HOUSENUMBER");
 				 
@@ -136,9 +136,7 @@ public class UserDAO {
 	
 	public void alterarUser(UserBean user) {
 		connection = ConnectionFactory.getConnection();
-		sql = "Update USUARIO set NAME = ?, CPF = ?, LASTNAME = ?,"
-				+ "EMAIL = ?, GENDER = ?, BIRTHDATE = ?, PHONENUMBER = ?"
-				+ "ZIPCODE = ?, CITY = ?,state = ?,STREET = ?,HOUSENUMBER = ? Where USERID = ?";
+		sql = "Update USUARIO set NAME = ?, CPF = ?, LASTNAME = ? ,EMAIL = ?, GENDER = ?, BIRTHDATE = ?, PHONENUMBER = ?,ZIPCODE = ?, CITY = ?,CSTATE = ?,STREET = ?,HOUSENUMBER = ? Where USERID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -155,6 +153,7 @@ public class UserDAO {
 			preparedStatement.setString(10, user.getState());
 			preparedStatement.setString(11, user.getStreet());
 			preparedStatement.setInt(12, user.getHousenumber());
+			preparedStatement.setInt(13, user.getId());
 			
 			preparedStatement.execute();
 			

@@ -13,6 +13,14 @@ public class UserBO {
 		return userDAO.pesquisarAllUsers(userBean);		
 	}
 	
+	
+
+	public UserBean pesquisarUser(UserBean userBean){
+		UserDAO userDAO = new UserDAO();
+		return userDAO.pesquisarUser(userBean);
+	}
+	
+	
 	public void inserirUser(UserBean userBean){
 		UserDAO userDAO = new UserDAO();
 		userDAO.inserirUser(userBean);

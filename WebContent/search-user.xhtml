@@ -71,6 +71,12 @@
 										<td>#{user.state}</td>
 										<td>#{user.street}</td>
 										<td>#{user.housenumber}</td>
+                                        <td>
+											<h:commandLink value="Edit" action="#{userManagedBean.preencherUserController}">
+												<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />
+											</h:commandLink>
+										</td>
+										
 										<td>
 											<h:commandLink value="Delete" action="#{userManagedBean.deletarUserController}" onClick="window.location.reload()">
 												<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />

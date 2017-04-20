@@ -55,8 +55,14 @@ public String editUserController(){
 	UserBO userBO = new UserBO();
     userBO.alterarUser(user);
 	
-	return "search-publisher";
+	return "search-user";
 }
 
+public String preencherUserController(){
+	UserBO userBO = new UserBO();;
+	user = userBO.pesquisarUser(user);
+	
+	return "edit-user";
+}
 
 }
