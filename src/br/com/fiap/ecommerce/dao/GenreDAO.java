@@ -3,6 +3,7 @@ package br.com.fiap.ecommerce.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +82,21 @@ public class GenreDAO {
 			System.out.println("Erro ao inserir Genre: " + e);
 		}
 		
+	}
+	
+	public void deletarGenre(GenreBean genre){
+		connection = ConnectionFactory.getConnection();
+		sql = "DELETE FROM GENRE WHERE GENREID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, genre.getId());
+			
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao apagar Genre(a): " + e);
+		}
 	}
 
 }

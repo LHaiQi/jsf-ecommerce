@@ -58,8 +58,8 @@
 										</td>
 										
 										<td>
-											<h:commandLink value="Delete" onClick="window.location.reload()">
-											<!-- 	<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />-->
+											<h:commandLink value="Delete" action="#{genreManagedBean.deletarGenreController}" onClick="window.location.reload()">
+											<f:setPropertyActionListener value="#{genre.id}" target="#{genreManagedBean.genre.id}" />
 											</h:commandLink>
 										</td>
 									</tr>

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bo.GenreBO;
 import br.com.fiap.ecommerce.bo.UserBO;
 
+@SessionScoped
 @ManagedBean
 public class GenreManagedBean {
 	GenreBean genre = new GenreBean();
@@ -39,5 +41,12 @@ public class GenreManagedBean {
 		genreBO.inserirGenre(genre);
 		
 		return "insert-genre";
+	}
+	
+	public String deletarGenreController(){
+		GenreBO genreBO = new GenreBO();
+		genreBO.deletarGenre(genre);;
+		
+		return procurarGenreController() ;
 	}
 }

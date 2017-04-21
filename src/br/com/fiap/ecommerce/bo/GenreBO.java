@@ -17,4 +17,10 @@ public class GenreBO {
 		GenreDAO genreDAO = new GenreDAO();
 		genreDAO.inserirGenre(genreBean);
 	}
+	
+	public void deletarGenre(GenreBean genreBean){
+		GenreDAO genreDAO = new GenreDAO();
+		
+		genreDAO.deletarGenre(genreBean);
+	}
 }
