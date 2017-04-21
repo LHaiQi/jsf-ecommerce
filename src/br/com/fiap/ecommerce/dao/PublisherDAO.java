@@ -68,7 +68,7 @@ public class PublisherDAO {
 				String email = resultSet.getString("Email");;
 				int phoneNumber = resultSet.getInt("PhoneNumber");
 				String country = resultSet.getString("Country");;
-				String state = resultSet.getString("State");;
+				String state = resultSet.getString("cState");;
 				String street = resultSet.getString("Street");;
 				int zipCode = resultSet.getInt("ZipCode");
 				int addressNumber = resultSet.getInt("AddressNumber");
