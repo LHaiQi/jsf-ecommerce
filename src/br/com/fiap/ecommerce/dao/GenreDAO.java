@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
+import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
 public class GenreDAO {
@@ -64,6 +65,22 @@ public class GenreDAO {
 		}
 		
 		return listGenres;
+	}
+	
+	public void inserirGenre(GenreBean genre){
+		connection = ConnectionFactory.getConnection();
+		sql = "INSERT INTO GENRE VALUES ((select max(GENREID)+1 from GENRE),?)";
+		
+		try {
+		
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,genre.getGenre());
+			preparedStatement.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao inserir Genre: " + e);
+		}
+		
 	}
 
 }

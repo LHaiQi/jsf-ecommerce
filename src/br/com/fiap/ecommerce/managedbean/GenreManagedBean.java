@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bo.GenreBO;
+import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
 public class GenreManagedBean {
@@ -31,5 +32,12 @@ public class GenreManagedBean {
 		listGenres = genreBO.getGenre(genre);
 		
 		return "search-genre";
+	}
+	
+	public String insertGenreController(){
+		GenreBO genreBO = new GenreBO();
+		genreBO.inserirGenre(genre);
+		
+		return "insert-genre";
 	}
 }
