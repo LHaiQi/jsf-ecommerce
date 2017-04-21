@@ -49,6 +49,6 @@ public class PublisherManagedBean {
 		PublisherBO publisherBO = new PublisherBO();
 		publisherBO.alterPublisher(publisher);
 		
-		return "search-publisher";
+		return searchPubliserController();
 	}
 }
