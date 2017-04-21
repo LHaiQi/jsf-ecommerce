@@ -33,7 +33,7 @@ public class PublisherManagedBean {
 	
 	public String searchPubliserController(){
 		PublisherBO publisherBO = new PublisherBO();
-		listPublishers = publisherBO.getPubliser(publisher);
+		listPublishers = publisherBO.getListPubliser(publisher);
 		
 		return "search-publisher";
 	}
@@ -48,6 +48,20 @@ public class PublisherManagedBean {
 	public String deletePublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
 		publisherBO.deletePublisher(publisher);
+		
+		return searchPubliserController();
+	}
+	
+	public String fillEditPublisherController(){
+		PublisherBO publisherBO = new PublisherBO();
+		publisher = publisherBO.getPublisher(publisher);
+		
+		return "edit-publisher";
+	}
+	
+	public String editPublisherController(){
+		PublisherBO publisherBO = new PublisherBO();
+		publisherBO.alterPublisher(publisher);
 		
 		return searchPubliserController();
 	}

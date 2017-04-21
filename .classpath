@@ -8,7 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.faces-2.2.9.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.faces-2.2.9.jar" sourcepath="C:/opensource/eclipse-neon/opensource/Maven-Dependencies/.m2/repository/org/glassfish/javax.faces/2.2.9/javax.faces-2.2.9-sources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/BootsFaces-OSP-1.0.2-dist.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jstl.zip"/>

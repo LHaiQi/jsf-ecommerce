@@ -6,7 +6,7 @@ import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.dao.PublisherDAO;
 
 public class PublisherBO {
-	public List<PublisherBean> getPubliser(PublisherBean publisherBean){
+	public List<PublisherBean> getListPubliser(PublisherBean publisherBean){
 		PublisherDAO publisherDAO = new PublisherDAO();
 		return publisherDAO.getAllPublishers(publisherBean);		
 	}
@@ -21,5 +21,15 @@ public class PublisherBO {
 		PublisherDAO publisherDAO = new PublisherDAO();
 		
 		publisherDAO.deletePublisher(publisherBean);
+	}
+	
+	public PublisherBean getPublisher(PublisherBean publisherBean){
+		PublisherDAO publisherDAO = new PublisherDAO();
+		return publisherDAO.getPublisher(publisherBean);
+	}
+
+	public void alterPublisher(PublisherBean publisher) {
+		PublisherDAO publisherDAO = new PublisherDAO();
+		publisherDAO.alterPublisher(publisher);
 	}
 }
