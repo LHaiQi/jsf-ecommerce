@@ -80,8 +80,8 @@ public class AuthorDAO {
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, authorBean.getName());
-			preparedStatement.setString(2, authorBean.getLastName());
-			preparedStatement.setString(3, authorBean.getGender());
+			preparedStatement.setString(2, authorBean.getGender());
+			preparedStatement.setString(3, authorBean.getLastName());
 			preparedStatement.setString(4, authorBean.getNationality());
 			
 			preparedStatement.execute();
@@ -111,16 +111,16 @@ public class AuthorDAO {
 
 	public void alterAuthor(AuthorBean authorBean) {
 		connection = ConnectionFactory.getConnection();
-		sql = "Update Author set Name = ?, LastName = ?, Gender = ?, Nationality = ? Where PublisherID = ?";
+		sql = "Update Author set Name = ?, Gender = ? , LastName = ?, Nationality = ? Where AuthorID = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, authorBean.getName());
-			preparedStatement.setString(2, authorBean.getLastName());
-			preparedStatement.setString(3, authorBean.getGender());
+			preparedStatement.setString(2, authorBean.getGender());
+			preparedStatement.setString(3, authorBean.getLastName());
 			preparedStatement.setString(4, authorBean.getNationality());
-			
+			preparedStatement.setInt(5, authorBean.getId());
 			preparedStatement.execute();
 			
 		} catch (Exception e) {
