@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Search Author</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+	</h:head>
+	<h:body>
+		<b:container>
+			<b:row>
+				<b:column>
+					<h1>Search Author</h1>
+				</b:column>
+			</b:row>
+		</b:container>
+		
+		<b:container>
+			<b:row>
+				<b:column col-md="8" offset="2">
+					<b:form>
+						<b:column col-md="3">
+							<h5>Author's Name:</h5>
+						</b:column>
+						<b:column col-md="7">
+							<b:inputText value="#{authorManagedBean.author.name}" />
+						</b:column>
+						<b:column col-md="2">
+							<b:commandButton action="#{authorManagedBean.searchAuthorController}" value="Search"></b:commandButton>
+						</b:column>
+					</b:form>					
+				</b:column>
+			</b:row>
+		</b:container>
+		<b:container>
+			<b:row>
+				<b:column>
+					<b:form>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Last Name</th>
+									<th>Gender</th>
+									<th>Nationality</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="author" value="#{authorManagedBean.authorList}">
+									<tr>
+										<td>#{author.name}</td>
+										<td>#{author.lastName}</td>
+										<td>#{author.gender}</td>
+										<td>#{author.nationality}</td>
+										<td>
+											<h:commandLink value="Delete" action="#{authorManagedBean.deleteAuthorController}" onClick="window.location.reload()">
+												<f:setPropertyActionListener value="#{author.id}" target="#{authorManagedBean.author.id}" />
+											</h:commandLink>
+										</td>
+										<td>
+											<h:commandLink value="Edit" action="#{authorManagedBean.fillEditAuthorController}">
+												<f:setPropertyActionListener value="#{author.id}" target="#{authorManagedBean.author.id}" />
+											</h:commandLink>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>	
+					</b:form>
+										
+				</b:column>
+			</b:row>			
+		</b:container>			
+	</h:body>
+</html>
