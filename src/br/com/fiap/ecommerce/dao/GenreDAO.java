@@ -21,11 +21,11 @@ public class GenreDAO {
 		GenreBean newGenre = null;
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select * From Genre Where Genre = ?";
+		sql = "Select * From GENRE Where GENREID = ?";
 		
 		try{
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, genre.getGenre());
+			preparedStatement.setInt(1, genre.getId());
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -96,6 +96,22 @@ public class GenreDAO {
 			
 		} catch (SQLException e) {
 			System.out.println("Erro ao apagar Genre(a): " + e);
+		}
+	}
+	
+	public void alterarGenre(GenreBean genre) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Update GENRE set GENRE = ? Where GENREID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1,genre.getGenre());
+			preparedStatement.setInt(2, genre.getId());
+			
+			preparedStatement.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao Editar Genre: " + e);
 		}
 	}
 

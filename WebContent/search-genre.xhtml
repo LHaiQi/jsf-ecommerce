@@ -52,8 +52,8 @@
 										<td>#{genre.id}</td>
 										<td>#{genre.genre}</td>
                                         <td>
-											<h:commandLink value="Edit">
-												<!--  <f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />-->
+											<h:commandLink value="Edit" action="#{genreManagedBean.preencherGenreController}">
+												<f:setPropertyActionListener value="#{genre.id}" target="#{genreManagedBean.genre.id}" />
 											</h:commandLink>
 										</td>
 										

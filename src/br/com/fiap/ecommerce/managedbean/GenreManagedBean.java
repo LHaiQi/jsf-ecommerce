@@ -49,4 +49,18 @@ public class GenreManagedBean {
 		
 		return procurarGenreController() ;
 	}
+	
+	public String editGenreController(){
+		GenreBO genreBO = new GenreBO();
+	    genreBO.alterarGenre(genre);
+		
+		return "search-genre";
+	}
+
+	public String preencherGenreController(){
+		GenreBO genreBO = new GenreBO();
+		genre = genreBO.pesquisarGenre(genre);
+		
+		return "edit-genre";
+	}
 }

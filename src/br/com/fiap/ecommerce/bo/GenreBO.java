@@ -13,6 +13,11 @@ public class GenreBO {
 		return genreDAO.pesquisarAllGenres(genreBean);		
 	}	
 	
+	public GenreBean pesquisarGenre(GenreBean genreBean){
+		GenreDAO genreDAO = new GenreDAO();
+		return genreDAO.pesquisarGenre(genreBean);
+	}
+	
 	public void inserirGenre(GenreBean genreBean){
 		GenreDAO genreDAO = new GenreDAO();
 		genreDAO.inserirGenre(genreBean);
@@ -22,5 +27,10 @@ public class GenreBO {
 		GenreDAO genreDAO = new GenreDAO();
 		
 		genreDAO.deletarGenre(genreBean);
+	}
+	
+	public void alterarGenre(GenreBean genreBean) {
+		GenreDAO genreDAO = new GenreDAO();
+		genreDAO.alterarGenre(genreBean);
 	}
 }
