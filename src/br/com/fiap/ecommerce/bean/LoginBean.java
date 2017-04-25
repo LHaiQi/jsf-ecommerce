@@ -1,7 +1,7 @@
 package br.com.fiap.ecommerce.bean;
 
 public class LoginBean {
-	private int logiId;
+	private int loginId;
 	private int loginType;
 	private int userId;
 	private String user;
@@ -9,21 +9,21 @@ public class LoginBean {
 	
 	public LoginBean() {}
 
-	public LoginBean(int logiId, int loginType, int userId, String user, String password) {
+	public LoginBean(int loginId, int loginType, int userId, String user, String password) {
 		super();
-		this.logiId = logiId;
+		this.loginId = loginId;
 		this.loginType = loginType;
 		this.userId = userId;
 		this.user = user;
 		this.password = password;
 	}
 
-	public int getLogiId() {
-		return logiId;
+	public int getLoginId() {
+		return loginId;
 	}
 
-	public void setLogiId(int logiId) {
-		this.logiId = logiId;
+	public void setLoginId(int logiId) {
+		this.loginId = logiId;
 	}
 
 	public int getLoginType() {
