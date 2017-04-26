@@ -1,5 +1,7 @@
 *.class
 
+src/br/com/fiap/ecommerce/connection/ConnectionFactory.java
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
