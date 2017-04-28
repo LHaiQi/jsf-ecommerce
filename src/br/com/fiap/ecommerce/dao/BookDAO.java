@@ -7,6 +7,7 @@ import java.util.List;
 
 import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
+import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
@@ -45,16 +46,16 @@ public class BookDAO {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, book.getName());
 			preparedStatement.setDouble(2, book.getPrice());
-			preparedStatement.setInt(3, book.getAutorID());
-			preparedStatement.setInt(4, book.getGenreID());
-			preparedStatement.setInt(5, book.getPublisherID());
+			preparedStatement.setInt(3, author.getId());
+			preparedStatement.setInt(4, genre.getId());
+			preparedStatement.setInt(5, publisher.getId());
 			preparedStatement.setInt(6, book.getISBN());
 			preparedStatement.setString(7, book.getSynopsis());
 			
 			preparedStatement.execute();
 		} 
 		catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Erro ao Inserir Book: " + e);
 		}
 	}
 
