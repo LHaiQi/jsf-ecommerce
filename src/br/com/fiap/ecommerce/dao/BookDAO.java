@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
+import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
 public class BookDAO {
@@ -14,9 +16,30 @@ public class BookDAO {
 	private ResultSet resultSet;
 	private String sql;
 	
-	public void setBook(BookBean book) {
+	public int generateID(){
+		int bookID = 0;
+		
 		connection = ConnectionFactory.getConnection();
-		sql = "Insert Into Books Values((select max(bookID)+1 from Books), ?, ?, ?, ?, ?, ?, ?)";
+		sql = "Select Max(bookID) as bookID From Books";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				bookID = resultSet.getInt("bookID");
+			}			
+		} 
+		catch (Exception e) {
+			bookID = 0;
+		}
+		
+		return bookID;
+	}
+	
+	public void setBook(BookBean book, AuthorBean author, PublisherBean publisher, GenreBean genre) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Insert Into Books Values("+ generateID() +", ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -29,7 +52,8 @@ public class BookDAO {
 			preparedStatement.setString(7, book.getSynopsis());
 			
 			preparedStatement.execute();
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
@@ -61,9 +85,10 @@ public class BookDAO {
 				int ISBN = resultSet.getInt("ISBN");
 				String synopsis = resultSet.getString("Synopsis");
 				
-				bookBean = new BookBean(bookID, name, price, authorName, genreName, publisherName, ISBN, synopsis);
+				//bookBean = new BookBean(bookID, name, price, authorName, genreName, publisherName, ISBN, synopsis);
 			}
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			// TODO: handle exception
 		}
 		
