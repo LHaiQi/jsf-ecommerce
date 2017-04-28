@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
+import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 import oracle.net.aso.p;
 
