@@ -8,7 +8,7 @@ import br.com.fiap.ecommerce.dao.BookDAO;
 public class BookBO {
 	private void setBook(BookBean book) {
 		BookDAO bookDAO = new BookDAO();
-		bookDAO.setBook(book);
+//		bookDAO.setBook(book);
 	}
 	
 	private BookBean getBook(BookBean book) {

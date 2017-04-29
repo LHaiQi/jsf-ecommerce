@@ -6,63 +6,77 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
+import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
 @SessionScoped
 public class UserManagedBean {
-  UserBean user = new UserBean();
-  List<UserBean> listUsers = new ArrayList<UserBean>();
-
-public UserBean getUser() {
-	return user;
-}
-public void setUser(UserBean user) {
-	this.user = user;
-}
-public List<UserBean> getListUsers() {
-	return listUsers;
-}
-public void setListUsers(List<UserBean> listUsers) {
-	this.listUsers = listUsers;
-}
-  
-  
-public String searchUserController(){
-	UserBO userBO = new UserBO();
-	listUsers = userBO.pesquisarALLUser(user);
+    UserBean user = new UserBean();
+	LoginBean login = new LoginBean();
+    List<UserBean> listUsers = new ArrayList<UserBean>();
+    
+    
+	public LoginBean getLogin() {
+		return login;
+	}
+	public void setLogin(LoginBean login) {
+		this.login = login;
+	}
+	public UserBean getUser() {
+		return user;
+	}
+	public void setUser(UserBean user) {
+		this.user = user;
+	}
+	public List<UserBean> getListUsers() {
+		return listUsers;
+	}
+	public void setListUsers(List<UserBean> listUsers) {
+		this.listUsers = listUsers;
+	}
 	
-	return "search-user";
-}
-
-
-public String insertUserController(){
-	UserBO userBO = new UserBO();
-	userBO.inserirUser(user);
+	public String searchUserController(){
+		UserBO userBO = new UserBO();
+		listUsers = userBO.pesquisarALLUser(user);
+		
+		return "search-user";
+	}
 	
-	return "insert-user";
-}
-
-public String deletarUserController(){
-	UserBO userBO = new UserBO();
-	userBO.deletarUser(user);;
+	public String insertUserController(){
+		UserBO userBO = new UserBO();
+		userBO.inserirUser(user);
+		insertLoginController();
+		
+		return "insert-user";
+	}
 	
-	return searchUserController();
-}
-
-public String editUserController(){
-	UserBO userBO = new UserBO();
-    userBO.alterarUser(user);
+	public void insertLoginController(){
+		LoginBO loginBO = new LoginBO();
+		loginBO.inserirLogin(login);
+	}
 	
-	return searchUserController();
-}
-
-public String preencherUserController(){
-	UserBO userBO = new UserBO();;
-	user = userBO.pesquisarUser(user);
+	public String deletarUserController(){
+		UserBO userBO = new UserBO();
+		userBO.deletarUser(user);;
+		
+		return searchUserController();
+	}
 	
-	return "edit-user";
-}
+	public String editUserController(){
+		UserBO userBO = new UserBO();
+	    userBO.alterarUser(user);
+		
+		return searchUserController();
+	}
+	
+	public String preencherUserController(){
+		UserBO userBO = new UserBO();;
+		user = userBO.pesquisarUser(user);
+		
+		return "edit-user";
+	}
 
 }

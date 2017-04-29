@@ -7,6 +7,7 @@ import java.util.List;
 
 import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
+import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
@@ -45,7 +46,7 @@ public class BookDAO {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, book.getName());
 			preparedStatement.setDouble(2, book.getPrice());
-			preparedStatement.setInt(3, book.getAutorID());
+			preparedStatement.setInt(3, book.getAuthorID());
 			preparedStatement.setInt(4, book.getGenreID());
 			preparedStatement.setInt(5, book.getPublisherID());
 			preparedStatement.setInt(6, book.getISBN());

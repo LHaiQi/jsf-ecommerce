@@ -43,17 +43,59 @@ public class LoginDAO {
 //		return newLogin;
 //	}
 	
+	public int pegarUserId(){
+		int id = 1;
+		connection = ConnectionFactory.getConnection();
+		sql = "select max(USERID) from usuario";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				id = resultSet.getInt("USERID");
+			}
+		} catch (Exception e) {
+			id = 1;
+		}
+		
+		return id;
+	}
+
+	public int generateID(){
+		int loginID = 1;
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select Max(loginID) as loginID From Login";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+ 			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				loginID = resultSet.getInt("LOGINID");
+				loginID++;
+			}			
+		} 
+		catch (Exception e) {
+			loginID = 1;
+		}
+		
+		return loginID;
+	}
+	
 	public void inserirLogin(LoginBean login){
 		connection = ConnectionFactory.getConnection();
-		sql = "INSERT INTO LOGIN VALUES ((select max(LOGINID)+1 from LOGIN),?,?,?,?)";
+		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
 		
 		try {
 		
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1,login.getUser());
-			preparedStatement.setString(2,login.getPassword());
-			preparedStatement.setInt(3, login.getUserId());
-			preparedStatement.setInt(4, login.getLoginType());
+			preparedStatement.setInt(1, generateID());
+			preparedStatement.setString(2,login.getUser());
+			preparedStatement.setString(3,login.getPassword());
+			preparedStatement.setInt(4, pegarUserId());
+			preparedStatement.setInt(5, 0);
 			
 			preparedStatement.execute();
 			
