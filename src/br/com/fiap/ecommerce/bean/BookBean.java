@@ -10,6 +10,8 @@ public class BookBean {
 	private PublisherBean publisher;
 	private GenreBean genre;
 	
+	public BookBean () { }
+	
 	public BookBean(int bookID, int iSBN, String name, String synopsis, double price, AuthorBean author,
 			PublisherBean publisher, GenreBean genre) {
 		this.bookID = bookID;
