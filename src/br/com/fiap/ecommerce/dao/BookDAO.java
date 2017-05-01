@@ -1,6 +1,5 @@
 package br.com.fiap.ecommerce.dao;
 
-import java.security.GeneralSecurityException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +29,7 @@ public class BookDAO {
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()){
-				bookID = resultSet.getInt("bookID");
+				bookID = resultSet.getInt("bookID") + 1;
 			}			
 		} 
 		catch (Exception e) {
@@ -42,10 +41,11 @@ public class BookDAO {
 	
 	public void setBook(BookBean book, AuthorBean author, PublisherBean publisher, GenreBean genre) {
 		connection = ConnectionFactory.getConnection();
-		sql = "Insert Into Books Values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "Insert Into Books(BookID, Name, Price, AuthorID, GenreID, PublisherID, ISBN, Synopsis) "
+				+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
-			preparedStatement = connection.prepareStatement(sql);
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, generateID());
 			preparedStatement.setString(2, book.getName());
 			preparedStatement.setDouble(3, book.getPrice());
