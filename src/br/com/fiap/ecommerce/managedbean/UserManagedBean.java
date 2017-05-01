@@ -55,6 +55,7 @@ public class UserManagedBean {
 	
 	public void insertLoginController(){
 		LoginBO loginBO = new LoginBO();
+		LoginBean a = login;
 		loginBO.inserirLogin(login);
 	}
 	

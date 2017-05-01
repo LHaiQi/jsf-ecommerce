@@ -46,14 +46,14 @@ public class LoginDAO {
 	public int pegarUserId(){
 		int id = 1;
 		connection = ConnectionFactory.getConnection();
-		sql = "select max(USERID) from usuario";
+		sql = "select max(USERID) as ultimoUsuario from usuario";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()){
-				id = resultSet.getInt("USERID");
+				id = resultSet.getInt("ultimoUsuario");
 			}
 		} catch (Exception e) {
 			id = 1;
@@ -87,14 +87,22 @@ public class LoginDAO {
 	public void inserirLogin(LoginBean login){
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
+		int loginId = generateID();
+		int userId = pegarUserId();
+		
+//		sql = "INSERT INTO LOGIN VALUES ("+4+",'user','senha',"+5+","+0+")";
+		
+//		sql = "INSERT INTO LOGIN VALUES (?,'user','senha',"+7+","+0+")";
+		
+		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
 		
 		try {
 		
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, generateID());
+			preparedStatement.setInt(1, loginId);
 			preparedStatement.setString(2,login.getUser());
 			preparedStatement.setString(3,login.getPassword());
-			preparedStatement.setInt(4, pegarUserId());
+			preparedStatement.setInt(4, userId);
 			preparedStatement.setInt(5, 0);
 			
 			preparedStatement.execute();
