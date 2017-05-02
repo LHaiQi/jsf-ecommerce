@@ -8,6 +8,11 @@ import br.com.fiap.ecommerce.dao.GenreDAO;
 import br.com.fiap.ecommerce.dao.UserDAO;
 
 public class GenreBO {
+	public List<GenreBean> getListGenre(){
+		GenreDAO genreDAO = new GenreDAO();
+		return genreDAO.getListGenre();
+	}
+	
 	public List<GenreBean> getGenre(GenreBean genreBean){
 		GenreDAO genreDAO = new GenreDAO();
 		return genreDAO.pesquisarAllGenres(genreBean);		

@@ -7,11 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
-import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
-import oracle.net.aso.p;
 
 public class PublisherDAO {
 	private Connection connection;
@@ -85,6 +82,37 @@ public class PublisherDAO {
 		return newPublisher;
 	}
 
+	public List<PublisherBean> getAllPublishers() {
+		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select * From Publisher";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				int id = resultSet.getInt("PublisherID");
+				String publisherName = resultSet.getString("Publisher");
+				int cnpj = resultSet.getInt("cnpj");
+				String email = resultSet.getString("Email");;
+				int phoneNumber = resultSet.getInt("PhoneNumber");
+				String country = resultSet.getString("Country");;
+				String state = resultSet.getString("cState");;
+				String street = resultSet.getString("Street");;
+				int zipCode = resultSet.getInt("ZipCode");
+				int addressNumber = resultSet.getInt("AddressNumber");
+				
+				listPublishers.add(new PublisherBean(id, publisherName, cnpj, email, phoneNumber, country, state, street, zipCode, addressNumber));							
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar lista editora: " + e);
+		}
+		
+		return listPublishers;
+	}
+	
 	public List<PublisherBean> getAllPublishers(PublisherBean publisher){
 		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
 		
@@ -184,5 +212,5 @@ public class PublisherDAO {
 		} catch (Exception e) {
 			System.out.println("Erro ao Editar editora: " + e);
 		}
-	}
+	}	
 }

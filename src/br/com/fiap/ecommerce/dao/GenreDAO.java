@@ -69,6 +69,29 @@ public class GenreDAO {
 		return newGenre;
 	}
 	
+	public List<GenreBean> getListGenre() {
+		List<GenreBean> listGenres = new ArrayList<GenreBean>();
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select * From Genre";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);			
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				int id = resultSet.getInt("GenreID");
+				String genreName = resultSet.getString("Genre");
+				
+				listGenres.add(new GenreBean(id, genreName));							
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar lista genero: " + e);
+		}
+		
+		return listGenres;
+	}
+	
 	public List<GenreBean> pesquisarAllGenres(GenreBean genre){
 		List<GenreBean> listGenres = new ArrayList<GenreBean>();
 		
@@ -140,5 +163,4 @@ public class GenreDAO {
 			System.out.println("Erro ao Editar Genre: " + e);
 		}
 	}
-
 }

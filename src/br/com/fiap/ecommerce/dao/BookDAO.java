@@ -39,7 +39,7 @@ public class BookDAO {
 		return bookID;
 	}
 	
-	public void setBook(BookBean book, AuthorBean author, PublisherBean publisher, GenreBean genre) {
+	public void setBook(BookBean book) {
 		connection = ConnectionFactory.getConnection();
 		String sql = "Insert Into Books(BookID, Name, Price, AuthorID, GenreID, PublisherID, ISBN, Synopsis) "
 				+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -49,9 +49,9 @@ public class BookDAO {
 			preparedStatement.setInt(1, generateID());
 			preparedStatement.setString(2, book.getName());
 			preparedStatement.setDouble(3, book.getPrice());
-			preparedStatement.setInt(4, author.getId());
-			preparedStatement.setInt(5, genre.getId());
-			preparedStatement.setInt(6, publisher.getId());
+			preparedStatement.setInt(4, book.getAuthor().getId());
+			preparedStatement.setInt(5, book.getGenre().getId());
+			preparedStatement.setInt(6, book.getPublisher().getId());
 			preparedStatement.setInt(7, book.getISBN());
 			preparedStatement.setString(8, book.getSynopsis());
 			

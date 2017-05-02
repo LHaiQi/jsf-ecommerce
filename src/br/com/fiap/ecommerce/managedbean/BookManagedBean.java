@@ -12,15 +12,17 @@ import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.bo.AuthorBO;
 import br.com.fiap.ecommerce.bo.BookBO;
+import br.com.fiap.ecommerce.bo.GenreBO;
+import br.com.fiap.ecommerce.bo.PublisherBO;
 
 @ManagedBean
 @SessionScoped
 public class BookManagedBean {
 	private BookBean book = new BookBean();
 	private List<BookBean> listBook = new ArrayList<BookBean>();	
-	private AuthorBean author = new AuthorBean();	
-	private PublisherBean publisher = new PublisherBean();
-	private GenreBean genre = new GenreBean();
+	private List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
+	private List<GenreBean> listGenre = new ArrayList<GenreBean>();
+	private List<PublisherBean> ListPublisher = new ArrayList<PublisherBean>();
 	
 	public BookBean getBook() {
 		return book;
@@ -38,33 +40,36 @@ public class BookManagedBean {
 		this.listBook = listBook;
 	}
 
-	public AuthorBean getAuthor() {
-		return author;
+	public List<AuthorBean> getListAuthor() {
+		AuthorBO authorBO = new AuthorBO();
+		return listAuthor = authorBO.getListAuthor();
 	}
 
-	public void setAuthor(AuthorBean author) {
-		this.author = author;
+	public void setListAuthor(List<AuthorBean> listAuthor) {
+		this.listAuthor = listAuthor;
+	}
+	
+	public List<GenreBean> getListGenre() {
+		GenreBO genreBO = new GenreBO();
+		return listGenre = genreBO.getListGenre();
 	}
 
-	public PublisherBean getPublisher() {
-		return publisher;
+	public void setListGenre(List<GenreBean> listGenre) {
+		this.listGenre = listGenre;
 	}
 
-	public void setPublisher(PublisherBean publisher) {
-		this.publisher = publisher;
+	public List<PublisherBean> getListPublisher() {
+		PublisherBO publisherBO = new PublisherBO();
+		return ListPublisher = publisherBO.getListPubliser();
 	}
 
-	public GenreBean getGenre() {
-		return genre;
-	}
-
-	public void setGenre(GenreBean genre) {
-		this.genre = genre;
+	public void setListPublisher(List<PublisherBean> listPublisher) {
+		ListPublisher = listPublisher;
 	}
 
 	public String insertBookController() {
-		BookBO bookBO = new BookBO();
-		bookBO.setBook(book, author, publisher, genre);
+		BookBO bookBO = new BookBO();		
+		bookBO.setBook(book);		
 		
 		return "insert-book";
 	}
@@ -72,10 +77,6 @@ public class BookManagedBean {
 	public String searchBookController(){
 		BookBO bookBO = new BookBO();
 		book = bookBO.getBook(book);
-		
-		author = book.getAuthor();
-		publisher = book.getPublisher();
-		genre = book.getGenre();
 		
 		return "search-book";
 	}
@@ -85,10 +86,5 @@ public class BookManagedBean {
 		listBook = bookBO.getListBooks(book);
 		
 		return "search-book";
-	}
-
-	public List<AuthorBean> getAuthorItem(){
-		AuthorBO authorBO = new AuthorBO();
-		return authorBO.getListAuthor();
 	}
 }

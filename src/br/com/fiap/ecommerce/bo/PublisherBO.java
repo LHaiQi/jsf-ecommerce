@@ -6,6 +6,11 @@ import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.dao.PublisherDAO;
 
 public class PublisherBO {
+	public List<PublisherBean> getListPubliser() {
+		PublisherDAO publisherDAO = new PublisherDAO();
+		return publisherDAO.getAllPublishers();		
+	}
+	
 	public List<PublisherBean> getListPubliser(PublisherBean publisherBean){
 		PublisherDAO publisherDAO = new PublisherDAO();
 		return publisherDAO.getAllPublishers(publisherBean);		
@@ -31,5 +36,5 @@ public class PublisherBO {
 	public void alterPublisher(PublisherBean publisher) {
 		PublisherDAO publisherDAO = new PublisherDAO();
 		publisherDAO.alterPublisher(publisher);
-	}
+	}	
 }
