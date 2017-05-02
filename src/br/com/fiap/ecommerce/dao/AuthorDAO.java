@@ -71,7 +71,33 @@ public class AuthorDAO {
 	
 		return newAuthor;
 	}
-
+	
+	public List<AuthorBean> getAllAuthors() {
+		List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select * From Author";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);			
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				int id = resultSet.getInt("AuthorID");
+				String name = resultSet.getString("Name");
+				String lastName = resultSet.getString("LastName");
+				String gender = resultSet.getString("Gender");
+				String nationality = resultSet.getString("Nationality");
+				
+				listAuthor.add(new AuthorBean(id, name, lastName, gender, nationality));
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar lista author: " + e);
+		}
+		
+		return listAuthor;
+	}
+	
 	public List<AuthorBean> getAllAuthors(AuthorBean authorBean) {
 		List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
 		
@@ -154,6 +180,5 @@ public class AuthorDAO {
 		} catch (Exception e) {
 			System.out.println("Erro ao Editar autor(a): " + e);
 		}
-	}
-	
+	}	
 }

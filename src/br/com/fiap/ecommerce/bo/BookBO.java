@@ -13,8 +13,7 @@ import br.com.fiap.ecommerce.dao.PublisherDAO;
 
 public class BookBO {
 	public void setBook(BookBean book, AuthorBean author, PublisherBean publisher, GenreBean genre) {
-		BookDAO bookDAO = new BookDAO();
-		
+		BookDAO bookDAO = new BookDAO();		
 		
 		AuthorDAO authorDAO = new AuthorDAO();
 		author = authorDAO.getAuthorByName(author);

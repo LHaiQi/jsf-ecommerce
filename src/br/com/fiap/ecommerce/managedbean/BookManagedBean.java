@@ -10,16 +10,25 @@ import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
 import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bean.PublisherBean;
+import br.com.fiap.ecommerce.bo.AuthorBO;
 import br.com.fiap.ecommerce.bo.BookBO;
 
 @ManagedBean
 @SessionScoped
 public class BookManagedBean {
 	private BookBean book = new BookBean();
-	private List<BookBean> listBook = new ArrayList<BookBean>();
-	private AuthorBean author = new AuthorBean();
+	private List<BookBean> listBook = new ArrayList<BookBean>();	
+	private AuthorBean author = new AuthorBean();	
 	private PublisherBean publisher = new PublisherBean();
 	private GenreBean genre = new GenreBean();
+	
+	public BookBean getBook() {
+		return book;
+	}
+
+	public void setBook(BookBean book) {
+		this.book = book;
+	}
 
 	public List<BookBean> getListBook() {
 		return listBook;
@@ -29,14 +38,6 @@ public class BookManagedBean {
 		this.listBook = listBook;
 	}
 
-	public BookBean getBook() {
-		return book;
-	}
-
-	public void setBook(BookBean book) {
-		this.book = book;
-	}
-	
 	public AuthorBean getAuthor() {
 		return author;
 	}
@@ -67,7 +68,7 @@ public class BookManagedBean {
 		
 		return "insert-book";
 	}
-	
+		
 	public String searchBookController(){
 		BookBO bookBO = new BookBO();
 		book = bookBO.getBook(book);
@@ -84,5 +85,10 @@ public class BookManagedBean {
 		listBook = bookBO.getListBooks(book);
 		
 		return "search-book";
+	}
+
+	public List<AuthorBean> getAuthorItem(){
+		AuthorBO authorBO = new AuthorBO();
+		return authorBO.getListAuthor();
 	}
 }

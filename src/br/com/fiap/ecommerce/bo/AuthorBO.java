@@ -7,6 +7,11 @@ import br.com.fiap.ecommerce.dao.AuthorDAO;
 
 public class AuthorBO {
 
+	public List<AuthorBean> getListAuthor() {
+		AuthorDAO authorDAO = new AuthorDAO();
+		return authorDAO.getAllAuthors();
+	}
+	
 	public List<AuthorBean> getListAuthor(AuthorBean authorBean){
 		AuthorDAO authorDAO = new AuthorDAO();
 		return authorDAO.getAllAuthors(authorBean);		
@@ -32,5 +37,5 @@ public class AuthorBO {
 	public void alterAuthor(AuthorBean authorBean) {
 		AuthorDAO authorDAO = new AuthorDAO();
 		authorDAO.alterAuthor(authorBean);
-	}
+	}	
 }

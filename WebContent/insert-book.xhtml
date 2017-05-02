@@ -30,12 +30,13 @@
 						<p>ISBN:</p>
 						<b:inputText value="#{bookManagedBean.book.ISBN}" />
 						<p>Author:</p>
-						<b:inputText value="#{bookManagedBean.author.name}" />						
+						<b:selectOneMenu value="bookManagedBean.authorID">
+							<f:selectItems value="bookManagedBean.authorItem"></f:selectItems>
+						</b:selectOneMenu>		
 						<p>Genre:</p>
 						<b:inputText value="#{bookManagedBean.genre.genre}" />
 						<p>Publisher:</p>
-						<b:inputText value="#{bookManagedBean.publisher.publisher}" />
-						
+						<b:inputText value="#{bookManagedBean.publisher.publisher}" />										        			
 						<b:commandButton look="success" value="Save" action="#{bookManagedBean.insertBookController}"></b:commandButton>
 					 </b:form>
 				</b:column>
