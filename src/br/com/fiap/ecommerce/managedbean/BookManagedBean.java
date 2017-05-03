@@ -77,6 +77,8 @@ public class BookManagedBean {
 		BookBO bookBO = new BookBO();		
 		bookBO.setBook(book);		
 		
+		book = new BookBean();
+		
 		return "insert-book";
 	}
 		
@@ -103,8 +105,15 @@ public class BookManagedBean {
 	
 	public String fillEditBookController(){
 		BookBO bookBO = new BookBO();
-		bookBO.getBook(book);
+		book = bookBO.getBook(book);
 		
-		return "edit-publisher";
+		return "edit-book";
+	}
+	
+	public String editBookController(){
+		BookBO bookBO = new BookBO();
+		bookBO.alterBook(book);
+		
+		return "edit-book";
 	}
 }

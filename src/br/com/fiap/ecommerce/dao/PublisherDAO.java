@@ -49,39 +49,6 @@ public class PublisherDAO {
 		return newPublisher;
 	}
 	
-	public PublisherBean getPublisherByName(PublisherBean publisher){
-		PublisherBean newPublisher = null;
-		
-		connection = ConnectionFactory.getConnection();
-		sql = "Select * From Publisher Where Publisher = ?";
-		
-		try {
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, publisher.getPublisher());
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet.next()) {
-				int id = resultSet.getInt("PublisherID");
-				String publisherName = resultSet.getString("Publisher");
-				int cnpj = resultSet.getInt("cnpj");
-				String email = resultSet.getString("Email");;
-				int phoneNumber = resultSet.getInt("PhoneNumber");
-				String country = resultSet.getString("Country");;
-				String state = resultSet.getString("cState");;
-				String street = resultSet.getString("Street");;
-				int zipCode = resultSet.getInt("ZipCode");
-				int addressNumber = resultSet.getInt("AddressNumber");
-				
-				newPublisher = new PublisherBean(id, publisherName, cnpj, email, phoneNumber, country, state, street, zipCode, addressNumber);
-			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar editora: " + e);
-		}
-	
-		return newPublisher;
-	}
-
 	public List<PublisherBean> getAllPublishers() {
 		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
 		

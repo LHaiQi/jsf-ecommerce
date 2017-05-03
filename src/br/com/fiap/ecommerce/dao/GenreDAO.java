@@ -42,32 +42,6 @@ public class GenreDAO {
 		return newGenre;
 	}
 	
-	public GenreBean getGenreByName(GenreBean genre){
-		GenreBean newGenre = null;
-		
-		connection = ConnectionFactory.getConnection();
-		sql = "Select * From Genre Where Genre = ?";
-		
-		try{
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, genre.getGenre());
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet.next()) {
-				int id = resultSet.getInt("GenreID");
-				String genreName = resultSet.getString("Genre");
-				
-				newGenre = new GenreBean(id, genreName);
-			}
-			
-		}catch(Exception e){
-			System.out.println("Erro ao buscar genero: " + e);
-		}
-		
-		return newGenre;
-	}
-	
 	public List<GenreBean> getListGenre() {
 		List<GenreBean> listGenres = new ArrayList<GenreBean>();
 		

@@ -75,11 +75,11 @@ public class BookDAO {
 		    + " Inner Join Author A On B.Authorid = A.Authorid "
 		    + " Inner Join Genre G On B.Genreid = G.Genreid "
             + " Inner Join Publisher P On B.Publisherid = P.Publisherid "
-            + " Where B.Name = ? ";
+            + " Where B.BookID = ? ";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, book.getName());
+			preparedStatement.setInt(1, book.getBookID());
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -155,11 +155,30 @@ public class BookDAO {
 			preparedStatement.execute();
 			
 		} catch (SQLException e) {
-			System.out.println("Erro ao apagar editor(a): " + e);
+			System.out.println("Erro ao deletar Book: " + e);
 		}
 	}
 
 	public void alterBook(BookBean book) {
+		connection = ConnectionFactory.getConnection();
+		String sql = "Update Books Set Name = ?, Price = ?, AuthorID = ?, GenreID = ?, PublisherID = ?, ISBN = ?, Synopsis = ? "
+				+ "Where BookId = ?";
 		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, book.getName());
+			preparedStatement.setDouble(2, book.getPrice());
+			preparedStatement.setInt(3, book.getAuthor().getId());
+			preparedStatement.setInt(4, book.getGenre().getId());
+			preparedStatement.setInt(5, book.getPublisher().getId());
+			preparedStatement.setInt(6, book.getISBN());
+			preparedStatement.setString(7, book.getSynopsis());
+			preparedStatement.setInt(8, book.getBookID());
+			
+			preparedStatement.execute();
+		} 
+		catch (Exception e) {
+			System.out.println("Erro ao Alterar Book: " + e);
+		}
 	}
 }

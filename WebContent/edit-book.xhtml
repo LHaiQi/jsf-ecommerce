@@ -7,7 +7,7 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Insert Book</title>
+		<title>Edit Book</title>
 		<style>
 			form {
 				margin-top: 30px;
@@ -24,7 +24,7 @@
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Insert Book</h1>
+					<h1>Edit Book</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -75,7 +75,7 @@
 						<p>Synopsis:</p>
 						<b:inputTextarea value="#{bookManagedBean.book.synopsis}" />
 																											
-						<b:commandButton look="primary" value="Save" action="#{bookManagedBean.insertBookController}"></b:commandButton>
+						<b:commandButton look="primary" value="Save" action="#{bookManagedBean.editBookController}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>

@@ -43,35 +43,7 @@ public class AuthorDAO {
 	
 		return newAuthor;
 	}
-	
-	public AuthorBean getAuthorByName(AuthorBean author){
-		AuthorBean newAuthor = null;
-		
-		connection = ConnectionFactory.getConnection();
-		sql = "Select * From Author Where Name = ?";
-		
-		try {
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, author.getName());
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			if (resultSet.next()) {
-				int id = resultSet.getInt("AuthorID");
-				String name = resultSet.getString("Name");
-				String lastName = resultSet.getString("LastName");
-				String gender = resultSet.getString("Gender");
-				String nationality = resultSet.getString("Nationality");
-				
-				newAuthor = new AuthorBean(id, name, lastName, gender, nationality);
-			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar autor: " + e);
-		}
-	
-		return newAuthor;
-	}
-	
+
 	public List<AuthorBean> getAllAuthors() {
 		List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
 		
@@ -88,6 +60,8 @@ public class AuthorDAO {
 				String lastName = resultSet.getString("LastName");
 				String gender = resultSet.getString("Gender");
 				String nationality = resultSet.getString("Nationality");
+				
+				name = name + " " + lastName;
 				
 				listAuthor.add(new AuthorBean(id, name, lastName, gender, nationality));
 			}
