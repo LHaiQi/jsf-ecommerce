@@ -42,7 +42,9 @@ public class BookManagedBean {
 
 	public List<AuthorBean> getListAuthor() {
 		AuthorBO authorBO = new AuthorBO();
-		return listAuthor = authorBO.getListAuthor();
+		listAuthor = authorBO.getListAuthor();
+		
+		return listAuthor;
 	}
 
 	public void setListAuthor(List<AuthorBean> listAuthor) {
@@ -51,7 +53,9 @@ public class BookManagedBean {
 	
 	public List<GenreBean> getListGenre() {
 		GenreBO genreBO = new GenreBO();
-		return listGenre = genreBO.getListGenre();
+		listGenre = genreBO.getListGenre();
+		
+		return listGenre;
 	}
 
 	public void setListGenre(List<GenreBean> listGenre) {
@@ -60,7 +64,9 @@ public class BookManagedBean {
 
 	public List<PublisherBean> getListPublisher() {
 		PublisherBO publisherBO = new PublisherBO();
-		return ListPublisher = publisherBO.getListPubliser();
+		ListPublisher = publisherBO.getListPubliser();
+		
+		return ListPublisher;
 	}
 
 	public void setListPublisher(List<PublisherBean> listPublisher) {
@@ -86,5 +92,19 @@ public class BookManagedBean {
 		listBook = bookBO.getListBooks(book);
 		
 		return "search-book";
+	}
+	
+	public String deleteBookController(){
+		BookBO bookBO = new BookBO();
+		bookBO.deleteBook(book);
+		
+		return searchListBookController();
+	}
+	
+	public String fillEditBookController(){
+		BookBO bookBO = new BookBO();
+		bookBO.getBook(book);
+		
+		return "edit-publisher";
 	}
 }

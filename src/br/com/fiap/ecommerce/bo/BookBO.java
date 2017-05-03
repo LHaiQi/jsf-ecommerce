@@ -3,10 +3,7 @@ package br.com.fiap.ecommerce.bo;
 import java.util.List;
 
 import br.com.fiap.ecommerce.bean.BookBean;
-import br.com.fiap.ecommerce.dao.AuthorDAO;
 import br.com.fiap.ecommerce.dao.BookDAO;
-import br.com.fiap.ecommerce.dao.GenreDAO;
-import br.com.fiap.ecommerce.dao.PublisherDAO;
 
 public class BookBO {
 	public void setBook(BookBean book) {
@@ -26,7 +23,7 @@ public class BookBO {
 	
 	public void deleteBook(BookBean book) {
 		BookDAO bookDAO = new BookDAO();
-		BookDAO.deleteBook(book);
+		bookDAO.deleteBook(book);
 	}
 	
 	public void alterBook(BookBean book) {

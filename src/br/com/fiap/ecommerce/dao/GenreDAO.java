@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
-import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
 public class GenreDAO {

@@ -62,8 +62,8 @@
 										<td>#{book.ISBN}</td>
 										<td>#{book.synopsis}</td>
 										<td>
-											<h:commandLink value="Delete" action="#{publisherManagedBean.deletePublisherController}" onClick="window.location.reload()">
-												<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
+											<h:commandLink value="Delete" action="#{bookManagedBean.deleteBookController}">
+												<f:setPropertyActionListener value="#{book.bookID}" target="#{bookManagedBean.book.bookID}" />
 											</h:commandLink>
 										</td>
 										<td>

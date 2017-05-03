@@ -5,13 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import br.com.fiap.ecommerce.bean.LoginBean;
-import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 
 public class LoginDAO {
 	private Connection connection;
 	private PreparedStatement preparedStatement;
-	private ResultSet resultSet;
 	private String sql;
 	
 //	public LoginBean pesquisarLogin(LoginBean login){

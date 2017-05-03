@@ -3,6 +3,7 @@ package br.com.fiap.ecommerce.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,7 +115,8 @@ public class BookDAO {
 			    + " Inner Join Author A On B.Authorid = A.Authorid "
 			    + " Inner Join Genre G On B.Genreid = G.Genreid "
 	            + " Inner Join Publisher P On B.Publisherid = P.Publisherid "
-	            + " Where B.Name like ? ";
+	            + " Where B.Name like ? "
+	            + " Order By Book";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -141,8 +143,20 @@ public class BookDAO {
 		return listBook;
 	}
 
-	public static void deleteBook(BookBean book) {
+	public void deleteBook(BookBean book) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Delete From Books Where BookID = ?";
 		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, book.getBookID());
+			
+			preparedStatement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao apagar editor(a): " + e);
+		}
 	}
 
 	public void alterBook(BookBean book) {
