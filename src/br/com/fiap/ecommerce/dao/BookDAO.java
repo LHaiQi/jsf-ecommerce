@@ -109,7 +109,7 @@ public class BookDAO {
 		GenreBean genreBean = new GenreBean();
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select B.BookID, B.Name Book, B.Price Price, A.Name Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis "
+		sql = "Select B.BookID, B.Name Book, B.Price Price, A.Name || A.lastName Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis "
 			    + " From Books B "
 			    + " Inner Join Author A On B.Authorid = A.Authorid "
 			    + " Inner Join Genre G On B.Genreid = G.Genreid "
@@ -118,7 +118,7 @@ public class BookDAO {
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, book.getName());
+			preparedStatement.setString(1, "%" + book.getName() + "%");
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -135,7 +135,7 @@ public class BookDAO {
 				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean));
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Erro ao Buscar Lista Book: " + e);
 		}
 		
 		return listBook;

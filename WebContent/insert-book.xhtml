@@ -8,6 +8,17 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Insert Book</title>
+		<style>
+			form {
+					margin-top: 30px;
+			}
+			
+			.btn {
+				width: 25%;
+				margin-top: 15px;
+				float: right;
+			}
+		</style>
 	</h:head>
 	<h:body>
 		<b:container>
@@ -20,29 +31,52 @@
 		<b:container>
 			<b:row>
 				<b:column col-md="8" offset="2">
-					 <b:form>
-					 	<p>Name:</p>
-						<b:inputText value="#{bookManagedBean.book.name}" />
+					<b:form>
+						<b:row>
+							<b:column col-md="8">
+								<p>Name:</p>
+								<b:inputText value="#{bookManagedBean.book.name}" />
+							</b:column>
+							<b:column col-sm="4">
+								<p>ISBN:</p>
+								<b:inputText value="#{bookManagedBean.book.ISBN}" />
+							</b:column>
+						</b:row>					 	
+							
+						<b:row>
+							<b:column col-md="4">
+								<p>Author:</p>						
+								<b:selectOneMenu value="bookManagedBean.book.author" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+									<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
+								</b:selectOneMenu>
+							</b:column>
+							
+							<b:column col-md="4">
+								<p>Genre:</p>						
+								<b:selectOneMenu value="bookManagedBean.book.genre" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+									<f:selectItems value="#{bookManagedBean.listGenre}" var="genre" itemLabel="#{genre.genre}" itemValue="#{genre}"></f:selectItems>
+								</b:selectOneMenu>
+							</b:column>
+							
+							<b:column col-md="4">
+								<p>Publisher:</p>	
+								<b:selectOneMenu value="bookManagedBean.book.publisher" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+									<f:selectItems value="#{bookManagedBean.listPublisher}" var="publisher" itemLabel="#{publisher.publisher}" itemValue="#{publisher}"></f:selectItems>
+								</b:selectOneMenu>
+							</b:column>						
+						</b:row>
+									
+						<p>Price:</p>
+						<b:inputText value="#{bookManagedBean.book.price}" />					
+						
 						<p>Synopsis:</p>
 						<b:inputTextarea value="#{bookManagedBean.book.synopsis}" />
-						<p>Price:</p>
-						<b:inputText value="#{bookManagedBean.book.price}" />
-						<p>ISBN:</p>
-						<b:inputText value="#{bookManagedBean.book.ISBN}" />
-						<p>Author:</p>						
-						<b:selectOneMenu value="bookManagedBean.book.author" converter="omnifaces.SelectItemsConverter">
-							<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
-						</b:selectOneMenu>
-						<p>Genre:</p>						
-						<b:selectOneMenu value="bookManagedBean.book.genre" converter="omnifaces.SelectItemsConverter">
-							<f:selectItems value="#{bookManagedBean.listGenre}" var="genre" itemLabel="#{genre.genre}" itemValue="#{genre}"></f:selectItems>
-						</b:selectOneMenu>
-						<p>Publisher:</p>	
-						<b:selectOneMenu value="bookManagedBean.book.publisher" converter="omnifaces.SelectItemsConverter">
-							<f:selectItems value="#{bookManagedBean.listPublisher}" var="publisher" itemLabel="#{publisher.publisher}" itemValue="#{publisher}"></f:selectItems>
-						</b:selectOneMenu>												
-						<b:commandButton look="success" value="Save" action="#{bookManagedBean.insertBookController}"></b:commandButton>
-					 </b:form>
+																											
+						<b:commandButton look="primary" value="Save" action="#{bookManagedBean.insertBookController}"></b:commandButton>
+					</b:form>
 				</b:column>
 			</b:row>
 		</b:container>		
