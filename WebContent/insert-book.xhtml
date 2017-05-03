@@ -46,24 +46,24 @@
 						<b:row>
 							<b:column col-md="4">
 								<p>Author:</p>						
-								<b:selectOneMenu value="bookManagedBean.book.author" converter="omnifaces.SelectItemsConverter">
-									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+								<b:selectOneMenu value="#{bookManagedBean.book.author}" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
 								</b:selectOneMenu>
 							</b:column>
 							
 							<b:column col-md="4">
 								<p>Genre:</p>						
-								<b:selectOneMenu value="bookManagedBean.book.genre" converter="omnifaces.SelectItemsConverter">
-									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+								<b:selectOneMenu value="#{bookManagedBean.book.genre}" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listGenre}" var="genre" itemLabel="#{genre.genre}" itemValue="#{genre}"></f:selectItems>
 								</b:selectOneMenu>
 							</b:column>
 							
 							<b:column col-md="4">
 								<p>Publisher:</p>	
-								<b:selectOneMenu value="bookManagedBean.book.publisher" converter="omnifaces.SelectItemsConverter">
-									<f:selectItem noSelectionOption="true" itemLabel="Selecione..."></f:selectItem>
+								<b:selectOneMenu value="#{bookManagedBean.book.publisher}" converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listPublisher}" var="publisher" itemLabel="#{publisher.publisher}" itemValue="#{publisher}"></f:selectItems>
 								</b:selectOneMenu>
 							</b:column>						
