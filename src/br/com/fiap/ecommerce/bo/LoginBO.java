@@ -7,6 +7,13 @@ public class LoginBO {
 	
 	public void inserirLogin(LoginBean loginBean){
 		LoginDAO loginDAO = new LoginDAO();
-		loginDAO.inserirLogin(loginBean);
+		
+		boolean exists = loginDAO.verificaLoginExistente(loginBean.getUser());
+		
+		if (!exists) {
+			loginDAO.inserirLogin(loginBean);
+		}else{
+			//Mensagem de login repetido
+		}	
 	}
 }

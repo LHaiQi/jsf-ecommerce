@@ -1,6 +1,7 @@
 package br.com.fiap.ecommerce.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -43,7 +44,7 @@ public class LoginDAO {
 //		return newLogin;
 //	}
 	
-	public int pegarUserId(){
+	public int getUserId(){
 		int id = 1;
 		connection = ConnectionFactory.getConnection();
 		sql = "select max(USERID) as ultimoUsuario from usuario";
@@ -62,7 +63,7 @@ public class LoginDAO {
 		return id;
 	}
 
-	public int generateID(){
+	public int generateLoginID(){
 		int loginID = 1;
 		
 		connection = ConnectionFactory.getConnection();
@@ -87,8 +88,8 @@ public class LoginDAO {
 	public void inserirLogin(LoginBean login){
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
-		int loginId = generateID();
-		int userId = pegarUserId();
+		int loginId = generateLoginID();
+		int userId = getUserId();
 		
 //		sql = "INSERT INTO LOGIN VALUES ("+4+",'user','senha',"+5+","+0+")";
 		
@@ -111,5 +112,28 @@ public class LoginDAO {
 			System.out.println("Erro ao inserir Login: " + e);
 		}
 		
+	}
+	
+	public boolean verificaLoginExistente(String username){
+		boolean existe = false;
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select * from LOGIN Where USERNAME = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, username);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				existe = true;
+			}
+			
+		} catch (Exception e) {
+			
+		}
+		
+		return existe;
 	}
 }

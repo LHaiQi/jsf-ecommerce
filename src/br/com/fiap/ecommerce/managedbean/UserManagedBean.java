@@ -15,16 +15,8 @@ import br.com.fiap.ecommerce.bo.UserBO;
 @SessionScoped
 public class UserManagedBean {
     UserBean user = new UserBean();
-	LoginBean login = new LoginBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
-    
-    
-	public LoginBean getLogin() {
-		return login;
-	}
-	public void setLogin(LoginBean login) {
-		this.login = login;
-	}
+        	
 	public UserBean getUser() {
 		return user;
 	}
@@ -48,15 +40,8 @@ public class UserManagedBean {
 	public String insertUserController(){
 		UserBO userBO = new UserBO();
 		userBO.inserirUser(user);
-		insertLoginController();
 		
 		return "insert-user";
-	}
-	
-	public void insertLoginController(){
-		LoginBO loginBO = new LoginBO();
-		LoginBean a = login;
-		loginBO.inserirLogin(login);
 	}
 	
 	public String deletarUserController(){

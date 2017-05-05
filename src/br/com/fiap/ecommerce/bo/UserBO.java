@@ -2,7 +2,9 @@ package br.com.fiap.ecommerce.bo;
 
 import java.util.List;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
+import br.com.fiap.ecommerce.dao.LoginDAO;
 import br.com.fiap.ecommerce.dao.UserDAO;
 
 
@@ -24,6 +26,7 @@ public class UserBO {
 	public void inserirUser(UserBean userBean){
 		UserDAO userDAO = new UserDAO();
 		userDAO.inserirUser(userBean);
+		
 	}
 	
 	public void deletarUser(UserBean userBean){
