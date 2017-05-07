@@ -41,7 +41,6 @@ public class UserBO {
 	
 	public void deletarUser(UserBean userBean){
 		UserDAO userDAO = new UserDAO();
-		
 		userDAO.deletarUser(userBean);
 
 	}

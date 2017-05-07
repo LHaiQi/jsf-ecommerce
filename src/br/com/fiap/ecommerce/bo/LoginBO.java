@@ -27,13 +27,13 @@ public class LoginBO {
 		return podeLogar;
 	}
 	
-	public void alterarLogin(LoginBean login, String newPassword, String repeatedNewPassword){
+	public void alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword){
 		boolean podeAlterar = false;
 		if(newPassword.equalsIgnoreCase(repeatedNewPassword)){
-			podeAlterar = autenticarLogin(login);
+			podeAlterar = autenticarLogin(loginBean);
 			if(podeAlterar){
 				LoginDAO loginDAO = new LoginDAO();
-				loginDAO.alterarLogin(login, newPassword);
+				loginDAO.alterarLogin(loginBean, newPassword);
 			}else{
 				System.out.println("Usuário não existe ou senha inválida");
 			}
@@ -41,5 +41,13 @@ public class LoginBO {
 			System.out.println("As senhas são diferentes");
 		}
 		LoginDAO loginDAO = new LoginDAO();
+	}
+	
+	public boolean deletarLogin(UserBean userBean){
+		boolean conseguiuDeletarLogin = false;
+		LoginDAO loginDAO = new LoginDAO();
+		
+		conseguiuDeletarLogin = loginDAO.deletarLogin(userBean);
+		return conseguiuDeletarLogin;
 	}
 }

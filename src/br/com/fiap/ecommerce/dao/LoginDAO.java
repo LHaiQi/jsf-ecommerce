@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
@@ -88,7 +89,7 @@ public class LoginDAO {
 	public void inserirLogin(LoginBean login){
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
-		int loginId = generateLoginID();
+//		int loginId = generateLoginID();
 		int userId = getUserId();
 		
 //		sql = "INSERT INTO LOGIN VALUES ("+4+",'user','senha',"+5+","+0+")";
@@ -100,7 +101,7 @@ public class LoginDAO {
 		try {
 		
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, loginId);
+			preparedStatement.setInt(1, userId);
 			preparedStatement.setString(2,login.getUser());
 			preparedStatement.setString(3,login.getPassword());
 			preparedStatement.setInt(4, userId);
@@ -175,5 +176,25 @@ public class LoginDAO {
 		} catch (Exception e) {
 			System.out.println("Erro ao Editar User: " + e);
 		}
+	}
+	
+	public boolean deletarLogin(UserBean user){
+		boolean conseguiuDeletar = false;
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "DELETE FROM LOGIN WHERE LOGINID = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, user.getId());
+			
+			preparedStatement.execute();
+			
+			conseguiuDeletar = true;
+		} catch (SQLException e) {
+			System.out.println("Erro ao apagar Login(a): " + e);
+		}
+		
+		return conseguiuDeletar;
 	}
 }
