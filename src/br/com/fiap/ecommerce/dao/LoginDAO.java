@@ -160,4 +160,20 @@ public class LoginDAO {
 		
 		return podeLogar;
 	}
+	
+	public void alterarLogin(LoginBean login, String newPassword){
+		connection = ConnectionFactory.getConnection();
+		sql = "Update LOGIN set PASSWORD = ? WHERE USERNAME = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, newPassword);
+			preparedStatement.setString(2, login.getUser());
+			
+			preparedStatement.execute();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao Editar User: " + e);
+		}
+	}
 }

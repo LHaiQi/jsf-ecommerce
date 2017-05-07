@@ -16,7 +16,21 @@ import br.com.fiap.ecommerce.bo.UserBO;
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
-        	
+    String newPassword, repeatedNewPassword;
+    
+    
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getRepeatedNewPassword() {
+		return repeatedNewPassword;
+	}
+	public void setRepeatedNewPassword(String repeatedNewPassword) {
+		this.repeatedNewPassword = repeatedNewPassword;
+	}
 	public UserBean getUser() {
 		return user;
 	}
@@ -63,7 +77,7 @@ public class UserManagedBean {
 	}
 	
 	public String preencherUserController(){
-		UserBO userBO = new UserBO();;
+		UserBO userBO = new UserBO();
 		user = userBO.pesquisarUser(user);
 		
 		return "edit-user";
@@ -78,6 +92,16 @@ public class UserManagedBean {
 			System.out.println("Usuário e/ou senha inválido(s)");
 		}
 		return "login";
+	}
+	
+	public String mudarSenha(){
+		return "edit-login";
+	}
+	
+	public String editLoginUserController(){
+		LoginBO loginBO = new LoginBO();
+		loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
+		return "edit-login";
 	}
 
 }

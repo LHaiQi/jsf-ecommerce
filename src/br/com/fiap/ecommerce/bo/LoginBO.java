@@ -1,6 +1,7 @@
 package br.com.fiap.ecommerce.bo;
 
 import br.com.fiap.ecommerce.bean.LoginBean;
+import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.dao.LoginDAO;
 
 public class LoginBO {
@@ -24,5 +25,21 @@ public class LoginBO {
 		
 		podeLogar = loginDAO.autenticarLogin(loginBean);
 		return podeLogar;
+	}
+	
+	public void alterarLogin(LoginBean login, String newPassword, String repeatedNewPassword){
+		boolean podeAlterar = false;
+		if(newPassword.equalsIgnoreCase(repeatedNewPassword)){
+			podeAlterar = autenticarLogin(login);
+			if(podeAlterar){
+				LoginDAO loginDAO = new LoginDAO();
+				loginDAO.alterarLogin(login, newPassword);
+			}else{
+				System.out.println("Usuário não existe ou senha inválida");
+			}
+		}else{
+			System.out.println("As senhas são diferentes");
+		}
+		LoginDAO loginDAO = new LoginDAO();
 	}
 }
