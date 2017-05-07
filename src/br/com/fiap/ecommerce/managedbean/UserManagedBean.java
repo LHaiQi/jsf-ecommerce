@@ -39,7 +39,11 @@ public class UserManagedBean {
 	
 	public String insertUserController(){
 		UserBO userBO = new UserBO();
-		userBO.inserirUser(user);
+		boolean conseguiuCriarUser = userBO.inserirUser(user);
+		if(conseguiuCriarUser){
+			LoginBO loginBO = new LoginBO();
+			loginBO.inserirLogin(user.getLogin());
+		}
 		
 		return "insert-user";
 	}
@@ -63,6 +67,17 @@ public class UserManagedBean {
 		user = userBO.pesquisarUser(user);
 		
 		return "edit-user";
+	}
+	
+	public String loginUserController(){
+		LoginBO loginBO = new LoginBO();
+		boolean podeLogar = loginBO.autenticarLogin(user.getLogin());
+		if(podeLogar){
+			return "search-user";
+		}else{
+			System.out.println("Usuário e/ou senha inválido(s)");
+		}
+		return "login";
 	}
 
 }

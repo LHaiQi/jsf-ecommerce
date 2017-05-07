@@ -131,9 +131,33 @@ public class LoginDAO {
 			}
 			
 		} catch (Exception e) {
-			
+			System.out.println("Erro ao verificar Login: " + e);
 		}
 		
 		return existe;
+	}
+	
+	public boolean autenticarLogin(LoginBean login){
+		boolean podeLogar = false;
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select * from LOGIN Where USERNAME = ? and PASSWORD = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, login.getUser());
+			preparedStatement.setString(2, login.getPassword());
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				podeLogar = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao autenticar Login: " + e);
+		}
+		
+		return podeLogar;
 	}
 }

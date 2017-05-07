@@ -16,4 +16,13 @@ public class LoginBO {
 			//Mensagem de login repetido
 		}	
 	}
+	
+	public boolean autenticarLogin(LoginBean loginBean){
+		boolean podeLogar = false;
+		
+		LoginDAO loginDAO = new LoginDAO();
+		
+		podeLogar = loginDAO.autenticarLogin(loginBean);
+		return podeLogar;
+	}
 }
