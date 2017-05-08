@@ -46,21 +46,22 @@ addressnumber number not null
 
 CREATE TABLE LOGIN (
   loginID               NUMBER NOT NULL ,
-  "user"                VARCHAR2 (100) NOT NULL ,
+  username                VARCHAR2 (100) NOT NULL ,
   password              VARCHAR2 (100) NOT NULL ,
   userID                NUMBER NOT NULL
 );
 ALTER TABLE LOGIN ADD CONSTRAINT LOGIN_PK PRIMARY KEY ( loginID ) ;
 ALTER TABLE LOGIN ADD CONSTRAINT LOGIN_USER_UN UNIQUE ( userID );
 ALTER TABLE LOGIN ADD loginType NUMBER NOT NULL;
+ALTER TABLE LOGIN ADD CONSTRAINT LOGIN_USERNAME_UN UNIQUE ( username );
 
-CREATE TABLE "USER" (
+CREATE TABLE USUARIO (
   userID                NUMBER NOT NULL ,
   name                  VARCHAR2 (150) NOT NULL ,
   cpf                   NUMBER (11) NOT NULL
 );
-ALTER TABLE "USER" ADD CONSTRAINT USER_PK PRIMARY KEY ( userID ) ;
-Alter Table "USER" add (lastName varchar2(150) not null, 
+ALTER TABLE USUARIO ADD CONSTRAINT USER_PK PRIMARY KEY ( userID ) ;
+Alter Table USUARIO add (lastName varchar2(150) not null, 
 email varchar2(150) not null,
 gender varchar2(6) not null,
 birthDate date not null,
@@ -71,7 +72,7 @@ city varchar2(50) not null,
 street varchar2(100) not null,
 houseNumber number not null);
 
-ALTER TABLE LOGIN ADD CONSTRAINT LOGIN_USER_FK FOREIGN KEY ( userID ) REFERENCES "USER" ( userID ) ;
+ALTER TABLE LOGIN ADD CONSTRAINT LOGIN_USER_FK FOREIGN KEY ( userID ) REFERENCES USUARIO ( userID ) ;
 ALTER TABLE BOOKS ADD CONSTRAINT BOOKS_AUTHOR_FK FOREIGN KEY ( authorID ) REFERENCES AUTHOR ( authorID ) ;
 ALTER TABLE BOOKS ADD CONSTRAINT BOOKS_GENRE_FK FOREIGN KEY ( genreID ) REFERENCES GENRE ( genreID ) ;
 ALTER TABLE BOOKS ADD CONSTRAINT BOOKS_PUBLISHER_FK FOREIGN KEY ( publisherID ) REFERENCES PUBLISHER ( publisherID ) ;

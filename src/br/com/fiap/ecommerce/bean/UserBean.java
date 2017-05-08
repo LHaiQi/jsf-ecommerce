@@ -16,8 +16,11 @@ public class UserBean {
  private String state;
  private String street;
  private int housenumber;
+ private LoginBean login;
  
- public UserBean() {}
+ public UserBean() {
+	 login = new LoginBean();
+ }
 
  public UserBean(int id, String name, int cpf, String lastname, String email, String gender, Date birthdate,
 		int phonenumber, int zipcode, String city, String state, String street, int housenumber) {
@@ -34,6 +37,14 @@ public class UserBean {
 	this.state = state;
 	this.street = street;
 	this.housenumber = housenumber;
+}
+
+public LoginBean getLogin() {
+	return login;
+}
+
+public void setLogin(LoginBean login) {
+	this.login = login;
 }
 
 public int getId() {
