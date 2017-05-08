@@ -57,9 +57,10 @@ public class UserManagedBean {
 		if(conseguiuCriarUser){
 			LoginBO loginBO = new LoginBO();
 			loginBO.inserirLogin(user.getLogin());
+			return "login";
 		}
 		
-		return "login";
+		return "insert-user";
 	}
 	
 	public String deletarUserController(){
@@ -102,10 +103,22 @@ public class UserManagedBean {
 		return "edit-login";
 	}
 	
+	public String criarConta(){
+		return "insert-user";
+	}
+	
 	public String editLoginUserController(){
 		LoginBO loginBO = new LoginBO();
-		loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
-		return "search-user";
+		boolean conseguiuAlterar = loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
+		if(conseguiuAlterar){
+			return "search-user";
+		}else{
+			return "edit-login";
+		}
+	}
+	
+	public String logoutLoginUserController(){
+		return "login";
 	}
 
 }

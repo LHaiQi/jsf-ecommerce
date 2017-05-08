@@ -27,7 +27,7 @@ public class LoginBO {
 		return podeLogar;
 	}
 	
-	public void alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword){
+	public boolean alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword){
 		boolean podeAlterar = false;
 		if(newPassword.equalsIgnoreCase(repeatedNewPassword)){
 			podeAlterar = autenticarLogin(loginBean);
@@ -40,7 +40,7 @@ public class LoginBO {
 		}else{
 			System.out.println("As senhas são diferentes");
 		}
-		LoginDAO loginDAO = new LoginDAO();
+		return podeAlterar;
 	}
 	
 	public boolean deletarLogin(UserBean userBean){
