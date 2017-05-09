@@ -16,37 +16,9 @@ public class LoginDAO {
 	private ResultSet resultSet;
 	private String sql;
 	
-//	public LoginBean pesquisarLogin(LoginBean login){
-//		LoginBean newLogin = null;
-//		
-//		connection = ConnectionFactory.getConnection();
-//		sql = "Select * from LOGIN Where LOGINID = ?";
-//		
-//		try {
-//			preparedStatement = connection.prepareStatement(sql);
-//			preparedStatement.setInt(1, login.getLoginId());
-//			
-//			resultSet = preparedStatement.executeQuery();
-//			
-//			if(resultSet.next()){
-//				  int loginId = resultSet.getInt("LOGINID");
-//				  String user = resultSet.getString("USER");
-//				  String password = resultSet.getString("PASSWORD");
-//				  int userId = resultSet.getInt("USERID");
-//				  int loginType = resultSet.getInt("LOGINTYPE");
-//				  
-//				  newLogin = new LoginBean(loginId, loginType, userId, user, password);
-//			}
-//			
-//		} catch (Exception e) {
-//			
-//		}
-//		
-//		return newLogin;
-//	}
-	
 	public int getUserId(){
 		int id = 1;
+		
 		connection = ConnectionFactory.getConnection();
 		sql = "select max(USERID) as ultimoUsuario from usuario";
 		
@@ -64,55 +36,18 @@ public class LoginDAO {
 		return id;
 	}
 
-	public int generateLoginID(){
-		int loginID = 1;
-		
-		connection = ConnectionFactory.getConnection();
-		sql = "Select Max(loginID) as loginID From Login";
-		
-		try {
-			preparedStatement = connection.prepareStatement(sql);
- 			resultSet = preparedStatement.executeQuery();
-			
-			if(resultSet.next()){
-				loginID = resultSet.getInt("LOGINID");
-				loginID++;
-			}			
-		} 
-		catch (Exception e) {
-			loginID = 1;
-		}
-		
-		return loginID;
-	}
-	
-	public void inserirLogin(LoginBean login){
+	public void inserirLogin(LoginBean login) throws Exception{
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
-//		int loginId = generateLoginID();
-		int userId = getUserId();
-		
-//		sql = "INSERT INTO LOGIN VALUES ("+4+",'user','senha',"+5+","+0+")";
-		
-//		sql = "INSERT INTO LOGIN VALUES (?,'user','senha',"+7+","+0+")";
-		
-		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
-		
-		try {
-		
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, userId);
-			preparedStatement.setString(2,login.getUser());
-			preparedStatement.setString(3,login.getPassword());
-			preparedStatement.setInt(4, userId);
-			preparedStatement.setInt(5, 0);
 			
-			preparedStatement.execute();
-			
-		} catch (Exception e) {
-			System.out.println("Erro ao inserir Login: " + e);
-		}
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, getUserId());
+		preparedStatement.setString(2,login.getUser());
+		preparedStatement.setString(3,login.getPassword());
+		preparedStatement.setInt(4, getUserId());
+		preparedStatement.setInt(5, 0);
 		
+		preparedStatement.execute();
 	}
 	
 	public boolean verificaLoginExistente(String username){
