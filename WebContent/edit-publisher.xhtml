@@ -7,13 +7,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Edit Publisher</title>
+		<title>#{msgs.editarpublicador}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Edit Publisher</h1>
+					<h1>#{msgs.editarpublicador}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -21,25 +21,25 @@
 			<b:row>
 				<b:column col-md="8" offset="2">
 					<b:form>
-						<p>Name:</p>
+						<p>#{msgs.nome}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
 						<p>Email:</p>
 						<b:inputText value="#{publisherManagedBean.publisher.email}" />
-						<p>Phone Number:</p>
+						<p>#{msgs.telefone}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.phoneNumber}" />
 						<p>CNPJ:</p>
 						<b:inputText value="#{publisherManagedBean.publisher.cnpj}" />
-						<p>Country:</p>
+						<p>#{msgs.pais}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.country}" />
-						<p>State:</p>
+						<p>#{msgs.estado}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.state}" />
-						<p>Street:</p>
+						<p>#{msgs.rua}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.street}" />
-						<p>Address Number</p>
+						<p>#{msgs.endereco}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.addressNumber}" />
-						<p>Zip Code</p>
+						<p>#{msgs.cep}</p>
 						<b:inputText value="#{publisherManagedBean.publisher.zipCode}" />
-						<b:commandButton look="success" action="#{publisherManagedBean.editPublisherController}" value="Alterar"></b:commandButton>
+						<b:commandButton look="success" action="#{publisherManagedBean.editPublisherController}" value="#{msgs.alterar}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>
