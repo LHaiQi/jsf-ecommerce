@@ -21,39 +21,39 @@
 			<b:row>
 				<b:column col-md="8" offset="2">
 					<b:form>
-						<p>Name:</p>
-						<b:inputText value="#{userManagedBean.user.name}" />
-						<p>Last Name:</p>
-						<b:inputText value="#{userManagedBean.user.lastname}" />
-						<p>CPF:</p>
-						<b:inputText value="#{userManagedBean.user.cpf}" />
-						<p>Email:</p>
-						<b:inputText value="#{userManagedBean.user.email}" />
-						<p>Gender:</p>
-						<b:inputText value="#{userManagedBean.user.gender}" />
-						<p>Birth Date:</p>
-						<b:inputText value="#{userManagedBean.user.birthdate}" >
-						<f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
-						</b:inputText>
-						<p>Phone Number:</p>
-						<b:inputText value="#{userManagedBean.user.phonenumber}" />
-						<p>ZIP Code</p>
-						<b:inputText value="#{userManagedBean.user.zipcode}" />
-						<p>City</p>
-						<b:inputText value="#{userManagedBean.user.city}" />
-						<p>State</p>
-						<b:inputText value="#{userManagedBean.user.state}" />
-						<p>Street</p>
-						<b:inputText value="#{userManagedBean.user.street}" />
-						<p>House Number</p>
-						<b:inputText value="#{userManagedBean.user.housenumber}" />
+						<p>#{msgs.nome}</p>
+                        <b:inputText value="#{userManagedBean.user.name}" />
+                        <p>#{msgs.sobrenome}</p>
+                        <b:inputText value="#{userManagedBean.user.lastname}" />
+                        <p>CPF</p>
+                        <b:inputText value="#{userManagedBean.user.cpf}" />
+                        <p>Email</p>
+                        <b:inputText value="#{userManagedBean.user.email}" />
+                        <p>#{msgs.genero}</p>
+                        <b:inputText value="#{userManagedBean.user.gender}" />
+                        <p>#{msgs.dataNascimento}</p>
+                        <b:inputText value="#{userManagedBean.user.birthdate}" >
+                        <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
+                        </b:inputText>
+                        <p>#{msgs.telefone}</p>
+                        <b:inputText value="#{userManagedBean.user.phonenumber}" />
+                        <p>#{msgs.cep}</p>
+                        <b:inputText value="#{userManagedBean.user.zipcode}" />
+                        <p>#{msgs.cidade}</p>
+                        <b:inputText value="#{userManagedBean.user.city}" />
+                        <p>#{msgs.estado}</p>
+                        <b:inputText value="#{userManagedBean.user.state}" />
+                        <p>#{msgs.rua}</p>
+                        <b:inputText value="#{userManagedBean.user.street}" />
+                        <p>#{msgs.numeroCasa}</p>
+                        <b:inputText value="#{userManagedBean.user.housenumber}" />
 						
-						<p>Username</p>
+						<p>#{msgs.nomeUsuario}</p>
 						<b:inputText value="#{userManagedBean.user.login.user}" />
-						<p>Password</p>
+						<p>#{msgs.senha}</p>
 						<b:inputText value="#{userManagedBean.user.login.password}" />
 						
-						<b:commandButton look="success" value="Inserir" action="#{userManagedBean.insertUserController}"></b:commandButton>
+						<b:commandButton look="success" value="#{msgs.inserir}" action="#{userManagedBean.insertUserController}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>

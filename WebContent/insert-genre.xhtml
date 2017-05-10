@@ -7,13 +7,13 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert Genre</title>
+<title>#{msgs.inserirgenero}</title>
 </h:head>
 <h:body>
 <b:container>
 <b:row>
 <b:column>
-<h1>Insert Genre</h1>
+<h1>#{msgs.inserirgenero}</h1>
 </b:column>
 </b:row>
 </b:container>
@@ -21,9 +21,9 @@
 <b:row>
 <b:column col-md="8" offset="2">
 <b:form>
-<p>Genre:</p>
+<p>#{msgs.genero}</p>
 <b:inputText value="#{genreManagedBean.genre.genre}" />
-<b:commandButton look="success" value="Inserir" action="#{genreManagedBean.insertGenreController}"></b:commandButton>
+<b:commandButton look="success" value="#{msgs.inserir}" action="#{genreManagedBean.insertGenreController}"></b:commandButton>
 </b:form>
 </b:column>
 </b:row>

@@ -7,13 +7,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Edit User</title>
+		<title>#{msgs.editarUsuario}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Edit User</h1>
+					<h1>#{msgs.editarUsuario}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -21,33 +21,33 @@
 			<b:row>
 				<b:column col-md="8" offset="2">
 					<b:form>
-						<p>Name:</p>
+						<p>#{msgs.nome}</p>
                         <b:inputText value="#{userManagedBean.user.name}" />
-                        <p>Last Name:</p>
+                        <p>#{msgs.sobrenome}</p>
                         <b:inputText value="#{userManagedBean.user.lastname}" />
-                        <p>CPF:</p>
+                        <p>CPF</p>
                         <b:inputText value="#{userManagedBean.user.cpf}" />
-                        <p>Email:</p>
+                        <p>Email</p>
                         <b:inputText value="#{userManagedBean.user.email}" />
-                        <p>Gender:</p>
+                        <p>#{msgs.genero}</p>
                         <b:inputText value="#{userManagedBean.user.gender}" />
-                        <p>Birth Date:</p>
+                        <p>#{msgs.dataNascimento}</p>
                         <b:inputText value="#{userManagedBean.user.birthdate}" >
                         <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
                         </b:inputText>
-                        <p>Phone Number:</p>
+                        <p>#{msgs.telefone}</p>
                         <b:inputText value="#{userManagedBean.user.phonenumber}" />
-                        <p>ZIP Code</p>
+                        <p>#{msgs.cep}</p>
                         <b:inputText value="#{userManagedBean.user.zipcode}" />
-                        <p>City</p>
+                        <p>#{msgs.cidade}</p>
                         <b:inputText value="#{userManagedBean.user.city}" />
-                        <p>State</p>
+                        <p>#{msgs.estado}</p>
                         <b:inputText value="#{userManagedBean.user.state}" />
-                        <p>Street</p>
+                        <p>#{msgs.rua}</p>
                         <b:inputText value="#{userManagedBean.user.street}" />
-                        <p>House Number</p>
+                        <p>#{msgs.numeroCasa}</p>
                         <b:inputText value="#{userManagedBean.user.housenumber}" />
-						<b:commandButton look="success" action="#{userManagedBean.editUserController}" value="Alterar"></b:commandButton>
+						<b:commandButton look="success" action="#{userManagedBean.editUserController}" value="#{msgs.alterar}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>

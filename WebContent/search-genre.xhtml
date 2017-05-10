@@ -7,13 +7,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>Search Genre</title>
+		<title>#{msgs.pesquisargenero}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Search Genre</h1>
+					<h1>#{msgs.pesquisargenero}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -23,13 +23,13 @@
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
-							<h5>Genre's Name:</h5>
+							<h5>#{msgs.genero}</h5>
 						</b:column>
 						<b:column col-md="7">
 							<b:inputText value="#{genreManagedBean.genre.genre}" />
 						</b:column>
 						<b:column col-md="2">
-							<b:commandButton action="#{genreManagedBean.procurarGenreController}" value="Search"></b:commandButton>
+							<b:commandButton action="#{genreManagedBean.procurarGenreController}" value="#{msgs.pesquisar}"></b:commandButton>
 						</b:column>
 					</b:form>					
 				</b:column>
@@ -43,7 +43,7 @@
 							<thead>
 								<tr>
 									<th>ID</th>
-									<th>GENRE</th>
+									<th>#{msgs.genero}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,13 +52,13 @@
 										<td>#{genre.id}</td>
 										<td>#{genre.genre}</td>
                                         <td>
-											<h:commandLink value="Edit" action="#{genreManagedBean.preencherGenreController}">
+											<h:commandLink value="#{msgs.editar}" action="#{genreManagedBean.preencherGenreController}">
 												<f:setPropertyActionListener value="#{genre.id}" target="#{genreManagedBean.genre.id}" />
 											</h:commandLink>
 										</td>
 										
 										<td>
-											<h:commandLink value="Delete" action="#{genreManagedBean.deletarGenreController}" onClick="window.location.reload()">
+											<h:commandLink value="#{msgs.deletar}" action="#{genreManagedBean.deletarGenreController}" onClick="window.location.reload()">
 											<f:setPropertyActionListener value="#{genre.id}" target="#{genreManagedBean.genre.id}" />
 											</h:commandLink>
 										</td>
