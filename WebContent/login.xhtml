@@ -21,18 +21,18 @@
 <b:row>
 <b:column col-md="8" offset="2">
 <b:form>
-<p>Username:</p>
+<p>#{msgs.nome_usuario}</p>
 <b:inputText value="#{userManagedBean.user.login.user}" />
-<p>Password:</p>
+<p>#{msgs.senha}</p>
 <b:inputText value="#{userManagedBean.user.login.password}" />
 <b:column col-md="2">
-<b:commandButton look="success" value="Login" action="#{userManagedBean.loginUserController}"></b:commandButton>
+<b:commandButton look="success" value="#{msgs.logar}" action="#{userManagedBean.loginUserController}"></b:commandButton>
 </b:column>
 <b:column col-md="3">
-<b:commandButton look="success" value="Change password" action="#{userManagedBean.mudarSenha}"></b:commandButton>
+<b:commandButton look="success" value="#{msgs.mudar_senha}" action="#{userManagedBean.mudarSenha}"></b:commandButton>
 </b:column>
 <b:column col-md="4">
-<b:commandButton look="success" value="Create account" action="#{userManagedBean.criarConta}"></b:commandButton>
+<b:commandButton look="success" value="#{msgs.criar_conta}" action="#{userManagedBean.criarConta}"></b:commandButton>
 </b:column>
 </b:form>
 </b:column>

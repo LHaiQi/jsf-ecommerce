@@ -7,7 +7,7 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Insert Book</title>
+		<title>#{msgs.inserir_livro}</title>
 		<style>
 			form {
 				margin-top: 30px;
@@ -24,7 +24,7 @@
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Insert Book</h1>
+					<h1>#{msgs.inserir_livro}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -34,18 +34,18 @@
 					<b:form>
 						<b:row>
 							<b:column col-md="8">
-								<p>Name:</p>
+								<p>#{msgs.nome}</p>
 								<b:inputText value="#{bookManagedBean.book.name}" />
 							</b:column>
 							<b:column col-sm="4">
-								<p>ISBN:</p>
+								<p>#{msgs.isbn}</p>
 								<b:inputText value="#{bookManagedBean.book.ISBN}" />
 							</b:column>
 						</b:row>					 	
 							
 						<b:row>
 							<b:column col-md="4">
-								<p>Author:</p>						
+								<p>#{msgs.autor}</p>						
 								<b:selectOneMenu value="#{bookManagedBean.book.author}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
@@ -53,7 +53,7 @@
 							</b:column>
 							
 							<b:column col-md="4">
-								<p>Genre:</p>						
+								<p>#{msgs.genero}</p>						
 								<b:selectOneMenu value="#{bookManagedBean.book.genre}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listGenre}" var="genre" itemLabel="#{genre.genre}" itemValue="#{genre}"></f:selectItems>
@@ -61,7 +61,7 @@
 							</b:column>
 							
 							<b:column col-md="4">
-								<p>Publisher:</p>	
+								<p>#{msgs.editora}</p>	
 								<b:selectOneMenu value="#{bookManagedBean.book.publisher}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listPublisher}" var="publisher" itemLabel="#{publisher.publisher}" itemValue="#{publisher}"></f:selectItems>
@@ -69,13 +69,13 @@
 							</b:column>						
 						</b:row>
 									
-						<p>Price:</p>
+						<p>#{msgs.preco}</p>
 						<b:inputText value="#{bookManagedBean.book.price}" />					
 						
-						<p>Synopsis:</p>
+						<p>#{msgs.sinopse}</p>
 						<b:inputTextarea value="#{bookManagedBean.book.synopsis}" />
 																											
-						<b:commandButton look="primary" value="Save" action="#{bookManagedBean.insertBookController}"></b:commandButton>
+						<b:commandButton look="primary" value="#{msgs.salvar}" action="#{bookManagedBean.insertBookController}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>

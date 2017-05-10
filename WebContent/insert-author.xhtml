@@ -7,13 +7,13 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert Author</title>
+<title>#{msgs.inserir_autor}</title>
 </h:head>
 <h:body>
 <b:container>
 <b:row>
 <b:column>
-<h1>Insert Author</h1>
+<h1>#{msgs.inserir_autor}</h1>
 </b:column>
 </b:row>
 </b:container>
@@ -21,15 +21,15 @@
 <b:row>
 <b:column col-md="8" offset="2">
 <b:form>
-<p>Name:</p>
+<p>#{msgs.nome}</p>
 <b:inputText value="#{authorManagedBean.author.name}" />
-<p>Last Name:</p>
+<p>#{msgs.sobrenome}</p>
 <b:inputText value="#{authorManagedBean.author.lastName}" />
-<p>Gender:</p>
+<p>#{msgs.genero}</p>
 <b:inputText value="#{authorManagedBean.author.gender}" />
-<p>Nationality:</p>
+<p>#{msgs.nacionalidade}</p>
 <b:inputText value="#{authorManagedBean.author.nationality}" />
-<b:commandButton look="success" value="Inserir" action="#{authorManagedBean.insertAuthorController}"></b:commandButton>
+<b:commandButton look="success" value="#{msgs.inserir}" action="#{authorManagedBean.insertAuthorController}"></b:commandButton>
 </b:form>
 </b:column>
 </b:row>

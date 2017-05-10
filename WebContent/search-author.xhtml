@@ -7,14 +7,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>Search Author</title>
+		<title>#{msgs.pesquisar_autor}</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Search Author</h1>
+					<h1>#{msgs.pesquisar_autor}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -24,13 +24,13 @@
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
-							<h5>Author's Name:</h5>
+							<h5>#{msgs.nome_autor}</h5>
 						</b:column>
 						<b:column col-md="7">
 							<b:inputText value="#{authorManagedBean.author.name}" />
 						</b:column>
 						<b:column col-md="2">
-							<b:commandButton action="#{authorManagedBean.searchAuthorController}" value="Search"></b:commandButton>
+							<b:commandButton action="#{authorManagedBean.searchAuthorController}" value="#{msgs.pesquisar}"></b:commandButton>
 						</b:column>
 					</b:form>					
 				</b:column>
@@ -43,10 +43,10 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Last Name</th>
-									<th>Gender</th>
-									<th>Nationality</th>
+									<th>#{msgs.nome}</th>
+									<th>#{msgs.sobrenome}</th>
+									<th>#{msgs.genero}</th>
+									<th>#{msgs.nacionalidade}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -57,12 +57,12 @@
 										<td>#{author.gender}</td>
 										<td>#{author.nationality}</td>
 										<td>
-											<h:commandLink value="Delete" action="#{authorManagedBean.deleteAuthorController}" onClick="window.location.reload()">
+											<h:commandLink value="#{msgs.deletar}" action="#{authorManagedBean.deleteAuthorController}" onClick="window.location.reload()">
 												<f:setPropertyActionListener value="#{author.id}" target="#{authorManagedBean.author.id}" />
 											</h:commandLink>
 										</td>
 										<td>
-											<h:commandLink value="Edit" action="#{authorManagedBean.fillEditAuthorController}">
+											<h:commandLink value="#{msgs.editar}" action="#{authorManagedBean.fillEditAuthorController}">
 												<f:setPropertyActionListener value="#{author.id}" target="#{authorManagedBean.author.id}" />
 											</h:commandLink>
 										</td>
