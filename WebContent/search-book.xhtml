@@ -7,13 +7,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>Search Book</title>
+		<title>#{msgs.pesquisar_livro}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Search Book</h1>
+					<h1>#{msgs.pesquisar_livro}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -23,13 +23,13 @@
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
-							<h5>Book Name:</h5>
+							<h5>#{msgs.nome_livro}</h5>
 						</b:column>
 						<b:column col-md="7">
 							<b:inputText value="#{bookManagedBean.book.name}" />
 						</b:column>
 						<b:column col-md="2">
-							<b:commandButton action="#{bookManagedBean.searchListBookController}" value="Search"></b:commandButton>
+							<b:commandButton action="#{bookManagedBean.searchListBookController}" value="#{msgs.pesquisar}"></b:commandButton>
 						</b:column>
 					</b:form>					
 				</b:column>
@@ -42,13 +42,13 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Price</th>
-									<th>Author</th>
-									<th>Genre</th>
-									<th>Publisher</th>
-									<th>ISBN</th>
-									<th>Synopsis</th>
+									<th>#{msgs.nome}</th>
+									<th>#{msgs.preco}</th>
+									<th>#{msgs.autor}</th>
+									<th>#{msgs.genero}</th>
+									<th>#{msgs.editora}</th>
+									<th>#{msgs.isbn}</th>
+									<th>#{msgs.sinopse}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -62,12 +62,12 @@
 										<td>#{book.ISBN}</td>
 										<td>#{book.synopsis}</td>
 										<td>
-											<h:commandLink value="Delete" action="#{bookManagedBean.deleteBookController}">
+											<h:commandLink value="#{msgs.deletar}" action="#{bookManagedBean.deleteBookController}">
 												<f:setPropertyActionListener value="#{book.bookID}" target="#{bookManagedBean.book.bookID}" />
 											</h:commandLink>
 										</td>
 										<td>
-											<h:commandLink value="Edit" action="#{bookManagedBean.fillEditBookController}">
+											<h:commandLink value="#{msgs.editar}" action="#{bookManagedBean.fillEditBookController}">
 												<f:setPropertyActionListener value="#{book.bookID}" target="#{bookManagedBean.book.bookID}" />
 											</h:commandLink>
 										</td>

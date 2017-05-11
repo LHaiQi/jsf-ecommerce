@@ -7,13 +7,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Edit Login</title>
+		<title>#{msgs.editar_login}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Edit Login</h1>
+					<h1>#{msgs.editar_login}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -21,15 +21,15 @@
 			<b:row>
 				<b:column col-md="8" offset="2">
 					<b:form>
-						<p>Login:</p>
+						<p>#{msgs.login}</p>
                         <b:inputText value="#{userManagedBean.user.login.user}" />
-                        <p>Old password:</p>
+                        <p>#{msgs.antiga_senha}</p>
                         <b:inputText value="#{userManagedBean.user.login.password}" />
-                        <p>New password:</p>
+                        <p>#{msgs.nova_senha}</p>
                         <b:inputText value="#{userManagedBean.newPassword}" />
-                        <p>Repeat new password:</p>
+                        <p>#{msgs.repetir_nova_senha}</p>
                         <b:inputText value="#{userManagedBean.repeatedNewPassword}" />
-						<b:commandButton look="success" action="#{userManagedBean.editLoginUserController}" value="Alterar"></b:commandButton>
+						<b:commandButton look="success" action="#{userManagedBean.editLoginUserController}" value="#{msgs.alterar}"></b:commandButton>
 					</b:form>
 				</b:column>
 			</b:row>
