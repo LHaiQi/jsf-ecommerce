@@ -1,5 +1,6 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +65,12 @@ public class BookManagedBean {
 
 	public List<PublisherBean> getListPublisher() {
 		PublisherBO publisherBO = new PublisherBO();
-		ListPublisher = publisherBO.getListPubliser();
+		try {
+			ListPublisher = publisherBO.getListPubliser();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return ListPublisher;
 	}

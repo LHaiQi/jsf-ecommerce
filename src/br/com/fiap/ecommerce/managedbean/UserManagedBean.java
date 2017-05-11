@@ -1,10 +1,13 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
@@ -46,17 +49,39 @@ public class UserManagedBean {
 	
 	public String searchUserController(){
 		UserBO userBO = new UserBO();
-		listUsers = userBO.pesquisarALLUser(user);
+		try {
+			listUsers = userBO.pesquisarALLUser(user);
+		} catch (Exception e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao buscar", "Detalhes:  " + e));
+		}
 		
 		return "search-user";
 	}
 	
 	public String insertUserController(){
 		UserBO userBO = new UserBO();
-		boolean conseguiuCriarUser = userBO.inserirUser(user);
+		
+		boolean conseguiuCriarUser = false;
+		
+		try {
+			conseguiuCriarUser = userBO.inserirUser(user);
+		} 
+		catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir Usuario", "Detalhes:  " + e));
+		}
+		
 		if(conseguiuCriarUser){
 			LoginBO loginBO = new LoginBO();
-			loginBO.inserirLogin(user.getLogin());
+			
+			try {
+				loginBO.inserirLogin(user.getLogin());
+			} 
+			catch (Exception e) {
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir Login", "Detalhes:  " + e));	
+			}
 			return "login";
 		}
 		
@@ -68,7 +93,13 @@ public class UserManagedBean {
 		boolean conseguiuDeletarLogin = loginBO.deletarLogin(user) ;
 		if(conseguiuDeletarLogin){
 			UserBO userBO = new UserBO();
-			userBO.deletarUser(user);
+			try {
+				userBO.deletarUser(user);
+			} 
+			catch (SQLException e) {
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Deletar", "Detalhes:  " + e));	
+			}
 		}
 		
 		return searchUserController();
@@ -76,14 +107,26 @@ public class UserManagedBean {
 	
 	public String editUserController(){
 		UserBO userBO = new UserBO();
-	    userBO.alterarUser(user);
+	    try {
+			userBO.alterarUser(user);
+		} 
+	    catch (Exception e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Alterar", "Detalhes:  " + e));	
+		}
 		
 		return searchUserController();
 	}
 	
 	public String preencherUserController(){
 		UserBO userBO = new UserBO();
-		user = userBO.pesquisarUser(user);
+		try {
+			user = userBO.pesquisarUser(user);
+		} 
+		catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Preencher", "Detalhes:  " + e));
+		}
 		
 		return "edit-user";
 	}

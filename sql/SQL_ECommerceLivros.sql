@@ -60,6 +60,7 @@ CREATE TABLE USUARIO (
   name                  VARCHAR2 (150) NOT NULL ,
   cpf                   NUMBER (11) NOT NULL
 );
+
 ALTER TABLE USUARIO ADD CONSTRAINT USER_PK PRIMARY KEY ( userID ) ;
 Alter Table USUARIO add (lastName varchar2(150) not null, 
 email varchar2(150) not null,
@@ -68,7 +69,7 @@ birthDate date not null,
 phoneNumber number not null,
 zipCode number not null,
 city varchar2(50) not null,
-"state" varchar2(50) not null,
+cstate varchar2(50) not null,
 street varchar2(100) not null,
 houseNumber number not null);
 

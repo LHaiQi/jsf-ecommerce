@@ -6,7 +6,7 @@ import br.com.fiap.ecommerce.dao.LoginDAO;
 
 public class LoginBO {
 	
-	public void inserirLogin(LoginBean loginBean){
+	public void inserirLogin(LoginBean loginBean) throws Exception{
 		LoginDAO loginDAO = new LoginDAO();
 		
 		boolean exists = loginDAO.verificaLoginExistente(loginBean.getUser());
