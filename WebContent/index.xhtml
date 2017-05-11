@@ -7,8 +7,33 @@
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Welcome</title>
+	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
 	</h:head>
 	<h:body>
-		<h1>Welcome to Index Page</h1>
+		<div id="header">
+        <div id="logo">
+		 
+		</div>
+		
+		
+		<b:form id="barrapesquisa" >
+    <b:inputText id="inputMenu" value="#{testBean.val6}">
+        <f:facet name="append">
+            <b:commandButton look="primary" value="Bid!" iconAwesome="rss" icon-align="right"/>
+        </f:facet>
+    </b:inputText>
+</b:form>
+        
+		<div id="minhaconta">
+		  <div id="icone">
+		 <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-32.png" />
+		  </div>
+		  <div id="texto">
+		  
+		  </div>
+		</div>
+		<div id="carrinho">
+		</div>
+	</div>
 	</h:body>
 </html>
