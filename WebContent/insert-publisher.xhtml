@@ -13,13 +13,14 @@
 	<b:container>
 		<b:row>
 			<b:column>
-				<h1>Insert Publisher</h1>
+				<h1>Insert Publisher</h1>				
 			</b:column>
 		</b:row>
 	</b:container>
 	<b:container>
 		<b:row>
 			<b:column col-md="8" offset="2">
+				<b:messages/>
 				<b:form>
 					<p>Name:</p>
 					<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
@@ -40,7 +41,7 @@
 					<p>Zip Code</p>
 					<b:inputText value="#{publisherManagedBean.publisher.zipCode}" />
 					<b:commandButton look="success" value="Inserir" action="#{publisherManagedBean.insertPublisherController}"></b:commandButton>
-				</b:form>
+				</b:form>				
 			</b:column>
 		</b:row>
 	</b:container>
