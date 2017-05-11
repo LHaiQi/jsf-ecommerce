@@ -7,13 +7,13 @@
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Insert User</title>
+		<title>#{msgs.inserirUsuario}</title>
 	</h:head>
 	<h:body>
 		<b:container>
 			<b:row>
 				<b:column>
-					<h1>Insert User</h1>
+					<h1>#{msgs.inserirUsuario}</h1>
 				</b:column>
 			</b:row>
 		</b:container>
@@ -32,9 +32,10 @@
                         <p>#{msgs.genero}</p>
                         <b:inputText value="#{userManagedBean.user.gender}" />
                         <p>#{msgs.dataNascimento}</p>
-                        <b:inputText value="#{userManagedBean.user.birthdate}" >
-                        <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
-                        </b:inputText>
+                        <b:datepicker value="#{userManagedBean.user.birthdate}" >
+                          <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
+                          <f:convertDateTime Timelocale="en_US" timeZone="America/Sao_Paulo"   pattern="MM/dd/yyyy" /> 
+                        </b:datepicker>
                         <p>#{msgs.telefone}</p>
                         <b:inputText value="#{userManagedBean.user.phonenumber}" />
                         <p>#{msgs.cep}</p>
