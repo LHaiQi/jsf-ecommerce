@@ -19,31 +19,67 @@
 		</b:container>
 		<b:container>
 			<b:row>
-				<b:column col-md="8" offset="2">
-					<b:messages/>
-					<b:form>
-						<p>Name:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
-						<p>Email:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.email}" />
-						<p>Phone Number:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.phoneNumber}" />
-						<p>CNPJ:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.cnpj}" />
-						<p>Country:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.country}" />
-						<p>State:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.state}" />
-						<p>Street:</p>
-						<b:inputText value="#{publisherManagedBean.publisher.street}" />
-						<p>Address Number</p>
-						<b:inputText value="#{publisherManagedBean.publisher.addressNumber}" />
-						<p>Zip Code</p>
-						<b:inputText value="#{publisherManagedBean.publisher.zipCode}" />
-						<b:commandButton look="success" action="#{publisherManagedBean.editPublisherController}" value="Alterar"></b:commandButton>
-					</b:form>
-				</b:column>
-			</b:row>
+			<b:column col-md="8" offset="2">
+				<b:messages/>
+				<b:form>
+					<b:row>
+						<b:column col-md="6">
+							<p>Name:</p>
+							<b:inputText id="txtPublihser" value="#{publisherManagedBean.publisher.publisher}" 
+									required="true" requiredMessage="You must enter a Publisher's Name"/>
+						</b:column>
+						<b:column col-md="6">
+							<p>Email:</p>
+							<b:inputText id="txtEmail" value="#{publisherManagedBean.publisher.email}" 
+									required="true" requiredMessage="You must enter a Publisher's Email"/>
+						</b:column>
+					</b:row>									
+					<b:row>
+						<b:column col-md="3">
+							<p>Phone Number:</p>
+							<b:inputText id="txtPhoneNumber" value="#{publisherManagedBean.publisher.phoneNumber}"
+									required="true" requiredMessage="You must enter a Publisher's Phone Number"/>
+						</b:column>	
+						<b:column col-md="9">
+							<p>CNPJ:</p>
+							<b:inputText id="txtCNPJ" value="#{publisherManagedBean.publisher.cnpj}"
+									required="true" requiredMessage="You must enter a Publisher's CNPJ" 
+									validatorMessage="You must enter a valid CNPJ with 14 digits">
+								<f:validateLength minimum="14" maximum="14"/>		
+							</b:inputText>
+						</b:column>					
+					</b:row>					
+					
+					<p>Country:</p>
+					<b:inputText id="txtCountry" value="#{publisherManagedBean.publisher.country}"
+							required="true" requiredMessage="You must enter a Publisher's Country"/>
+					
+					<p>State:</p>
+					<b:inputText id="txtState" value="#{publisherManagedBean.publisher.state}"
+							required="true" requiredMessage="You must enter a Publisher's State"/>
+									
+					<b:row>
+						<b:column col-md="6">
+							<p>Street:</p>
+							<b:inputText id="txtStreet" value="#{publisherManagedBean.publisher.street}"
+									required="true" requiredMessage="You must enter a Publisher's Street"/>
+						</b:column>	
+						<b:column col-md="3">
+							<p>Address Number</p>
+							<b:inputText id="txtAddressNumber" value="#{publisherManagedBean.publisher.addressNumber}"
+									required="true" requiredMessage="You must enter a Publisher's Address Number"/>
+						</b:column>	
+						<b:column col-md="3">
+							<p>Zip Code</p>
+							<b:inputText id="txtZipCode" value="#{publisherManagedBean.publisher.zipCode}"
+									required="true" requiredMessage="You must enter a Publisher's Zip Code"/>
+						</b:column>					
+					</b:row>			
+												
+					<b:commandButton look="primary" value="Inserir" action="#{publisherManagedBean.insertPublisherController}"></b:commandButton>
+				</b:form>				
+			</b:column>
+		</b:row>
 		</b:container>
 	</h:body>
 </html>

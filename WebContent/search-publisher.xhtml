@@ -28,7 +28,8 @@
 							<h5>Publisher's Name:</h5>
 						</b:column>
 						<b:column col-md="7">
-							<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
+							<b:inputText id="txtPublihser" value="#{publisherManagedBean.publisher.publisher}" 
+									required="true" requiredMessage="You must enter a Publisher's Name"/>
 						</b:column>
 						<b:column col-md="2">
 							<b:commandButton action="#{publisherManagedBean.searchPubliserController}" value="Search"></b:commandButton>
