@@ -113,6 +113,8 @@ public class UserManagedBean {
 	    catch (Exception e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Alterar", "Detalhes:  " + e));	
+			
+			return "edit-user";
 		}
 		
 		return searchUserController();
