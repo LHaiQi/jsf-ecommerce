@@ -26,7 +26,13 @@
 <p>#{msgs.sobrenome}</p>
 <b:inputText value="#{authorManagedBean.author.lastName}" />
 <p>#{msgs.genero}</p>
-<b:inputText value="#{authorManagedBean.author.gender}" />
+<b:selectOneMenu value="#{userManagedBean.author.gender}" converter="omnifaces.SelectItemsConverter">
+	<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
+	<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
+	<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
+	<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>
+								
+</b:selectOneMenu>
 <p>#{msgs.nacionalidade}</p>
 <b:inputText value="#{authorManagedBean.author.nationality}" />
 <b:commandButton look="success" value="#{msgs.inserir}" action="#{authorManagedBean.insertAuthorController}"></b:commandButton>

@@ -30,7 +30,14 @@
                         <p>Email</p>
                         <b:inputText value="#{userManagedBean.user.email}" />
                         <p>#{msgs.genero}</p>
-                        <b:inputText value="#{userManagedBean.user.gender}" />
+                        <b:selectOneMenu value="#{userManagedBean.user.gender}" converter="omnifaces.SelectItemsConverter">
+							<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
+							<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
+							<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
+							<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>
+							
+						</b:selectOneMenu>
+                        
                         <p>#{msgs.dataNascimento}</p>
                         <b:datepicker value="#{userManagedBean.user.birthdate}" >
                           <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
@@ -43,7 +50,7 @@
                         <p>#{msgs.cidade}</p>
                         <b:inputText value="#{userManagedBean.user.city}" />
                         <p>#{msgs.estado}</p>
-                        <b:inputText value="#{userManagedBean.user.state}" />
+                       	<b:inputText value="#{userManagedBean.user.state}" />
                         <p>#{msgs.rua}</p>
                         <b:inputText value="#{userManagedBean.user.street}" />
                         <p>#{msgs.numeroCasa}</p>
