@@ -10,13 +10,14 @@ width:100%;
 	left:0;
 	height:120px;
 	width:100%;
+	background-color:#91bbff;
 }
 
 #logo{
 	width:15%;
-	background-color:blue;
 	height:100%;
 	float:left;
+	padding-left:4%;
 }
 
 #barrapesquisa{
@@ -32,21 +33,34 @@ width:100%;
 }
 
 #minhaconta{
-	width:15%;
+	width:25%;
 	height:100%;
 	float:left;
+	text-align:center;
 }
 
 #carrinho{
-	width:15%;
-	background-color:gray;
+	width:5%;
 	height:100%;
 	float:left;
+	margin-top:30px;
+	
 }
 
 #icone{
 	margin-top:40px;
+	height:auto;
+	width:45%;
+	float:left;
 	
+}
+
+#texto{
+	margin-top:35px;
+	height:auto;
+	width:auto;
+	float:left;
+	text-align:left;
 }
 
 
