@@ -1,5 +1,7 @@
 package br.com.fiap.ecommerce.bo;
 
+import java.sql.SQLException;
+
 import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.dao.LoginDAO;
@@ -18,16 +20,16 @@ public class LoginBO {
 		}	
 	}
 	
-	public boolean autenticarLogin(LoginBean loginBean){
+	public boolean autenticarLogin(LoginBean loginBean) throws SQLException{
 		boolean podeLogar = false;
 		
-		LoginDAO loginDAO = new LoginDAO();
-		
+		LoginDAO loginDAO = new LoginDAO();		
 		podeLogar = loginDAO.autenticarLogin(loginBean);
+		
 		return podeLogar;
 	}
 	
-	public boolean alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword){
+	public boolean alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword) throws SQLException{
 		boolean podeAlterar = false;
 		if(newPassword.equalsIgnoreCase(repeatedNewPassword)){
 			podeAlterar = autenticarLogin(loginBean);
