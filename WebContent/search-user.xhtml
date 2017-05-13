@@ -20,14 +20,15 @@
 		
 		<b:container>
 			<b:row>
-				<b:column col-md="18" offset="2">
+				<b:column col-md="8" offset="2">
 					<b:messages/>
 					<b:form>
-						<b:column col-md="2">
+						<b:column col-md="3">
 							<h5>#{msgs.nomeUsuario}</h5>
 						</b:column>
-						<b:column col-md="6">
-							<b:inputText value="#{userManagedBean.user.name}" />
+						<b:column col-md="5">
+							<b:inputText value="#{userManagedBean.user.name}" 
+								required="true" requiredMessage="#{msgs.nome_usuario_erro}"/>	
 						</b:column>
 						<b:column col-md="2">
 							<b:commandButton action="#{userManagedBean.searchUserController}" value="#{msgs.pesquisar}"></b:commandButton>

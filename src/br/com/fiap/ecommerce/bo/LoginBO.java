@@ -10,14 +10,7 @@ public class LoginBO {
 	
 	public void inserirLogin(LoginBean loginBean) throws Exception{
 		LoginDAO loginDAO = new LoginDAO();
-		
-		boolean exists = loginDAO.verificaLoginExistente(loginBean.getUser());
-		
-		if (!exists) {
-			loginDAO.inserirLogin(loginBean);
-		}else{
-			//Mensagem de login repetido
-		}	
+		loginDAO.inserirLogin(loginBean);
 	}
 	
 	public boolean autenticarLogin(LoginBean loginBean) throws SQLException{
@@ -51,5 +44,10 @@ public class LoginBO {
 		
 		conseguiuDeletarLogin = loginDAO.deletarLogin(userBean);
 		return conseguiuDeletarLogin;
+	}
+
+	public boolean validateExistentUser(UserBean user) throws SQLException {
+		LoginDAO loginDAO = new LoginDAO();
+		return loginDAO.verificaLoginExistente(user.getLogin().getUser());
 	}
 }

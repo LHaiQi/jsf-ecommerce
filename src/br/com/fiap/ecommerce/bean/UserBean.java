@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserBean {
 	private int id;
 	private String name;
-	private int cpf;
+	private long cpf;
 	private String lastname;
 	private String email;
 	private String gender;
@@ -22,7 +22,7 @@ public class UserBean {
 		login = new LoginBean();
 	}
 
-	public UserBean(int id, String name, int cpf, String lastname, String email, String gender, Date birthdate,
+	public UserBean(int id, String name, long cpf, String lastname, String email, String gender, Date birthdate,
 			int phonenumber, int zipcode, String city, String state, String street, int housenumber) {
 		this.id = id;
 		this.name = name;
@@ -63,11 +63,11 @@ public class UserBean {
 		this.name = name;
 	}
 
-	public int getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 

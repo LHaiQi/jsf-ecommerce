@@ -40,7 +40,7 @@ public class LoginDAO {
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO LOGIN VALUES (?,?,?,?,?)";
 			
-		preparedStatement = connection.prepareStatement(sql);
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, getUserId());
 		preparedStatement.setString(2,login.getUser());
 		preparedStatement.setString(3,login.getPassword());

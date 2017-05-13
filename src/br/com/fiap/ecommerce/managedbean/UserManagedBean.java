@@ -7,7 +7,10 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
+import javax.xml.bind.ValidationException;
 
 import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
@@ -20,8 +23,7 @@ public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
     String newPassword, repeatedNewPassword;
-    
-    
+        
 	public String getNewPassword() {
 		return newPassword;
 	}
@@ -61,28 +63,19 @@ public class UserManagedBean {
 	
 	public String insertUserController(){
 		UserBO userBO = new UserBO();
-		
-		boolean conseguiuCriarUser = false;
+		LoginBO loginBO = new LoginBO();
 		
 		try {
-			conseguiuCriarUser = userBO.inserirUser(user);
+			userBO.inserirUser(user);
+			loginBO.inserirLogin(user.getLogin());
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir Usuario", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Deletar", "Detalhes:  " + e));	
 		}
-		
-		if(conseguiuCriarUser){
-			LoginBO loginBO = new LoginBO();
-			
-			try {
-				loginBO.inserirLogin(user.getLogin());
-			} 
-			catch (Exception e) {
-				FacesContext facesContext = FacesContext.getCurrentInstance();
-				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir Login", "Detalhes:  " + e));	
-			}
-			return "login";
+		catch (Exception e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Deletar", "Detalhes:  " + e));	
 		}
 		
 		return "insert-user";
@@ -187,5 +180,21 @@ public class UserManagedBean {
 	public String logoutLoginUserController(){
 		return "login";
 	}
-
+	
+	public void validateExistentUser(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+		LoginBO loginBO = new LoginBO();
+		boolean exists = false;
+		
+		try {
+			exists = loginBO.validateExistentUser(user);
+		} 
+		catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		if (exists) {
+			FacesMessage message = new FacesMessage("O nome de usuario ja esta em uso");
+			throw new ValidatorException(message);
+		}
+	}
 }

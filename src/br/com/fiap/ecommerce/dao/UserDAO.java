@@ -22,7 +22,7 @@ public class UserDAO {
 		int UserID = 1;
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select Max(UserID) as UserID From publisher";
+		sql = "Select Max(UserID) as UserID From Usuario";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
@@ -53,7 +53,7 @@ public class UserDAO {
 		if(resultSet.next()){
 			  int id = resultSet.getInt("USERID");
 			  String name = resultSet.getString("NAME");
-			  int cpf = resultSet.getInt("CPF");
+			  long cpf = resultSet.getLong("CPF");
 			  String lastname = resultSet.getString("LASTNAME");
 			  String email = resultSet.getString("EMAIL");
 			  String gender = resultSet.getString("GENDER");
@@ -85,7 +85,7 @@ public class UserDAO {
 		while (resultSet.next()) {
 		  int id = resultSet.getInt("USERID");
 		  String name = resultSet.getString("NAME");
-		  int cpf = resultSet.getInt("CPF");
+		  long cpf = resultSet.getLong("CPF");
 		  String lastname = resultSet.getString("LASTNAME");
 		  String email = resultSet.getString("EMAIL");
 		  String gender = resultSet.getString("GENDER");
@@ -111,7 +111,7 @@ public class UserDAO {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, generateID());
 		preparedStatement.setString(2,user.getName());
-		preparedStatement.setInt(3,user.getCpf());
+		preparedStatement.setLong(3,user.getCpf());
 		preparedStatement.setString(4, user.getLastname());
 		preparedStatement.setString(5, user.getEmail());
 		preparedStatement.setString(6, user.getGender());
@@ -143,7 +143,7 @@ public class UserDAO {
 
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1,user.getName());
-		preparedStatement.setInt(2,user.getCpf());
+		preparedStatement.setLong(2,user.getCpf());
 		preparedStatement.setString(3, user.getLastname());
 		preparedStatement.setString(4, user.getEmail());
 		preparedStatement.setString(5, user.getGender());

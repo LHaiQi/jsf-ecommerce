@@ -21,18 +21,11 @@ public class UserBO {
 		return userDAO.pesquisarUser(userBean);
 	}	
 	
-	public boolean inserirUser(UserBean userBean) throws SQLException{
-		boolean conseguiuCriarUser = false;
+	public void inserirUser(UserBean userBean) throws SQLException{		
 		LoginDAO loginDAO = new LoginDAO();
-		loginExistente = loginDAO.verificaLoginExistente(userBean.getLogin().getUser());
-		if(!loginExistente) {
-			UserDAO userDAO = new UserDAO();
-			userDAO.inserirUser(userBean);
-			conseguiuCriarUser = true;
-		}else{
-			System.out.println("Username já existe, crie outro");
-		}
-		return conseguiuCriarUser;
+		
+		UserDAO userDAO = new UserDAO();
+		userDAO.inserirUser(userBean);		
 	}
 	
 	public void deletarUser(UserBean userBean) throws SQLException{
@@ -43,5 +36,5 @@ public class UserBO {
 	public void alterarUser(UserBean userBean) throws SQLException {
 		UserDAO userDAO = new UserDAO();
 		userDAO.alterarUser(userBean);
-	}	
+	}
 }
