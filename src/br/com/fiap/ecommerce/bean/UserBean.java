@@ -3,157 +3,151 @@ package br.com.fiap.ecommerce.bean;
 import java.util.Date;
 
 public class UserBean {
- private int id;
- private String name;
- private int cpf;
- private String lastname;
- private String email;
- private String gender;
- private Date birthdate;
- private int phonenumber;
- private int zipcode;
- private String city;
- private String state;
- private String street;
- private int housenumber;
- private LoginBean login;
- 
- public UserBean() {
-	 login = new LoginBean();
- }
+	private int id;
+	private String name;
+	private int cpf;
+	private String lastname;
+	private String email;
+	private String gender;
+	private Date birthdate;
+	private int phonenumber;
+	private int zipcode;
+	private String city;
+	private String state;
+	private String street;
+	private int housenumber;
+	private LoginBean login;
 
- public UserBean(int id, String name, int cpf, String lastname, String email, String gender, Date birthdate,
-		int phonenumber, int zipcode, String city, String state, String street, int housenumber) {
-	this.id = id;
-	this.name = name;
-	this.cpf = cpf;
-	this.lastname = lastname;
-	this.email = email;
-	this.gender = gender;
-	this.birthdate = birthdate;
-	this.phonenumber = phonenumber;
-	this.zipcode = zipcode;
-	this.city = city;
-	this.state = state;
-	this.street = street;
-	this.housenumber = housenumber;
-}
+	public UserBean() {
+		login = new LoginBean();
+	}
 
-public LoginBean getLogin() {
-	return login;
-}
+	public UserBean(int id, String name, int cpf, String lastname, String email, String gender, Date birthdate,
+			int phonenumber, int zipcode, String city, String state, String street, int housenumber) {
+		this.id = id;
+		this.name = name;
+		this.cpf = cpf;
+		this.lastname = lastname;
+		this.email = email;
+		this.gender = gender;
+		this.birthdate = birthdate;
+		this.phonenumber = phonenumber;
+		this.zipcode = zipcode;
+		this.city = city;
+		this.state = state;
+		this.street = street;
+		this.housenumber = housenumber;
+	}
 
-public void setLogin(LoginBean login) {
-	this.login = login;
-}
+	public LoginBean getLogin() {
+		return login;
+	}
 
-public int getId() {
-	return id;
-}
+	public void setLogin(LoginBean login) {
+		this.login = login;
+	}
 
-public void setId(int id) {
-	this.id = id;
-}
+	public int getId() {
+		return id;
+	}
 
-public String getName() {
-	return name;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public String getName() {
+		return name;
+	}
 
-public int getCpf() {
-	return cpf;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public void setCpf(int cpf) {
-	this.cpf = cpf;
-}
+	public int getCpf() {
+		return cpf;
+	}
 
-public String getLastname() {
-	return lastname;
-}
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
+	}
 
-public void setLastname(String lastname) {
-	this.lastname = lastname;
-}
+	public String getLastname() {
+		return lastname;
+	}
 
-public String getEmail() {
-	return email;
-}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public String getEmail() {
+		return email;
+	}
 
-public String getGender() {
-	return gender;
-}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-public void setGender(String gender) {
-	this.gender = gender;
-}
+	public String getGender() {
+		return gender;
+	}
 
-public Date getBirthdate() {
-	return birthdate;
-}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-public void setBirthdate(Date birthdate) {
-	this.birthdate = birthdate;
-}
+	public Date getBirthdate() {
+		return birthdate;
+	}
 
-public int getPhonenumber() {
-	return phonenumber;
-}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
+	}
 
-public void setPhonenumber(int phonenumber) {
-	this.phonenumber = phonenumber;
-}
+	public int getPhonenumber() {
+		return phonenumber;
+	}
 
-public int getZipcode() {
-	return zipcode;
-}
+	public void setPhonenumber(int phonenumber) {
+		this.phonenumber = phonenumber;
+	}
 
-public void setZipcode(int zipcode) {
-	this.zipcode = zipcode;
-}
+	public int getZipcode() {
+		return zipcode;
+	}
 
-public String getCity() {
-	return city;
-}
+	public void setZipcode(int zipcode) {
+		this.zipcode = zipcode;
+	}
 
-public void setCity(String city) {
-	this.city = city;
-}
+	public String getCity() {
+		return city;
+	}
 
-public String getState() {
-	return state;
-}
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-public void setState(String state) {
-	this.state = state;
-}
+	public String getState() {
+		return state;
+	}
 
-public String getStreet() {
-	return street;
-}
+	public void setState(String state) {
+		this.state = state;
+	}
 
-public void setStreet(String street) {
-	this.street = street;
-}
+	public String getStreet() {
+		return street;
+	}
 
-public int getHousenumber() {
-	return housenumber;
-}
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-public void setHousenumber(int housenumber) {
-	this.housenumber = housenumber;
-}
- 
- 
- 
- 
- 
- 
+	public int getHousenumber() {
+		return housenumber;
+	}
+
+	public void setHousenumber(int housenumber) {
+		this.housenumber = housenumber;
+	}
 }

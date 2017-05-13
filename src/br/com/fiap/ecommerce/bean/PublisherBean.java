@@ -3,7 +3,7 @@ package br.com.fiap.ecommerce.bean;
 public class PublisherBean {
 	private int id;
 	private String publisher;
-	private int cnpj;
+	private long cnpj;
 	private String email;
 	private int phoneNumber;
 	private String country;
@@ -14,7 +14,7 @@ public class PublisherBean {
 	
 	public PublisherBean() { }
 		
-	public PublisherBean(int id, String publisher, int cnpj, String email, int phoneNumber, String country,
+	public PublisherBean(int id, String publisher, long cnpj, String email, int phoneNumber, String country,
 			String state, String street, int zipCode, int addressNumber) {
 		this.id = id;
 		this.publisher = publisher;
@@ -36,10 +36,14 @@ public class PublisherBean {
 		return publisher;
 	}
 	
-	public int getCnpj() {
+	public long getCnpj() {
 		return cnpj;
 	}
 	
+	public void setCnpj(long cnpj) {
+		this.cnpj = cnpj;
+	}
+
 	public String getEmail() {
 		return email;
 	}

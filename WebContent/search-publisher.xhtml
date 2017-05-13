@@ -1,89 +1,88 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<title>#{msgs.pesquisar_editora}</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
-	</h:head>
-	<h:body>
-		<b:container>
-			<b:row>
-				<b:column>
-					<h1>#{msgs.pesquisar_editora}</h1>
-				</b:column>
-			</b:row>
-		</b:container>
-		
-		<b:container>
-			<b:row>
-				<b:column col-md="8" offset="2">
-					<b:form>
-						<b:column col-md="3">
-							<h5>#{msgs.nome_editora}</h5>
-						</b:column>
-						<b:column col-md="7">
-							<b:inputText value="#{publisherManagedBean.publisher.publisher}" />
-						</b:column>
-						<b:column col-md="2">
-							<b:commandButton action="#{publisherManagedBean.searchPubliserController}" value="#{msgs.pesquisar}"></b:commandButton>
-						</b:column>
-					</b:form>					
-				</b:column>
-			</b:row>
-		</b:container>
-		<b:container>
-			<b:row>
-				<b:column>
-					<b:form>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>#{msgs.nome}</th>
-									<th>Email</th>
-									<th>#{msgs.telefone}</th>
-									<th>CNPJ</th>
-									<th>#{msgs.pais}</th>
-									<th>#{msgs.estado}</th>
-									<th>#{msgs.rua}</th>
-									<th>#{msgs.endereco}</th>
-									<th>#{msgs.cep}</th>
-								</tr>
-							</thead>
-							<tbody>
-								<ui:repeat var="publisher" value="#{publisherManagedBean.listPublishers}">
-									<tr>
-										<td>#{publisher.publisher}</td>
-										<td>#{publisher.email}</td>
-										<td>#{publisher.phoneNumber}</td>
-										<td>#{publisher.cnpj}</td>
-										<td>#{publisher.country}</td>
-										<td>#{publisher.state}</td>
-										<td>#{publisher.street}</td>
-										<td>#{publisher.addressNumber}</td>
-										<td>#{publisher.zipCode}</td>
-										<td>
-											<h:commandLink value="#{msgs.deletar}" action="#{publisherManagedBean.deletePublisherController}" onClick="window.location.reload()">
-												<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
-											</h:commandLink>
-										</td>
-										<td>
-											<h:commandLink value="#{msgs.editar}" action="#{publisherManagedBean.fillEditPublisherController}">
-												<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />
-											</h:commandLink>
-										</td>
-									</tr>
-								</ui:repeat>
-							</tbody>
-						</table>	
-					</b:form>
-										
-				</b:column>
-			</b:row>			
-		</b:container>			
-	</h:body>
-</html>
+	<html xmlns="http://www.w3.org/1999/xhtml"	
+	      xmlns:b="http://bootsfaces.net/ui"	
+	      xmlns:h="http://java.sun.com/jsf/html"	
+	      xmlns:f="http://java.sun.com/jsf/core"	
+	      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">	
+		<h:head>	
+			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />	
+			<title>#{msgs.pesquisar_editora}</title>	
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>		</h:head>	
+		<h:body>	
+			<b:container>	
+				<b:row>	
+					<b:column>	
+						<h1>#{msgs.pesquisar_editora}</h1>	
+					</b:column>	
+				</b:row>	
+			</b:container>			
+			<b:container>	
+				<b:row>	
+					<b:column col-md="8" offset="2">	
+						<b:messages />
+						<b:form>	
+							<b:column col-md="3">	
+								<h5>#{msgs.nome_editora}</h5>	
+							</b:column>	
+							<b:column col-md="7">	
+								<b:inputText id="txtPublihser" value="#{publisherManagedBean.publisher.publisher}" 
+									 required="true" requiredMessage="#{msgs.nome_editora_erro}"/>	
+							</b:column>	
+							<b:column col-md="2">	
+								<b:commandButton action="#{publisherManagedBean.searchPubliserController}" value="#{msgs.pesquisar}"></b:commandButton>							</b:column>	
+						</b:form>	
+					</b:column>	
+				</b:row>	
+			</b:container>
+				
+			<b:container>	
+				<b:row>	
+					<b:column>	
+						<b:form>	
+							<table class="table table-striped">	
+								<thead>	
+									<tr>	
+										<th>#{msgs.nome}</th>	
+										<th>Email</th>	
+										<th>#{msgs.telefone}</th>	
+										<th>CNPJ</th>	
+										<th>#{msgs.pais}</th>	
+										<th>#{msgs.estado}</th>	
+										<th>#{msgs.rua}</th>	
+										<th>#{msgs.endereco}</th>	
+										<th>#{msgs.cep}</th>	
+									</tr>	
+								</thead>	
+								<tbody>	
+									<ui:repeat var="publisher" value="#{publisherManagedBean.listPublishers}">	
+										<tr>	
+											<td>#{publisher.publisher}</td>	
+											<td>#{publisher.email}</td>	
+											<td>#{publisher.phoneNumber}</td>	
+											<td>#{publisher.cnpj}</td>	
+											<td>#{publisher.country}</td>	
+											<td>#{publisher.state}</td>	
+											<td>#{publisher.street}</td>	
+											<td>#{publisher.addressNumber}</td>	
+											<td>#{publisher.zipCode}</td>	
+											<td>	
+												<h:commandLink value="#{msgs.deletar}" action="#{publisherManagedBean.deletePublisherController}" onClick="window.location.reload()">	
+													<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />	
+												</h:commandLink>	
+											</td>	
+											<td>	
+												<h:commandLink value="#{msgs.editar}" action="#{publisherManagedBean.fillEditPublisherController}">	
+													<f:setPropertyActionListener value="#{publisher.id}" target="#{publisherManagedBean.publisher.id}" />	
+												</h:commandLink>	
+											</td>	
+										</tr>	
+									</ui:repeat>	
+								</tbody>	
+							</table>		
+						</b:form>	
+					</b:column>	
+				</b:row>		
+			</b:container>	
+		</h:body>
+	</html>
