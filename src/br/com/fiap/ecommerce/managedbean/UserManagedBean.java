@@ -135,12 +135,23 @@ public class UserManagedBean {
 	
 	public String loginUserController(){
 		LoginBO loginBO = new LoginBO();
-		boolean podeLogar = loginBO.autenticarLogin(user.getLogin());
+		
+		boolean podeLogar = false;
+		
+		try {
+			podeLogar = loginBO.autenticarLogin(user.getLogin());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if(podeLogar){
 			return "search-user";
-		}else{
+		}
+		else {
 			System.out.println("Usuário e/ou senha inválido(s)");
 		}
+		
 		return "login";
 	}
 	
@@ -154,10 +165,21 @@ public class UserManagedBean {
 	
 	public String editLoginUserController(){
 		LoginBO loginBO = new LoginBO();
-		boolean conseguiuAlterar = loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
+		
+		boolean conseguiuAlterar = false;
+		
+		try {
+			conseguiuAlterar = loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
+		} 
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		if(conseguiuAlterar){
 			return "search-user";
-		}else{
+		}
+		else{
 			return "edit-login";
 		}
 	}

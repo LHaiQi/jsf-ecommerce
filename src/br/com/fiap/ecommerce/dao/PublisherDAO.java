@@ -51,7 +51,7 @@ public class PublisherDAO {
 		if (resultSet.next()) {
 			int id = resultSet.getInt("PublisherID");
 			String publisherName = resultSet.getString("Publisher");
-			int cnpj = resultSet.getInt("cnpj");
+			long cnpj = resultSet.getLong("cnpj");
 			String email = resultSet.getString("Email");;
 			int phoneNumber = resultSet.getInt("PhoneNumber");
 			String country = resultSet.getString("Country");;
@@ -78,7 +78,7 @@ public class PublisherDAO {
 		while (resultSet.next()) {
 			int id = resultSet.getInt("PublisherID");
 			String publisherName = resultSet.getString("Publisher");
-			int cnpj = resultSet.getInt("cnpj");
+			long cnpj = resultSet.getLong("cnpj");
 			String email = resultSet.getString("Email");;
 			int phoneNumber = resultSet.getInt("PhoneNumber");
 			String country = resultSet.getString("Country");;
@@ -93,31 +93,36 @@ public class PublisherDAO {
 		return listPublishers;
 	}
 	
-	public List<PublisherBean> getAllPublishers(PublisherBean publisher) throws SQLException{
+	public List<PublisherBean> getAllPublishers(PublisherBean publisher) {
 		List<PublisherBean> listPublishers = new ArrayList<PublisherBean>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Publisher Where Publisher Like ?";
 		
-		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setString(1, "%" + publisher.getPublisher() + "%");
-		
-		resultSet = preparedStatement.executeQuery();
-		
-		while (resultSet.next()) {
-			int id = resultSet.getInt("PublisherID");
-			String publisherName = resultSet.getString("Publisher");
-			int cnpj = resultSet.getInt("cnpj");
-			String email = resultSet.getString("Email");;
-			int phoneNumber = resultSet.getInt("PhoneNumber");
-			String country = resultSet.getString("Country");;
-			String state = resultSet.getString("cState");;
-			String street = resultSet.getString("Street");;
-			int zipCode = resultSet.getInt("ZipCode");
-			int addressNumber = resultSet.getInt("AddressNumber");
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, "%" + publisher.getPublisher() + "%");
 			
-			listPublishers.add(new PublisherBean(id, publisherName, cnpj, email, phoneNumber, country, state, street, zipCode, addressNumber));							
-		}
+			resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				int id = resultSet.getInt("PublisherID");
+				String publisherName = resultSet.getString("Publisher");
+				long cnpj = resultSet.getLong("cnpj");
+				String email = resultSet.getString("Email");;
+				int phoneNumber = resultSet.getInt("PhoneNumber");
+				String country = resultSet.getString("Country");;
+				String state = resultSet.getString("cState");;
+				String street = resultSet.getString("Street");;
+				int zipCode = resultSet.getInt("ZipCode");
+				int addressNumber = resultSet.getInt("AddressNumber");
+				
+				listPublishers.add(new PublisherBean(id, publisherName, cnpj, email, phoneNumber, country, state, street, zipCode, addressNumber));							
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("pesquisar todos publishers " + e);
+		}	
 		
 		return listPublishers;
 	}
@@ -146,8 +151,7 @@ public class PublisherDAO {
 		connection = ConnectionFactory.getConnection();
 		sql = "DELETE FROM PUBLISHER WHERE PUBLISHERID = ?";
 				
-		preparedStatement = connection.prepareStatement(sql);
-		
+		preparedStatement = connection.prepareStatement(sql);		
 		preparedStatement.setInt(1, publisherBean.getId());
 		
 		preparedStatement.execute();

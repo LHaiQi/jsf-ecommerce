@@ -36,9 +36,11 @@ public class PublisherManagedBean {
 	
 	public String searchPubliserController(){
 		PublisherBO publisherBO = new PublisherBO();
+		
 		try {
 			listPublishers = publisherBO.getListPubliser(publisher);
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao buscar", "Detalhes:  " + e));
 		}
