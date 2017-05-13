@@ -83,9 +83,12 @@ public class UserManagedBean {
 	
 	public String deletarUserController(){
 		LoginBO loginBO = new LoginBO();
+		
 		boolean conseguiuDeletarLogin = loginBO.deletarLogin(user) ;
+		
 		if(conseguiuDeletarLogin){
 			UserBO userBO = new UserBO();
+			
 			try {
 				userBO.deletarUser(user);
 			} 
@@ -100,7 +103,8 @@ public class UserManagedBean {
 	
 	public String editUserController(){
 		UserBO userBO = new UserBO();
-	    try {
+	    
+		try {
 			userBO.alterarUser(user);
 		} 
 	    catch (Exception e) {
@@ -115,6 +119,7 @@ public class UserManagedBean {
 	
 	public String preencherUserController(){
 		UserBO userBO = new UserBO();
+		
 		try {
 			user = userBO.pesquisarUser(user);
 		} 
@@ -134,8 +139,8 @@ public class UserManagedBean {
 		try {
 			podeLogar = loginBO.autenticarLogin(user.getLogin());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Logar", "Detalhes:  " + e));
 		}
 		
 		if(podeLogar){
@@ -159,22 +164,15 @@ public class UserManagedBean {
 	public String editLoginUserController(){
 		LoginBO loginBO = new LoginBO();
 		
-		boolean conseguiuAlterar = false;
-		
 		try {
-			conseguiuAlterar = loginBO.alterarLogin(user.getLogin(), newPassword, repeatedNewPassword);
+			loginBO.alterarLogin(user.getLogin(), newPassword);
 		} 
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Editar", "Detalhes:  " + e));
 		}
 		
-		if(conseguiuAlterar){
-			return "search-user";
-		}
-		else{
-			return "edit-login";
-		}
+		return "search-user";
 	}
 	
 	public String logoutLoginUserController(){
@@ -189,11 +187,19 @@ public class UserManagedBean {
 			exists = loginBO.validateExistentUser(user);
 		} 
 		catch (SQLException e) {
-			System.out.println(e);
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Validar", "Detalhes:  " + e));
 		}
 		
 		if (exists) {
 			FacesMessage message = new FacesMessage("O nome de usuario ja esta em uso");
+			throw new ValidatorException(message);
+		}
+	}
+	
+	public void validateNewPassword(FacesContext context, UIComponent component, Object value) {
+		if (!newPassword.equals(repeatedNewPassword)) {
+			FacesMessage message = new FacesMessage("As senhas não conferem");
 			throw new ValidatorException(message);
 		}
 	}

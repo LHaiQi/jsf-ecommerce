@@ -22,20 +22,9 @@ public class LoginBO {
 		return podeLogar;
 	}
 	
-	public boolean alterarLogin(LoginBean loginBean, String newPassword, String repeatedNewPassword) throws SQLException{
-		boolean podeAlterar = false;
-		if(newPassword.equalsIgnoreCase(repeatedNewPassword)){
-			podeAlterar = autenticarLogin(loginBean);
-			if(podeAlterar){
-				LoginDAO loginDAO = new LoginDAO();
-				loginDAO.alterarLogin(loginBean, newPassword);
-			}else{
-				System.out.println("Usuário não existe ou senha inválida");
-			}
-		}else{
-			System.out.println("As senhas são diferentes");
-		}
-		return podeAlterar;
+	public void alterarLogin(LoginBean loginBean, String newPassword) throws SQLException{
+		LoginDAO loginDAO = new LoginDAO();
+		loginDAO.alterarLogin(loginBean, newPassword);
 	}
 	
 	public boolean deletarLogin(UserBean userBean){
