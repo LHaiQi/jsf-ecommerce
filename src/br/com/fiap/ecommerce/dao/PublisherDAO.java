@@ -130,7 +130,7 @@ public class PublisherDAO {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);		
 		preparedStatement.setInt(1, generateID());
 		preparedStatement.setString(2, publisherBean.getPublisher());
-		preparedStatement.setInt(3, publisherBean.getCnpj());
+		preparedStatement.setLong(3, publisherBean.getCnpj());
 		preparedStatement.setString(4, publisherBean.getEmail());
 		preparedStatement.setInt(5, publisherBean.getPhoneNumber());
 		preparedStatement.setString(6, publisherBean.getCountry());
@@ -161,7 +161,7 @@ public class PublisherDAO {
 		
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setString(1, publisher.getPublisher());
-		ps.setInt(2, publisher.getCnpj());
+		ps.setLong(2, publisher.getCnpj());
 		ps.setString(3, publisher.getEmail());
 		ps.setInt(4, publisher.getPhoneNumber());
 		ps.setString(5, publisher.getCountry());
