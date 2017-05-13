@@ -34,7 +34,8 @@ CREATE TABLE PUBLISHER
   publisher             VARCHAR2 (100) NOT NULL
 );
 ALTER TABLE PUBLISHER ADD CONSTRAINT PUBLISHER_PK PRIMARY KEY ( publisherID ) ;
-ALTER TABLE PUBLISHER ADD (cnpj number not null,
+ALTER TABLE PUBLISHER ADD (
+cnpj number(14) not null,
 email varchar(100) not null,
 phonenumber number not null,
 country varchar(100) not null,
@@ -60,6 +61,7 @@ CREATE TABLE USUARIO (
   name                  VARCHAR2 (150) NOT NULL ,
   cpf                   NUMBER (11) NOT NULL
 );
+
 ALTER TABLE USUARIO ADD CONSTRAINT USER_PK PRIMARY KEY ( userID ) ;
 Alter Table USUARIO add (lastName varchar2(150) not null, 
 email varchar2(150) not null,
@@ -68,7 +70,7 @@ birthDate date not null,
 phoneNumber number not null,
 zipCode number not null,
 city varchar2(50) not null,
-"state" varchar2(50) not null,
+cstate varchar2(50) not null,
 street varchar2(100) not null,
 houseNumber number not null);
 

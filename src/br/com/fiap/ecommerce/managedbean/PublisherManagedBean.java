@@ -1,10 +1,13 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.ecommerce.bean.PublisherBean;
 import br.com.fiap.ecommerce.bo.PublisherBO;
@@ -33,35 +36,64 @@ public class PublisherManagedBean {
 	
 	public String searchPubliserController(){
 		PublisherBO publisherBO = new PublisherBO();
-		listPublishers = publisherBO.getListPubliser(publisher);
+		
+		try {
+			listPublishers = publisherBO.getListPubliser(publisher);
+		}
+		catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao buscar", "Detalhes:  " + e));
+		}
 		
 		return "search-publisher";
 	}
 	
 	public String insertPublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
-		publisherBO.setPublisher(publisher);
+		try {
+			publisherBO.setPublisher(publisher);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir", "Detalhes:  " + e));
+		}
 		
 		return "insert-publisher";
 	}
 	
 	public String deletePublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
-		publisherBO.deletePublisher(publisher);
+		try {
+			publisherBO.deletePublisher(publisher);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Deletar", "Detalhes: " + e));
+		}
 		
 		return searchPubliserController();
 	}
 	
 	public String fillEditPublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
-		publisher = publisherBO.getPublisher(publisher);
+		
+		try {
+			publisher = publisherBO.getPublisher(publisher);
+		} 
+		catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao preencher", "Detalhes: " + e));
+		}
 		
 		return "edit-publisher";
 	}
 	
 	public String editPublisherController(){
 		PublisherBO publisherBO = new PublisherBO();
-		publisherBO.alterPublisher(publisher);
+		try {
+			publisherBO.alterPublisher(publisher);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Editar", "Detalhes: " + e));
+		}
 		
 		return searchPubliserController();
 	}
