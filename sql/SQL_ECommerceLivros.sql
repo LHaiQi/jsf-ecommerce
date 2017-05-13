@@ -34,7 +34,8 @@ CREATE TABLE PUBLISHER
   publisher             VARCHAR2 (100) NOT NULL
 );
 ALTER TABLE PUBLISHER ADD CONSTRAINT PUBLISHER_PK PRIMARY KEY ( publisherID ) ;
-ALTER TABLE PUBLISHER ADD (cnpj number not null,
+ALTER TABLE PUBLISHER ADD (
+cnpj number(14) not null,
 email varchar(100) not null,
 phonenumber number not null,
 country varchar(100) not null,
