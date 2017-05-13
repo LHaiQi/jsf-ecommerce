@@ -65,7 +65,7 @@ CREATE TABLE USUARIO (
 ALTER TABLE USUARIO ADD CONSTRAINT USER_PK PRIMARY KEY ( userID ) ;
 Alter Table USUARIO add (lastName varchar2(150) not null, 
 email varchar2(150) not null,
-gender varchar2(6) not null,
+gender varchar2(50) not null,
 birthDate date not null,
 phoneNumber number not null,
 zipCode number not null,
