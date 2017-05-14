@@ -99,18 +99,41 @@ public class AuthorDAO {
 		
 		return listAuthor;
 	}
-
-	public void setAuthor(AuthorBean authorBean) {
+	
+	public int generateAuthorID(){
+		int authorID = 1;
+		
 		connection = ConnectionFactory.getConnection();
-		sql = "Insert Into Author Values ((select max(authorId)+1 from Author),?,?,?,?)";
+		sql = "Select Max(authorID) as authorID From author";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
+ 			resultSet = preparedStatement.executeQuery();
 			
-			preparedStatement.setString(1, authorBean.getName());
-			preparedStatement.setString(2, authorBean.getGender());
-			preparedStatement.setString(3, authorBean.getLastName());
-			preparedStatement.setString(4, authorBean.getNationality());
+			if(resultSet.next()){
+				authorID = resultSet.getInt("authorID");
+				authorID++;
+			}			
+		} 
+		catch (Exception e) {
+			authorID = 1;
+		}
+		
+		return authorID;
+	}
+
+	public void setAuthor(AuthorBean authorBean) {
+		connection = ConnectionFactory.getConnection();
+		sql = "Insert Into Author Values (?,?,?,?,?)";
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, generateAuthorID());
+			preparedStatement.setString(2, authorBean.getName());
+			preparedStatement.setString(3, authorBean.getGender());
+			preparedStatement.setString(4, authorBean.getLastName());
+			preparedStatement.setString(5, authorBean.getNationality());
 			
 			preparedStatement.execute();
 			

@@ -90,14 +90,37 @@ public class GenreDAO {
 		return listGenres;
 	}
 	
+	public int generateGenreID(){
+		int genreID = 1;
+		
+		connection = ConnectionFactory.getConnection();
+		sql = "Select Max(genreID) as genreID From genre";
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+ 			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()){
+				genreID = resultSet.getInt("genreID");
+				genreID++;
+			}			
+		} 
+		catch (Exception e) {
+			genreID = 1;
+		}
+		
+		return genreID;
+	}
+	
 	public void inserirGenre(GenreBean genre){
 		connection = ConnectionFactory.getConnection();
-		sql = "INSERT INTO GENRE VALUES ((select max(GENREID)+1 from GENRE),?)";
+		sql = "INSERT INTO GENRE VALUES (?,?)";
 		
 		try {
 		
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1,genre.getGenre());
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1,generateGenreID());
+			preparedStatement.setString(2,genre.getGenre());
 			preparedStatement.execute();
 			
 		} catch (Exception e) {
