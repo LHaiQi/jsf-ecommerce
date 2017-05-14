@@ -112,21 +112,15 @@ public class GenreDAO {
 		return genreID;
 	}
 	
-	public void inserirGenre(GenreBean genre){
+	public void inserirGenre(GenreBean genre) throws SQLException{
 		connection = ConnectionFactory.getConnection();
 		sql = "INSERT INTO GENRE VALUES (?,?)";
-		
-		try {
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1,generateGenreID());
 			preparedStatement.setString(2,genre.getGenre());
 			preparedStatement.execute();
-			
-		} catch (Exception e) {
-			System.out.println("Erro ao inserir Genre: " + e);
-		}
-		
+					
 	}
 	
 	public void deletarGenre(GenreBean genre){

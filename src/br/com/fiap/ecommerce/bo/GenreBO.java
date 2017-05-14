@@ -1,5 +1,6 @@
 package br.com.fiap.ecommerce.bo;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
@@ -21,7 +22,7 @@ public class GenreBO {
 		return genreDAO.pesquisarGenre(genreBean);
 	}
 	
-	public void inserirGenre(GenreBean genreBean){
+	public void inserirGenre(GenreBean genreBean) throws SQLException{
 		GenreDAO genreDAO = new GenreDAO();
 		genreDAO.inserirGenre(genreBean);
 	}

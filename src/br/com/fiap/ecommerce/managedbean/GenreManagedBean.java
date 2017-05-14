@@ -1,14 +1,16 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.bo.GenreBO;
-import br.com.fiap.ecommerce.bo.UserBO;
 
 @SessionScoped
 @ManagedBean
@@ -38,7 +40,12 @@ public class GenreManagedBean {
 	
 	public String insertGenreController(){
 		GenreBO genreBO = new GenreBO();
-		genreBO.inserirGenre(genre);
+		try {
+			genreBO.inserirGenre(genre);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao inserir", "Detalhes:  " + e));
+		}
 		
 		return "insert-genre";
 	}
