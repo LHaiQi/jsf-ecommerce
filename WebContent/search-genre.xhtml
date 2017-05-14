@@ -20,13 +20,14 @@
 		
 		<b:container>
 			<b:row>
+			<b:messages/>
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
 							<h5>#{msgs.genero}</h5>
 						</b:column>
 						<b:column col-md="7">
-							<b:inputText value="#{genreManagedBean.genre.genre}" />
+							<b:inputText required="true" requiredMessage="#{msgs.procurar_genero_genero_erro}" value="#{genreManagedBean.genre.genre}" />
 						</b:column>
 						<b:column col-md="2">
 							<b:commandButton action="#{genreManagedBean.procurarGenreController}" value="#{msgs.pesquisar}"></b:commandButton>
@@ -71,24 +72,4 @@
 			</b:row>
 		</b:container>	
 	</h:body>
-					
-					
-					
-					
-					
-					
-					
-					<!--  <b:dataTable var="genre" value="#{genreManagedBean.listGenres}" searching="false" paginated="false">
-					     	<b:dataTableColumn label="Name" value="#{genre.genre}"></b:dataTableColumn>
-							<b:column label="Edit" value="">
-								<a href="#">Edit</a>
-							</b:column>
-							<b:column label="Delete" value="">
-								<a href="#">Delete</a>
-							</b:column>				
-					</b:dataTable>	
-				</b:column>
-			</b:row>
-		</b:container>	
-	  </h:body>-->
 </html>

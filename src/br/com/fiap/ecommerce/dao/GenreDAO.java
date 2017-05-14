@@ -16,13 +16,12 @@ public class GenreDAO {
 	private ResultSet resultSet;
 	private String sql;
 	
-	public GenreBean pesquisarGenre(GenreBean genre){
+	public GenreBean pesquisarGenre(GenreBean genre) throws SQLException{
 		GenreBean newGenre = null;
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From GENRE Where GENREID = ?";
 		
-		try{
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, genre.getId());
 			
@@ -35,20 +34,16 @@ public class GenreDAO {
 				newGenre = new GenreBean(id, genreName);
 			}
 			
-		}catch(Exception e){
-			System.out.println("Erro ao buscar genero: " + e);
-		}
 		
 		return newGenre;
 	}
 	
-	public List<GenreBean> getListGenre() {
+	public List<GenreBean> getListGenre() throws SQLException {
 		List<GenreBean> listGenres = new ArrayList<GenreBean>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Genre";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -58,20 +53,16 @@ public class GenreDAO {
 				
 				listGenres.add(new GenreBean(id, genreName));							
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar lista genero: " + e);
-		}
 		
 		return listGenres;
 	}
 	
-	public List<GenreBean> pesquisarAllGenres(GenreBean genre){
+	public List<GenreBean> pesquisarAllGenres(GenreBean genre) throws SQLException{
 		List<GenreBean> listGenres = new ArrayList<GenreBean>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Genre Where Genre Like ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, "%" + genre.getGenre() + "%");
 			
@@ -83,9 +74,6 @@ public class GenreDAO {
 				
 				listGenres.add(new GenreBean(id, genreName));							
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar lista genero: " + e);
-		}
 		
 		return listGenres;
 	}
@@ -123,34 +111,26 @@ public class GenreDAO {
 					
 	}
 	
-	public void deletarGenre(GenreBean genre){
+	public void deletarGenre(GenreBean genre) throws SQLException{
 		connection = ConnectionFactory.getConnection();
 		sql = "DELETE FROM GENRE WHERE GENREID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, genre.getId());
 			
 			preparedStatement.execute();
 			
-		} catch (SQLException e) {
-			System.out.println("Erro ao apagar Genre(a): " + e);
-		}
 	}
 	
-	public void alterarGenre(GenreBean genre) {
+	public void alterarGenre(GenreBean genre) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Update GENRE set GENRE = ? Where GENREID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,genre.getGenre());
 			preparedStatement.setInt(2, genre.getId());
 			
 			preparedStatement.execute();
 			
-		} catch (Exception e) {
-			System.out.println("Erro ao Editar Genre: " + e);
-		}
 	}
 }

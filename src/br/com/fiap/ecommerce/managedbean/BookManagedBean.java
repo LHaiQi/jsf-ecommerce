@@ -1,10 +1,13 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
@@ -42,7 +45,12 @@ public class BookManagedBean {
 
 	public List<AuthorBean> getListAuthor() {
 		AuthorBO authorBO = new AuthorBO();
-		listAuthor = authorBO.getListAuthor();
+		try {
+			listAuthor = authorBO.getListAuthor();
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de autores", "Detalhes:  " + e));
+		}
 		
 		return listAuthor;
 	}
@@ -53,7 +61,12 @@ public class BookManagedBean {
 	
 	public List<GenreBean> getListGenre() {
 		GenreBO genreBO = new GenreBO();
-		listGenre = genreBO.getListGenre();
+		try {
+			listGenre = genreBO.getListGenre();
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de generos", "Detalhes:  " + e));
+		}
 		
 		return listGenre;
 	}
@@ -75,7 +88,12 @@ public class BookManagedBean {
 
 	public String insertBookController() {
 		BookBO bookBO = new BookBO();		
-		bookBO.setBook(book);		
+		try {
+			bookBO.setBook(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao inserir", "Detalhes:  " + e));
+		}		
 		
 		book = new BookBean();
 		
@@ -84,35 +102,60 @@ public class BookManagedBean {
 		
 	public String searchBookController(){
 		BookBO bookBO = new BookBO();
-		book = bookBO.getBook(book);
+		try {
+			book = bookBO.getBook(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
 		
 		return "search-book";
 	}
 
 	public String searchListBookController(){
 		BookBO bookBO = new BookBO();
-		listBook = bookBO.getListBooks(book);
+		try {
+			listBook = bookBO.getListBooks(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
 		
 		return "search-book";
 	}
 	
 	public String deleteBookController(){
 		BookBO bookBO = new BookBO();
-		bookBO.deleteBook(book);
+		try {
+			bookBO.deleteBook(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao apagar", "Detalhes:  " + e));
+		}
 		
 		return searchListBookController();
 	}
 	
 	public String fillEditBookController(){
 		BookBO bookBO = new BookBO();
-		book = bookBO.getBook(book);
+		try {
+			book = bookBO.getBook(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar", "Detalhes:  " + e));
+		}
 		
 		return "edit-book";
 	}
 	
 	public String editBookController(){
 		BookBO bookBO = new BookBO();
-		bookBO.alterBook(book);
+		try {
+			bookBO.alterBook(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao editar", "Detalhes:  " + e));
+		}
 		
 		return "edit-book";
 	}

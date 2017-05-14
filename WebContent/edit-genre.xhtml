@@ -20,9 +20,10 @@
 		<b:container>
 			<b:row>
 				<b:column col-md="8" offset="2">
+					<b:messages />
 					<b:form>
 						<p>#{msgs.genero}</p>
-                        <b:inputText value="#{genreManagedBean.genre.genre}" />
+                        <b:inputText required="true" requiredMessage="#{msgs.genero_genero_erro}" value="#{genreManagedBean.genre.genre}" />
 						<b:commandButton look="success" action="#{genreManagedBean.editGenreController}" value="#{msgs.alterar}"></b:commandButton>
 					</b:form>
 				</b:column>

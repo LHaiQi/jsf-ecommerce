@@ -21,13 +21,14 @@
 		
 		<b:container>
 			<b:row>
+			<b:messages/>
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
 							<h5>#{msgs.nome_autor}</h5>
 						</b:column>
 						<b:column col-md="7">
-							<b:inputText value="#{authorManagedBean.author.name}" />
+							<b:inputText required="true" requiredMessage="#{msgs.pocurar_nome_autor_erro}" value="#{authorManagedBean.author.name}" />
 						</b:column>
 						<b:column col-md="2">
 							<b:commandButton action="#{authorManagedBean.searchAuthorController}" value="#{msgs.pesquisar}"></b:commandButton>

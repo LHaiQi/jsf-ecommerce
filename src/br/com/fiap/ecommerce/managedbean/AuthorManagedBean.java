@@ -1,10 +1,13 @@
 package br.com.fiap.ecommerce.managedbean;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bo.AuthorBO;
@@ -33,35 +36,60 @@ public class AuthorManagedBean {
 	
 	public String searchAuthorController(){
 		AuthorBO authorBO = new AuthorBO();
-		authorList = authorBO.getListAuthor(author);
+		try {
+			authorList = authorBO.getListAuthor(author);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
 		
 		return "search-author";
 	}
 	
 	public String insertAuthorController(){
 		AuthorBO authorBO = new AuthorBO();
-		authorBO.setAuthor(author);
+		try {
+			authorBO.setAuthor(author);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao inserir", "Detalhes:  " + e));
+		}
 		
 		return "insert-author";
 	}
 	
 	public String deleteAuthorController(){
 		AuthorBO authorBO = new AuthorBO();
-		authorBO.deleteAuthor(author);
+		try {
+			authorBO.deleteAuthor(author);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao apagar", "Detalhes:  " + e));
+		}
 		
 		return searchAuthorController();
 	}
 	
 	public String fillEditAuthorController(){
 		AuthorBO authorBO = new AuthorBO();
-		author = authorBO.getAuthor(author);
+		try {
+			author = authorBO.getAuthor(author);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar", "Detalhes:  " + e));
+		}
 		
 		return "edit-author";
 	}
 	
 	public String editAuthorController(){
 		AuthorBO authorBO = new AuthorBO();
-		authorBO.alterAuthor(author);
+		try {
+			authorBO.alterAuthor(author);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao editar", "Detalhes:  " + e));
+		}
 		
 		return searchAuthorController();
 	}

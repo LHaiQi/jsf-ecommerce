@@ -20,13 +20,14 @@
 		
 		<b:container>
 			<b:row>
+				<b:messages/>
 				<b:column col-md="8" offset="2">
 					<b:form>
 						<b:column col-md="3">
 							<h5>#{msgs.nome_livro}</h5>
 						</b:column>
 						<b:column col-md="7">
-							<b:inputText value="#{bookManagedBean.book.name}" />
+							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" value="#{bookManagedBean.book.name}" />
 						</b:column>
 						<b:column col-md="2">
 							<b:commandButton action="#{bookManagedBean.searchListBookController}" value="#{msgs.pesquisar}"></b:commandButton>

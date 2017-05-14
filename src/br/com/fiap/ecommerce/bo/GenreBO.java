@@ -7,17 +7,17 @@ import br.com.fiap.ecommerce.bean.GenreBean;
 import br.com.fiap.ecommerce.dao.GenreDAO;
 
 public class GenreBO {
-	public List<GenreBean> getListGenre(){
+	public List<GenreBean> getListGenre() throws SQLException{
 		GenreDAO genreDAO = new GenreDAO();
 		return genreDAO.getListGenre();
 	}
 	
-	public List<GenreBean> getGenre(GenreBean genreBean){
+	public List<GenreBean> getGenre(GenreBean genreBean) throws SQLException{
 		GenreDAO genreDAO = new GenreDAO();
 		return genreDAO.pesquisarAllGenres(genreBean);		
 	}	
 	
-	public GenreBean pesquisarGenre(GenreBean genreBean){
+	public GenreBean pesquisarGenre(GenreBean genreBean) throws SQLException{
 		GenreDAO genreDAO = new GenreDAO();
 		return genreDAO.pesquisarGenre(genreBean);
 	}
@@ -27,13 +27,13 @@ public class GenreBO {
 		genreDAO.inserirGenre(genreBean);
 	}
 	
-	public void deletarGenre(GenreBean genreBean){
+	public void deletarGenre(GenreBean genreBean) throws SQLException{
 		GenreDAO genreDAO = new GenreDAO();
 		
 		genreDAO.deletarGenre(genreBean);
 	}
 	
-	public void alterarGenre(GenreBean genreBean) {
+	public void alterarGenre(GenreBean genreBean) throws SQLException {
 		GenreDAO genreDAO = new GenreDAO();
 		genreDAO.alterarGenre(genreBean);
 	}

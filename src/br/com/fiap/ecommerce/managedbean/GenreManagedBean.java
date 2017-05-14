@@ -33,7 +33,12 @@ public class GenreManagedBean {
 	
 	public String procurarGenreController(){
 		GenreBO genreBO = new GenreBO();
-		listGenres = genreBO.getGenre(genre);
+		try {
+			listGenres = genreBO.getGenre(genre);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
 		
 		return "search-genre";
 	}
@@ -52,21 +57,36 @@ public class GenreManagedBean {
 	
 	public String deletarGenreController(){
 		GenreBO genreBO = new GenreBO();
-		genreBO.deletarGenre(genre);;
+		try {
+			genreBO.deletarGenre(genre);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao apagar", "Detalhes:  " + e));
+		};
 		
 		return procurarGenreController() ;
 	}
 	
 	public String editGenreController(){
 		GenreBO genreBO = new GenreBO();
-	    genreBO.alterarGenre(genre);
+	    try {
+			genreBO.alterarGenre(genre);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao editar", "Detalhes:  " + e));
+		}
 		
 		return "search-genre";
 	}
 
 	public String preencherGenreController(){
 		GenreBO genreBO = new GenreBO();
-		genre = genreBO.pesquisarGenre(genre);
+		try {
+			genre = genreBO.pesquisarGenre(genre);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar", "Detalhes:  " + e));
+		}
 		
 		return "edit-genre";
 	}
