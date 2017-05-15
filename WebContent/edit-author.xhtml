@@ -10,29 +10,34 @@
 		<title>Edit Author</title>
 	</h:head>
 	<h:body>
-		<b:container>
-			<b:row>
-				<b:column>
-					<h1>Edit Author</h1>
-				</b:column>
-			</b:row>
-		</b:container>
-		<b:container>
-			<b:row>
-				<b:column col-md="8" offset="2">
-					<b:form>
-						    <p>Name:</p>
-							<b:inputText value="#{authorManagedBean.author.name}" />
-							<p>Last Name:</p>
-							<b:inputText value="#{authorManagedBean.author.lastName}" />
-							<p>Gender:</p>
-							<b:inputText value="#{authorManagedBean.author.gender}" />
-							<p>Nationality:</p>
-							<b:inputText value="#{authorManagedBean.author.nationality}" />
-						<b:commandButton look="success" action="#{authorManagedBean.editAuthorController}" value="Alterar"></b:commandButton>
-					</b:form>
-				</b:column>
-			</b:row>
-		</b:container>
+		<ui:composition template="index.xhtml">
+			<ui:define name="content">
+			     <b:container>
+					<b:row>
+						<b:column>
+							<h1>Edit Author</h1>
+						</b:column>
+					</b:row>
+				</b:container>
+				<b:container>
+					<b:row>
+						<b:column col-md="8" offset="2">
+							<b:form>
+								    <p>Name:</p>
+									<b:inputText value="#{authorManagedBean.author.name}" />
+									<p>Last Name:</p>
+									<b:inputText value="#{authorManagedBean.author.lastName}" />
+									<p>Gender:</p>
+									<b:inputText value="#{authorManagedBean.author.gender}" />
+									<p>Nationality:</p>
+									<b:inputText value="#{authorManagedBean.author.nationality}" />
+								<b:commandButton look="success" action="#{authorManagedBean.editAuthorController}" value="Alterar"></b:commandButton>
+							</b:form>
+						</b:column>
+					</b:row>
+				</b:container>
+			 </ui:define>
+		</ui:composition>		
 	</h:body>
 </html>
+

@@ -1,16 +1,6 @@
-body{
-height:1264px;
-width:100%;
-
-}
-
 #header{
-    position:fixed;
-	top:0;
-	left:0;
-	height:120px;
-	width:100%;
 	background-color:#91bbff;
+	height: 110px;
 }
 
 #logo{
@@ -24,8 +14,7 @@ width:100%;
 	width:55%;
 	float:left;
 	height:auto;
-	margin-top:40px;
-	
+	margin-top:40px;	
 }
 
 .form-group{
