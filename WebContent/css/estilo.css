@@ -64,6 +64,50 @@ width:100%;
 }
 
 
+#footer{
+	position:absolute;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background-color:#91bbff;
+	
+}
+
+#copyright{
+	width:50%;
+	text-align:center;
+    margin-top:25px;
+    float:left;
+}
+
+
+#facebook{
+	float:left;
+	  margin-top:15px;
+	  width:4%;
+}
+
+#twitter{
+	  float:left;
+	  margin-top:15px;
+	  width:4%;
+	  
+}
+
+#instagram{
+	  float:left;
+	  margin-top:15px;
+}
+
+#textoredes{
+width:11%;
+margin-top:25px;
+float:left;
+
+}
+
+
+
 
 
 
