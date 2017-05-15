@@ -80,7 +80,7 @@ public class PublisherManagedBean {
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao preencher", "Detalhes: " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Preencher Dados", "Detalhes: " + e));
 		}
 		
 		return "edit-publisher";
