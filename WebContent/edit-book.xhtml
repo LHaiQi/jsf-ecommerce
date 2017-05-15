@@ -31,22 +31,23 @@
 		<b:container>
 			<b:row>
 				<b:column col-md="8" offset="2">
+					<b:messages/>
 					<b:form>
 						<b:row>
 							<b:column col-md="8">
 								<p>#{msgs.nome}:</p>
-								<b:inputText value="#{bookManagedBean.book.name}" />
+								<b:inputText required="true" requiredMessage="#{msgs.nome_book_erro}" value="#{bookManagedBean.book.name}" />
 							</b:column>
 							<b:column col-sm="4">
 								<p>#{msgs.isbn}</p>
-								<b:inputText value="#{bookManagedBean.book.ISBN}" />
+								<b:inputText required="true" requiredMessage="#{msgs.isbn_book_erro}" value="#{bookManagedBean.book.ISBN}" />
 							</b:column>
 						</b:row>					 	
 							
 						<b:row>
 							<b:column col-md="4">
 								<p>#{msgs.autor}</p>						
-								<b:selectOneMenu value="#{bookManagedBean.book.author}" converter="omnifaces.SelectItemsConverter">
+								<b:selectOneMenu required="true" requiredMessage="#{msgs.autor_book_erro}" value="#{bookManagedBean.book.author}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
 								</b:selectOneMenu>
@@ -54,7 +55,7 @@
 							
 							<b:column col-md="4">
 								<p>#{msgs.genero}</p>						
-								<b:selectOneMenu value="#{bookManagedBean.book.genre}" converter="omnifaces.SelectItemsConverter">
+								<b:selectOneMenu required="true" requiredMessage="#{msgs.genero_book_erro}" value="#{bookManagedBean.book.genre}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listGenre}" var="genre" itemLabel="#{genre.genre}" itemValue="#{genre}"></f:selectItems>
 								</b:selectOneMenu>
@@ -62,7 +63,7 @@
 							
 							<b:column col-md="4">
 								<p>#{msgs.editora}</p>	
-								<b:selectOneMenu value="#{bookManagedBean.book.publisher}" converter="omnifaces.SelectItemsConverter">
+								<b:selectOneMenu required="true" requiredMessage="#{msgs.editora_book_erro}" value="#{bookManagedBean.book.publisher}" converter="omnifaces.SelectItemsConverter">
 									<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
 									<f:selectItems value="#{bookManagedBean.listPublisher}" var="publisher" itemLabel="#{publisher.publisher}" itemValue="#{publisher}"></f:selectItems>
 								</b:selectOneMenu>
@@ -70,7 +71,7 @@
 						</b:row>
 									
 						<p>#{msgs.preco}</p>
-						<b:inputText value="#{bookManagedBean.book.price}" />					
+						<b:inputText required="true" requiredMessage="#{msgs.preco_book_erro}" value="#{bookManagedBean.book.price}" />					
 						
 						<p>#{msgs.sinopse}</p>
 						<b:inputTextarea value="#{bookManagedBean.book.synopsis}" />

@@ -3,7 +3,7 @@ CREATE TABLE AUTHOR (
   name                 VARCHAR2 (100) NOT NULL
 );
 ALTER TABLE AUTHOR ADD CONSTRAINT AUTHOR_PK PRIMARY KEY ( authorID ) ;
-ALTER TABLE AUTHOR ADD (gender varchar2(6) not null,
+ALTER TABLE AUTHOR ADD (gender varchar2(50) not null,
 lastName varchar2(150) not null,
 nationality varchar2(100) not null);
 

@@ -16,13 +16,12 @@ public class AuthorDAO {
 	private ResultSet resultSet;
 	private String sql;
 	
-	public AuthorBean getAuthor(AuthorBean author){
+	public AuthorBean getAuthor(AuthorBean author) throws SQLException{
 		AuthorBean newAuthor = null;
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Author Where AuthorID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, author.getId());
 			
@@ -37,20 +36,16 @@ public class AuthorDAO {
 				
 				newAuthor = new AuthorBean(id, name, lastName, gender, nationality);
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar autor: " + e);
-		}
 	
 		return newAuthor;
 	}
 
-	public List<AuthorBean> getAllAuthors() {
+	public List<AuthorBean> getAllAuthors() throws SQLException {
 		List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Author";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -65,20 +60,16 @@ public class AuthorDAO {
 				
 				listAuthor.add(new AuthorBean(id, name, lastName, gender, nationality));
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar lista author: " + e);
-		}
 		
 		return listAuthor;
 	}
 	
-	public List<AuthorBean> getAllAuthors(AuthorBean authorBean) {
+	public List<AuthorBean> getAllAuthors(AuthorBean authorBean) throws SQLException {
 		List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * From Author Where Name Like ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, "%" + authorBean.getName() + "%");
 			
@@ -93,55 +84,63 @@ public class AuthorDAO {
 				
 				listAuthor.add(new AuthorBean(id, name, lastName, gender, nationality));
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao buscar lista author: " + e);
-		}
 		
 		return listAuthor;
 	}
-
-	public void setAuthor(AuthorBean authorBean) {
+	
+	public int generateAuthorID(){
+		int authorID = 1;
+		
 		connection = ConnectionFactory.getConnection();
-		sql = "Insert Into Author Values ((select max(authorId)+1 from Author),?,?,?,?)";
+		sql = "Select Max(authorID) as authorID From author";
 		
 		try {
 			preparedStatement = connection.prepareStatement(sql);
+ 			resultSet = preparedStatement.executeQuery();
 			
-			preparedStatement.setString(1, authorBean.getName());
-			preparedStatement.setString(2, authorBean.getGender());
-			preparedStatement.setString(3, authorBean.getLastName());
-			preparedStatement.setString(4, authorBean.getNationality());
-			
-			preparedStatement.execute();
-			
-		} catch (SQLException e) {
-			System.out.println("Erro ao inserir autor(a): " + e);
-
+			if(resultSet.next()){
+				authorID = resultSet.getInt("authorID");
+				authorID++;
+			}			
+		} 
+		catch (Exception e) {
+			authorID = 1;
 		}
 		
+		return authorID;
+	}
+
+	public void setAuthor(AuthorBean authorBean) throws SQLException {
+		connection = ConnectionFactory.getConnection();
+		sql = "Insert Into Author Values (?,?,?,?,?)";
+		
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setInt(1, generateAuthorID());
+			preparedStatement.setString(2, authorBean.getName());
+			preparedStatement.setString(3, authorBean.getGender());
+			preparedStatement.setString(4, authorBean.getLastName());
+			preparedStatement.setString(5, authorBean.getNationality());
+			
+			preparedStatement.execute();
 	}
 	
-	public void deleteAuthor(AuthorBean authorBean) {
+	public void deleteAuthor(AuthorBean authorBean) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "DELETE FROM AUTHOR WHERE AUTHORID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setInt(1, authorBean.getId());
 			
 			preparedStatement.execute();
 			
-		} catch (SQLException e) {
-			System.out.println("Erro ao apagar autor(a): " + e);
-		}
 	}
 
-	public void alterAuthor(AuthorBean authorBean) {
+	public void alterAuthor(AuthorBean authorBean) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Update Author set Name = ?, Gender = ? , LastName = ?, Nationality = ? Where AuthorID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, authorBean.getName());
@@ -151,8 +150,5 @@ public class AuthorDAO {
 			preparedStatement.setInt(5, authorBean.getId());
 			preparedStatement.execute();
 			
-		} catch (Exception e) {
-			System.out.println("Erro ao Editar autor(a): " + e);
-		}
 	}	
 }

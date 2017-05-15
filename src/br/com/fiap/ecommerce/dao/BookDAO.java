@@ -20,7 +20,7 @@ public class BookDAO {
 	private String sql;
 	
 	public int generateID(){
-		int bookID = 0;
+		int bookID = 1;
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select Max(bookID) as bookID From Books";
@@ -34,18 +34,17 @@ public class BookDAO {
 			}			
 		} 
 		catch (Exception e) {
-			bookID = 0;
+			bookID = 1;
 		}
 		
 		return bookID;
 	}
 	
-	public void setBook(BookBean book) {
+	public void setBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		String sql = "Insert Into Books(BookID, Name, Price, AuthorID, GenreID, PublisherID, ISBN, Synopsis) "
 				+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, generateID());
 			preparedStatement.setString(2, book.getName());
@@ -57,13 +56,10 @@ public class BookDAO {
 			preparedStatement.setString(8, book.getSynopsis());
 			
 			preparedStatement.execute();
-		} 
-		catch (Exception e) {
-			System.out.println("Erro ao Inserir Book: " + e);
-		}
+		
 	}
 
-	public BookBean getBook(BookBean book) {
+	public BookBean getBook(BookBean book) throws SQLException {
 		BookBean bookBean = null;
 		AuthorBean authorBean = new AuthorBean();
 		PublisherBean publisherBean = new PublisherBean();
@@ -77,7 +73,6 @@ public class BookDAO {
             + " Inner Join Publisher P On B.Publisherid = P.Publisherid "
             + " Where B.BookID = ? ";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, book.getBookID());
 			
@@ -95,15 +90,11 @@ public class BookDAO {
 				
 				bookBean = new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean);
 			}
-		} 
-		catch (Exception e) {
-			System.out.println("Erro ao Buscar Book: " + e);
-		}
 		
 		return bookBean;
 	}
 
-	public List<BookBean> getListBooks(BookBean book) {
+	public List<BookBean> getListBooks(BookBean book) throws SQLException {
 		List<BookBean> listBook = new ArrayList<BookBean>();
 		AuthorBean authorBean = new AuthorBean();
 		PublisherBean publisherBean = new PublisherBean();
@@ -118,7 +109,6 @@ public class BookDAO {
 	            + " Where B.Name like ? "
 	            + " Order By Book";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, "%" + book.getName() + "%");
 			
@@ -136,35 +126,27 @@ public class BookDAO {
 				
 				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean));
 			}
-		} catch (Exception e) {
-			System.out.println("Erro ao Buscar Lista Book: " + e);
-		}
 		
 		return listBook;
 	}
 
-	public void deleteBook(BookBean book) {
+	public void deleteBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Delete From Books Where BookID = ?";
 		
-		try {
 			preparedStatement = connection.prepareStatement(sql);
 			
 			preparedStatement.setInt(1, book.getBookID());
 			
 			preparedStatement.execute();
 			
-		} catch (SQLException e) {
-			System.out.println("Erro ao deletar Book: " + e);
-		}
 	}
 
-	public void alterBook(BookBean book) {
+	public void alterBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		String sql = "Update Books Set Name = ?, Price = ?, AuthorID = ?, GenreID = ?, PublisherID = ?, ISBN = ?, Synopsis = ? "
 				+ "Where BookId = ?";
 		
-		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, book.getName());
 			preparedStatement.setDouble(2, book.getPrice());
@@ -176,9 +158,5 @@ public class BookDAO {
 			preparedStatement.setInt(8, book.getBookID());
 			
 			preparedStatement.execute();
-		} 
-		catch (Exception e) {
-			System.out.println("Erro ao Alterar Book: " + e);
-		}
 	}
 }
