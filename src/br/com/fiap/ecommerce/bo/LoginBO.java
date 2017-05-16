@@ -13,13 +13,11 @@ public class LoginBO {
 		loginDAO.inserirLogin(loginBean);
 	}
 	
-	public boolean autenticarLogin(LoginBean loginBean) throws SQLException{
-		boolean podeLogar = false;
-		
+	public LoginBean autenticarLogin(LoginBean loginBean) throws SQLException{
 		LoginDAO loginDAO = new LoginDAO();		
-		podeLogar = loginDAO.autenticarLogin(loginBean);
+		LoginBean login = loginDAO.autenticarLogin(loginBean);
 		
-		return podeLogar;
+		return login;
 	}
 	
 	public void alterarLogin(LoginBean loginBean, String newPassword) throws SQLException{
