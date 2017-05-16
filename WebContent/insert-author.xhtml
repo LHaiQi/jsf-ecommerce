@@ -10,47 +10,51 @@
 	<title>#{msgs.inserir_autor}</title>
 </h:head>
 <h:body>
-	<b:container>
-		<b:row>
-			<b:column>
-				<h1>#{msgs.inserir_autor}</h1>
-			</b:column>
-		</b:row>
-	</b:container>
-	<b:container>
-		<b:row>
-			<b:column col-md="8" offset="2">
-				<b:messages/>
-				<b:form>
-					<b:row>
-						<b:column col-md="6">
-							<p>#{msgs.nome}</p>
-							<b:inputText required="true" requiredMessage="#{msgs.nome_autor_erro}" value="#{authorManagedBean.author.name}" />
-						</b:column>	
-						<b:column col-md="6">
-							<p>#{msgs.sobrenome}</p>
-							<b:inputText required="true" requiredMessage="#{msgs.sobrenome_autor_erro}" value="#{authorManagedBean.author.lastName}" />
-						</b:column>
-					</b:row>
-					<b:row>
-						<b:column col-md="4">
-							<p>#{msgs.genero}</p>
-							<b:selectOneMenu required="true" requiredMessage="#{msgs.genero_autor_erro}" value="#{authorManagedBean.author.gender}" converter="omnifaces.SelectItemsConverter">
-								<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
-								<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
-								<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
-								<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>
-							</b:selectOneMenu>
-						</b:column>
-						<b:column col-md="8">
-							<p>#{msgs.nacionalidade}</p>
-							<b:inputText required="true" requiredMessage="#{msgs.nacionalidade_autor_erro}" value="#{authorManagedBean.author.nationality}" />
-						</b:column>
-					</b:row>
-					<b:commandButton look="primary" value="#{msgs.inserir}" action="#{authorManagedBean.insertAuthorController}"></b:commandButton>
-				</b:form>
-			</b:column>
-		</b:row>
-	</b:container>
+	<ui:composition template="index.xhtml">
+		<ui:define name="content">
+			<b:container>
+				<b:row>
+					<b:column>
+						<h1>#{msgs.inserir_autor}</h1>
+					</b:column>
+				</b:row>
+			</b:container>
+			<b:container>
+				<b:row>
+					<b:column col-md="8" offset="2">
+						<b:messages/>
+						<b:form>
+							<b:row>
+								<b:column col-md="6">
+									<p>#{msgs.nome}</p>
+									<b:inputText required="true" requiredMessage="#{msgs.nome_autor_erro}" value="#{authorManagedBean.author.name}" />
+								</b:column>	
+								<b:column col-md="6">
+									<p>#{msgs.sobrenome}</p>
+									<b:inputText required="true" requiredMessage="#{msgs.sobrenome_autor_erro}" value="#{authorManagedBean.author.lastName}" />
+								</b:column>
+							</b:row>
+							<b:row>
+								<b:column col-md="4">
+									<p>#{msgs.genero}</p>
+									<b:selectOneMenu required="true" requiredMessage="#{msgs.genero_autor_erro}" value="#{authorManagedBean.author.gender}" converter="omnifaces.SelectItemsConverter">
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>
+									</b:selectOneMenu>
+								</b:column>
+								<b:column col-md="8">
+									<p>#{msgs.nacionalidade}</p>
+									<b:inputText required="true" requiredMessage="#{msgs.nacionalidade_autor_erro}" value="#{authorManagedBean.author.nationality}" />
+								</b:column>
+							</b:row>
+							<b:commandButton look="primary" value="#{msgs.inserir}" action="#{authorManagedBean.insertAuthorController}"></b:commandButton>
+						</b:form>
+					</b:column>
+				</b:row>
+			</b:container>	
+		</ui:define>
+	</ui:composition>	
 </h:body>
 </html>

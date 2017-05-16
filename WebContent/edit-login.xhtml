@@ -10,35 +10,39 @@
 		<title>#{msgs.editar_login}</title>
 	</h:head>
 	<h:body>
-		<b:container>
-			<b:row>
-				<b:column>
-					<h1>#{msgs.editar_login}</h1>
-				</b:column>
-			</b:row>
-		</b:container>
-		<b:container>
-			<b:row>
-				<b:column col-md="4" offset="4">
-					<b:messages />
-					<b:form>
-						<p>#{msgs.login}</p>
-                        <b:inputText value="#{userManagedBean.user.login.user}" 
-                        			required="true" requiredMessage="#{msgs.usuario_usuario_erro}" disabled="true"/>
-                        <p>#{msgs.antiga_senha}</p>
-                        <b:inputText value="#{userManagedBean.user.login.password}" 
-                        			required="true" requiredMessage="#{msgs.senha_usuario_erro}"/>
-                        <p>#{msgs.nova_senha}</p>
-                        <b:inputText value="#{userManagedBean.newPassword}"
-                        			required="true" requiredMessage="#{msgs.novaSenha_usuario_erro}"/>
-                        <p>#{msgs.repetir_nova_senha}</p>
-                        <b:inputText value="#{userManagedBean.repeatedNewPassword}" validator="#{userManagedBean.validateNewPassword}"
-                        			required="true" requiredMessage="#{msgs.repetirNovaSenha_usuario_erro}"/>
-						
-						<b:commandButton look="success" action="#{userManagedBean.editLoginUserController}" value="#{msgs.alterar}"></b:commandButton>
-					</b:form>
-				</b:column>
-			</b:row>
-		</b:container>
+		<ui:composition template="index.xhtml">
++			<ui:define name="content">
+				<b:container>
+					<b:row>
+						<b:column>
+							<h1>#{msgs.editar_login}</h1>
+						</b:column>
+					</b:row>
+				</b:container>
+				<b:container>
+					<b:row>
+						<b:column col-md="4" offset="4">
+							<b:messages />
+							<b:form>
+								<p>#{msgs.login}</p>
+		                        <b:inputText value="#{userManagedBean.user.login.user}" 
+		                        			required="true" requiredMessage="#{msgs.usuario_usuario_erro}" disabled="true"/>
+		                        <p>#{msgs.antiga_senha}</p>
+		                        <b:inputText value="#{userManagedBean.user.login.password}" 
+		                        			required="true" requiredMessage="#{msgs.senha_usuario_erro}"/>
+		                        <p>#{msgs.nova_senha}</p>
+		                        <b:inputText value="#{userManagedBean.newPassword}"
+		                        			required="true" requiredMessage="#{msgs.novaSenha_usuario_erro}"/>
+		                        <p>#{msgs.repetir_nova_senha}</p>
+		                        <b:inputText value="#{userManagedBean.repeatedNewPassword}" validator="#{userManagedBean.validateNewPassword}"
+		                        			required="true" requiredMessage="#{msgs.repetirNovaSenha_usuario_erro}"/>
+								
+								<b:commandButton look="success" action="#{userManagedBean.editLoginUserController}" value="#{msgs.alterar}"></b:commandButton>
+							</b:form>
+						</b:column>
+					</b:row>
+				</b:container>
+			</ui:define>
+		</ui:composition>		
 	</h:body>
 </html>

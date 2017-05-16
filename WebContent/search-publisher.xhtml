@@ -10,13 +10,16 @@
 			<title>#{msgs.pesquisar_editora}</title>	
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>		</h:head>	
 		<h:body>	
-			<b:container>	
+			<ui:composition template="index.xhtml">
+        		<ui:define name="content">
+ <b:container>	
 				<b:row>	
 					<b:column>	
 						<h1>#{msgs.pesquisar_editora}</h1>	
 					</b:column>	
 				</b:row>	
-			</b:container>			
+			</b:container>		
+	
 			<b:container>	
 				<b:row>	
 					<b:column col-md="8" offset="2">	
@@ -30,7 +33,8 @@
 									 required="true" requiredMessage="#{msgs.nome_editora_erro}"/>	
 							</b:column>	
 							<b:column col-md="2">	
-								<b:commandButton action="#{publisherManagedBean.searchPubliserController}" value="#{msgs.pesquisar}"></b:commandButton>							</b:column>	
+								<b:commandButton action="#{publisherManagedBean.searchPubliserController}" value="#{msgs.pesquisar}"></b:commandButton>
+							</b:column>	
 						</b:form>	
 					</b:column>	
 				</b:row>	
@@ -84,5 +88,9 @@
 					</b:column>	
 				</b:row>		
 			</b:container>	
+                </ui:define>
+            </ui:composition>
+			
+			
 		</h:body>
 	</html>

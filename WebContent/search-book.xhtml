@@ -10,7 +10,9 @@
 		<title>#{msgs.pesquisar_livro}</title>
 	</h:head>
 	<h:body>
-		<b:container>
+		<ui:composition template="index.xhtml">
+ 			<ui:define name="content">
+ 			<b:container>
 			<b:row>
 				<b:column>
 					<h1>#{msgs.pesquisar_livro}</h1>
@@ -79,6 +81,9 @@
 					</b:form>										
 				</b:column>
 			</b:row>			
-		</b:container>			
+		</b:container>	
+		    </ui:define>
+		</ui:composition>
+				
 	</h:body>
 </html>
