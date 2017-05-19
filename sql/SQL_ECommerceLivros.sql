@@ -10,13 +10,14 @@ nationality varchar2(100) not null);
 CREATE TABLE BOOKS
 (
   bookID                NUMBER NOT NULL ,
-  name                  VARCHAR2 (100) NOT NULL ,
+  name                  VARCHAR2 (100) NOT NULL,
   price                 NUMBER (5,2) NOT NULL ,
   authorID              NUMBER NOT NULL ,
   genreID               NUMBER NOT NULL ,
   publisherID           NUMBER NOT NULL
 );
 ALTER TABLE BOOKS ADD CONSTRAINT BOOKS_PK PRIMARY KEY ( bookID ) ;
+ALTER TABLE BOOKS ADD CONSTRAINT name_book_UN UNIQUE ( name );
 ALTER TABLE  BOOKS ADD (isbn number not null,
 synopsis varchar(400)
 );
