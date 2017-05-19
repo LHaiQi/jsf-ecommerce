@@ -95,6 +95,51 @@ float:left;
 
 }
 
+/* Footer */
+.footer {
+    padding: 5rem 0;
+    background: #000;
+}
+
+.footer .headline {
+    color: #fcdb00;;
+}
+
+.footer .description {
+    color: #898989;
+}
+
+.footer .text {
+    font-size: 1.5rem;
+    color: #555555;
+}
+
+.footer form {
+   margin: 4rem 0; 
+}
+
+.footer .btn-warning {
+    background-color: #fcdb00;    
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+}
+
+.footer .btn-warning:hover {
+    cursor: pointer;
+}
+
+.footer .nav {
+    margin-top: 5rem;
+    padding: 0 1.7rem;
+}
+
+.footer .nav-link {
+    color: #fff;
+    padding: 0;
+    font-weight: 300;
+}
 
 
 
