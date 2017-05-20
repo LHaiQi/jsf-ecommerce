@@ -13,109 +13,118 @@
 	</h:head>
 	<h:body>
 		<div id="header">
-			<div id="logo">
-				<img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" />
-			</div>
-					
-			<b:form id="barrapesquisa" >
-				<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="Que Livro Você Procura?">
-					<f:facet name="append">
-						<b:dropButton value="Filtrar">
-							<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
-							<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
-						</b:dropButton>
-					</f:facet>
-					<f:facet name="append">
-						<b:commandButton look="primary"  iconAwesome="search" icon-align="right"/>
-					</f:facet>
-				</b:inputText>
-			</b:form>
-	        
-			<div id="minhaconta">
-				<div id="icone">
-					<img src="https://cdn4.iconfinder.com/data/icons/geomicons/32/672418-user-32.png" />
-				</div>
-				<div id="texto">
-					Olá
-					<br/>
-					<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">
-						<b:navLink value="Entrar" href="login.jsf" iconAwesome="sign-in"></b:navLink>
-						<b:navLink value="Cliente Novo? Cadastrar" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
-					</b:dropMenu>
-				</div>
-			</div>		
-			<div id="carrinho">
-		    	<img src="https://cdn3.iconfinder.com/data/icons/glypho-free/64/cart-alt-48.png" />
-			</div>
-		</div>
-		
+			<b:container>
+				<b:row>
+					<b:column col-md="2">
+						<img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" />			
+					</b:column>
+					<b:column col-md="6">
+						<b:form id="barrapesquisa" >
+							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="Que Livro Você Procura?">
+								<f:facet name="append">
+									<b:dropButton value="Filtrar">
+										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
+										<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
+									</b:dropButton>
+								</f:facet>
+								<f:facet name="append">
+									<b:commandButton look="primary"  iconAwesome="search" icon-align="right"/>
+								</f:facet>
+							</b:inputText>
+						</b:form>
+					</b:column>
+					<b:column col-md="2">						
+						<div id="icone">
+							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>
+						</div>
+						<div id="texto">
+							Olá
+							<br/>
+							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">
+								<b:navLink value="Entrar" href="login.jsf" iconAwesome="sign-in"></b:navLink>
+								<b:navLink value="Cliente Novo? Cadastrar" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
+							</b:dropMenu>
+						</div>						
+					</b:column>
+					<b:column col-md="2">
+						<div id="carrinho">
+					    	<img src="https://cdn0.iconfinder.com/data/icons/mtt-web-icons/139/shoppingbag-128.png" width="60"/>
+						</div>
+					</b:column>
+				</b:row>
+			</b:container>
+		</div>	
+
 		<div class="content">
 			<ui:insert name="content">Default Content</ui:insert>
 		</div>
 		
 		<footer>
-    <div class="footer">
-      <div class="container">
-        <h4 class="headline text-center">Keep in touch with us</h4>
-        <p class="text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec
-          rutrum sed sem quis venenatis.</p>
-
-        <form action="#" method="post">
-          <div class="row">
-            <div class="col-lg-6 col-md-5 offset-md-2">
-              <input class="form-control form-control-lg" type="text" placeholder="Enter your email to update" />
-            </div>
-            <div class="col-lg-2 col-md-3">
-              <button class="btn btn-block btn-lg btn-warning" type="submit">Subimit</button>
-            </div>
-          </div>
-        </form>
-
-        <img class="mx-auto d-block img-fluid" src="img/social-connect.png" alt="social" />
-
-        <div class="row">
-          <div class="col">
-            <ul class="nav flex-column">
-              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
-              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
-              <li><a class="nav-link" href="#">Da</a></li>
-              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
-              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
-              <li><a class="nav-link" href="#">+844 35149182</a></li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul class="nav flex-column">
-              <li><a class="nav-link" href="#">Examples</a></li>
-              <li><a class="nav-link" href="#">Shop</a></li>
-              <li><a class="nav-link" href="#">License</a></li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul class="nav flex-column">
-              <li><a class="nav-link" href="#">Contact</a></li>
-              <li><a class="nav-link" href="#">About</a></li>
-              <li><a class="nav-link" href="#">Privacy</a></li>
-              <li><a class="nav-link" href="#">Terms</a></li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul class="nav flex-column">
-              <li><a class="nav-link" href="#">Download</a></li>
-              <li><a class="nav-link" href="#">Support</a></li>
-              <li><a class="nav-link" href="#">Documents</a></li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul class="nav flex-column">
-              <li><a class="nav-link" href="#">Media</a></li>
-              <li><a class="nav-link" href="#">Blog</a></li>
-              <li><a class="nav-link" href="#">Forum</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+		    <div class="footer">
+		      <div class="container">
+		        <h4 class="headline text-center">Keep in touch with us</h4>
+		        <p class="text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec
+		          rutrum sed sem quis venenatis.</p>
+		
+		       	<b:container>
+		       		<b:row>
+		       			<b:column col-md="4" offset-md="4">
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/14gGFs" width="48"/>
+		       				</b:column>
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/HstEQ3" width="48"/>
+		       				</b:column>
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/MehkOC" width="48"/>
+		       				</b:column>
+		       			</b:column>
+		       		</b:row>
+		       	</b:container>
+		
+		        <div class="row">
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
+		              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
+		              <li><a class="nav-link" href="#">Da</a></li>
+		              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
+		              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
+		              <li><a class="nav-link" href="#">+844 35149182</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">Examples</a></li>
+		              <li><a class="nav-link" href="#">Shop</a></li>
+		              <li><a class="nav-link" href="#">License</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">Contact</a></li>
+		              <li><a class="nav-link" href="#">About</a></li>
+		              <li><a class="nav-link" href="#">Privacy</a></li>
+		              <li><a class="nav-link" href="#">Terms</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">Download</a></li>
+		              <li><a class="nav-link" href="#">Support</a></li>
+		              <li><a class="nav-link" href="#">Documents</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">Media</a></li>
+		              <li><a class="nav-link" href="#">Blog</a></li>
+		              <li><a class="nav-link" href="#">Forum</a></li>
+		            </ul>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </footer>
 	</h:body>
 </html>
