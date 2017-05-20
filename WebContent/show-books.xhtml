@@ -19,7 +19,7 @@
 			<b:container>
 				<b:row>
 
-					<b:column col-md="12" offset-md="2">
+					<b:column col-md="8" offset-md="2">
 						
 							<div class="linha pequeno-up-2 grande-up-4">
 							<ui:repeat var="book" value="#{bookManagedBean.listBook}">
@@ -27,7 +27,10 @@
 									<img class="miniatura" src="http://placehold.it/300x400" />
 									<h5>#{book.name}</h5>
 									<p>$400</p>
-									<a href="#" class="botao expandido">Buy</a>
+									<b:button href="#" value="Comprar" iconAwesome="cart-plus" size="lg" />
+									<a></a>
+									<b:button look="info" iconAwesome="star" size="md" style="height:45px"/>
+									<br>  </br>
 								</div>
 									</ui:repeat>
 							</div>
