@@ -10,79 +10,83 @@
 		<title>#{msgs.editar_editora}</title>	
 	</h:head>
 
-	<h:body>	
-		<b:container>	
-			<b:row>	
-				<b:column>	
-					<h1>#{msgs.editar_editora}</h1>	
-				</b:column>	
-			</b:row>	
-		</b:container>	
-		<b:container>	
-			<b:row>	
-				<b:column col-md="8" offset="2">
-					<b:messages/>	
-					<b:form>	
-						<b:row>
-							<b:column col-md="6"> 
-								<p>#{msgs.nome}</p>	
-								<b:inputText id="txtPublihser" value="#{publisherManagedBean.publisher.publisher}" 
-									required="true" requiredMessage="#{msgs.nome_editora_erro}"/>
-							</b:column>
-							
-							<b:column col-md="6">
-								<p>Email:</p>	
-								<b:inputText id="txtEmail" value="#{publisherManagedBean.publisher.email}" 
-									required="true" requiredMessage="#{msgs.email_editora_erro}"/>
-							</b:column>
-						</b:row>
-						
-						<b:row>
-							<b:column col-md="3">
-								<p>#{msgs.telefone}</p>	
-								<b:inputText id="txtPhoneNumber" value="#{publisherManagedBean.publisher.phoneNumber}"
-									required="true" requiredMessage="#{msgs.telefone_editora_erro}"/>
-							</b:column>
-							<b:column col-md="9">
-								<p>CNPJ:</p>	
-								<b:inputText id="txtCNPJ" value="#{publisherManagedBean.publisher.cnpj}"
-									required="true" requiredMessage="#{msgs.cnpj_editora_erro}" 
-									validatorMessage="#{msgs.cnpj_editora_erro_length}">
-									<f:validateLength minimum="14" maximum="14"/>		
-								</b:inputText>
-							</b:column>
-						</b:row>
-						
-						<p>#{msgs.pais}</p>	
-						<b:inputText id="txtCountry" value="#{publisherManagedBean.publisher.country}"
-							required="true" requiredMessage="#{msgs.pais_editora_erro}"/>
-	
-						<p>#{msgs.estado}</p>	
-						<b:inputText id="txtState" value="#{publisherManagedBean.publisher.state}"
-							required="true" requiredMessage="#{msgs.estado_editora_erro}"/>
-						
-						<b:row>
-							<b:column col-md="6">
-								<p>#{msgs.rua}</p>	
-								<b:inputText id="txtStreet" value="#{publisherManagedBean.publisher.street}"
-									required="true" requiredMessage="#{msgs.rua_editora_erro}"/>
-							</b:column>
-							<b:column col-md="3">
-								<p>#{msgs.endereco}</p>	
-								<b:inputText id="txtAddressNumber" value="#{publisherManagedBean.publisher.addressNumber}"
-									required="true" requiredMessage="#{msgs.endereco_editora_erro}"/>
-							</b:column>
-							<b:column col-md="3">
-								<p>#{msgs.cep}</p>	
-								<b:inputText id="txtZipCode" value="#{publisherManagedBean.publisher.zipCode}"
-									required="true" requiredMessage="#{msgs.cep_editora_erro}"/>
-							</b:column>
-						</b:row>	
-	
-						<b:commandButton look="success" value="#{msgs.inserir}" action="#{publisherManagedBean.editPublisherController}"></b:commandButton>	
-					</b:form>	
-				</b:column>
-			</b:row>	
-		</b:container>	
+	<h:body>
+		<ui:composition template="index.xhtml">
++			<ui:define name="content">
+				<b:container>	
+					<b:row>	
+						<b:column>	
+							<h1>#{msgs.editar_editora}</h1>	
+						</b:column>	
+					</b:row>	
+				</b:container>	
+				<b:container>	
+					<b:row>	
+						<b:column col-md="8" offset="2">
+							<b:messages/>	
+							<b:form>	
+								<b:row>
+									<b:column col-md="6"> 
+										<p>#{msgs.nome}</p>	
+										<b:inputText id="txtPublihser" value="#{publisherManagedBean.publisher.publisher}" 
+											required="true" requiredMessage="#{msgs.nome_editora_erro}"/>
+									</b:column>
+									
+									<b:column col-md="6">
+										<p>Email:</p>	
+										<b:inputText id="txtEmail" value="#{publisherManagedBean.publisher.email}" 
+											required="true" requiredMessage="#{msgs.email_editora_erro}"/>
+									</b:column>
+								</b:row>
+								
+								<b:row>
+									<b:column col-md="3">
+										<p>#{msgs.telefone}</p>	
+										<b:inputText id="txtPhoneNumber" value="#{publisherManagedBean.publisher.phoneNumber}"
+											required="true" requiredMessage="#{msgs.telefone_editora_erro}"/>
+									</b:column>
+									<b:column col-md="9">
+										<p>CNPJ:</p>	
+										<b:inputText id="txtCNPJ" value="#{publisherManagedBean.publisher.cnpj}"
+											required="true" requiredMessage="#{msgs.cnpj_editora_erro}" 
+											validatorMessage="#{msgs.cnpj_editora_erro_length}">
+											<f:validateLength minimum="14" maximum="14"/>		
+										</b:inputText>
+									</b:column>
+								</b:row>
+								
+								<p>#{msgs.pais}</p>	
+								<b:inputText id="txtCountry" value="#{publisherManagedBean.publisher.country}"
+									required="true" requiredMessage="#{msgs.pais_editora_erro}"/>
+			
+								<p>#{msgs.estado}</p>	
+								<b:inputText id="txtState" value="#{publisherManagedBean.publisher.state}"
+									required="true" requiredMessage="#{msgs.estado_editora_erro}"/>
+								
+								<b:row>
+									<b:column col-md="6">
+										<p>#{msgs.rua}</p>	
+										<b:inputText id="txtStreet" value="#{publisherManagedBean.publisher.street}"
+											required="true" requiredMessage="#{msgs.rua_editora_erro}"/>
+									</b:column>
+									<b:column col-md="3">
+										<p>#{msgs.endereco}</p>	
+										<b:inputText id="txtAddressNumber" value="#{publisherManagedBean.publisher.addressNumber}"
+											required="true" requiredMessage="#{msgs.endereco_editora_erro}"/>
+									</b:column>
+									<b:column col-md="3">
+										<p>#{msgs.cep}</p>	
+										<b:inputText id="txtZipCode" value="#{publisherManagedBean.publisher.zipCode}"
+											required="true" requiredMessage="#{msgs.cep_editora_erro}"/>
+									</b:column>
+								</b:row>	
+			
+								<b:commandButton look="success" value="#{msgs.inserir}" action="#{publisherManagedBean.editPublisherController}"></b:commandButton>	
+							</b:form>	
+						</b:column>
+					</b:row>	
+				</b:container>	
+			</ui:define>
+		</ui:composition>		
 	</h:body>
 </html>

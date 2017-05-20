@@ -110,7 +110,7 @@ public class BookDAO {
 	            + " Order By Book";
 		
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, "%" + book.getName() + "%");
+			preparedStatement.setString(1, "%");
 			
 			resultSet = preparedStatement.executeQuery();
 			

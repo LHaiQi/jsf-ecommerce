@@ -10,103 +10,108 @@
 		<title>#{msgs.editarUsuario}</title>
 	</h:head>
 	<h:body>
-		<b:container>
-			<b:row>
-				<b:column>
-					<h1>#{msgs.editarUsuario}</h1>
-				</b:column>
-			</b:row>
-		</b:container>
-		<b:container>
-			<b:row>
-				<b:column col-md="10" offset="1">
-					<b:messages/>
-					<b:form>
-						<b:row>
-							<b:column col-md="6">
-								<p>#{msgs.nome}</p>
-                        		<b:inputText value="#{userManagedBean.user.name}" 
-                        			required="true" requiredMessage="#{msgs.nome_usuario_erro}" disabled="true"/>
-							</b:column>
-							<b:column col-md="6">
-								<p>#{msgs.sobrenome}</p>
-                        		<b:inputText value="#{userManagedBean.user.lastname}" 
-                        			required="true" requiredMessage="#{msgs.sobrenome_usuario_erro}" disabled="true"/>
-							</b:column>
-						</b:row>
-					
-						<b:row>
-							<b:column col-md="2">
-								 <p>CPF</p>
-                        		 <b:inputText value="#{userManagedBean.user.cpf}" 
-                        			required="true" requiredMessage="#{msgs.cpf_usuario_erro}" disabled="true"/>
-							</b:column>
-							<b:column col-md="4">
-								<p>Email</p>
-                        		<b:inputText value="#{userManagedBean.user.email}" 
-                        			required="true" requiredMessage="#{msgs.email_usuario_erro}"/>
-							</b:column>
-							<b:column col-md="3">
-								<p>#{msgs.genero}</p>
-		                        <b:selectOneMenu required="true" requiredMessage="#{msgs.genero_usuario_erro}" value="#{userManagedBean.user.gender}" 
-		                        					converter="omnifaces.SelectItemsConverter">
-									<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
-									<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
-									<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
-									<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>							
-								</b:selectOneMenu>
-							</b:column>
-							<b:column col-md="3">
-								<p>#{msgs.dataNascimento}</p>
-		                        <b:datepicker required="true" requiredMessage="#{msgs.dataNascimento_usuario_erro}" value="#{userManagedBean.user.birthdate}" >
-		                          <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
-		                          <f:convertDateTime Timelocale="en_US" timeZone="America/Sao_Paulo"   pattern="MM/dd/yyyy" /> 
-		                        </b:datepicker>
-							</b:column>
-						</b:row> 
-						<b:row>
-							<b:column col-md="3">
-								<p>#{msgs.telefone}</p>
-                        		<b:inputText value="#{userManagedBean.user.phonenumber}"
-                        			required="true" requiredMessage="#{msgs.telefone_usuario_erro}"/>
-							</b:column>							
-						</b:row>
-                        
-                        <b:row>
-							<b:column col-md="6">
-								 <p>#{msgs.estado}</p>
-                       		     <b:inputText value="#{userManagedBean.user.state}"
-                        			required="true" requiredMessage="#{msgs.estado_usuario_erro}"/>
-							</b:column>	
-							<b:column col-md="6">
-								<p>#{msgs.cidade}</p>
-                        		<b:inputText value="#{userManagedBean.user.city}"
-                        			required="true" requiredMessage="#{msgs.cidade_usuario_erro}"/>
-							</b:column>												
-						</b:row>
+	<ui:composition template="index.xhtml">
++		<ui:define name="content">
+			<b:container>
+				<b:row>
+					<b:column>
+						<h1>#{msgs.editarUsuario}</h1>
+					</b:column>
+				</b:row>
+			</b:container>
+			<b:container>
+				<b:row>
+					<b:column col-md="10" offset="1">
+						<b:messages/>
+						<b:form>
+							<b:row>
+								<b:column col-md="6">
+									<p>#{msgs.nome}</p>
+	                        		<b:inputText value="#{userManagedBean.user.name}" 
+	                        			required="true" requiredMessage="#{msgs.nome_usuario_erro}" disabled="true"/>
+								</b:column>
+								<b:column col-md="6">
+									<p>#{msgs.sobrenome}</p>
+	                        		<b:inputText value="#{userManagedBean.user.lastname}" 
+	                        			required="true" requiredMessage="#{msgs.sobrenome_usuario_erro}" disabled="true"/>
+								</b:column>
+							</b:row>
 						
-						<b:row>
-							<b:column col-md="6">
-								<p>#{msgs.rua}</p>
-                        		<b:inputText value="#{userManagedBean.user.street}" 
-                        			required="true" requiredMessage="#{msgs.rua_usuario_erro}"/>
-							</b:column>
-							<b:column col-md="3">
-								<p>#{msgs.numeroCasa}</p>
-                        		<b:inputText value="#{userManagedBean.user.housenumber}"
-                        			required="true" requiredMessage="#{msgs.numeroCasa_usuario_erro}"/>
-							</b:column>	
-							<b:column col-md="3">
-								<p>#{msgs.cep}</p>
-                        		<b:inputText value="#{userManagedBean.user.zipcode}" 
-                        			required="true" requiredMessage="#{msgs.cep_usuario_erro}"/>
-							</b:column>							
-						</b:row>
-												
-						<b:commandButton look="success" value="#{msgs.inserir}" action="#{editManagedBean.insertUserController}"></b:commandButton>
-					</b:form>
-				</b:column>
-			</b:row>
-		</b:container>
+							<b:row>
+								<b:column col-md="2">
+									 <p>CPF</p>
+	                        		 <b:inputText value="#{userManagedBean.user.cpf}" 
+	                        			required="true" requiredMessage="#{msgs.cpf_usuario_erro}" disabled="true"/>
+								</b:column>
+								<b:column col-md="4">
+									<p>Email</p>
+	                        		<b:inputText value="#{userManagedBean.user.email}" 
+	                        			required="true" requiredMessage="#{msgs.email_usuario_erro}"/>
+								</b:column>
+								<b:column col-md="3">
+									<p>#{msgs.genero}</p>
+			                        <b:selectOneMenu required="true" requiredMessage="#{msgs.genero_usuario_erro}" value="#{userManagedBean.user.gender}" 
+			                        					converter="omnifaces.SelectItemsConverter">
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
+										<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>							
+									</b:selectOneMenu>
+								</b:column>
+								<b:column col-md="3">
+									<p>#{msgs.dataNascimento}</p>
+			                        <b:datepicker required="true" requiredMessage="#{msgs.dataNascimento_usuario_erro}" value="#{userManagedBean.user.birthdate}" >
+			                          <f:convertDateTime Timelocale="pt_BR" timeZone="America/Sao_Paulo"   pattern="dd/MM/yyyy" />
+			                          <f:convertDateTime Timelocale="en_US" timeZone="America/Sao_Paulo"   pattern="MM/dd/yyyy" /> 
+			                        </b:datepicker>
+								</b:column>
+							</b:row> 
+							<b:row>
+								<b:column col-md="3">
+									<p>#{msgs.telefone}</p>
+	                        		<b:inputText value="#{userManagedBean.user.phonenumber}"
+	                        			required="true" requiredMessage="#{msgs.telefone_usuario_erro}"/>
+								</b:column>							
+							</b:row>
+	                        
+	                        <b:row>
+								<b:column col-md="6">
+									 <p>#{msgs.estado}</p>
+	                       		     <b:inputText value="#{userManagedBean.user.state}"
+	                        			required="true" requiredMessage="#{msgs.estado_usuario_erro}"/>
+								</b:column>	
+								<b:column col-md="6">
+									<p>#{msgs.cidade}</p>
+	                        		<b:inputText value="#{userManagedBean.user.city}"
+	                        			required="true" requiredMessage="#{msgs.cidade_usuario_erro}"/>
+								</b:column>												
+							</b:row>
+							
+							<b:row>
+								<b:column col-md="6">
+									<p>#{msgs.rua}</p>
+	                        		<b:inputText value="#{userManagedBean.user.street}" 
+	                        			required="true" requiredMessage="#{msgs.rua_usuario_erro}"/>
+								</b:column>
+								<b:column col-md="3">
+									<p>#{msgs.numeroCasa}</p>
+	                        		<b:inputText value="#{userManagedBean.user.housenumber}"
+	                        			required="true" requiredMessage="#{msgs.numeroCasa_usuario_erro}"/>
+								</b:column>	
+								<b:column col-md="3">
+									<p>#{msgs.cep}</p>
+	                        		<b:inputText value="#{userManagedBean.user.zipcode}" 
+	                        			required="true" requiredMessage="#{msgs.cep_usuario_erro}"/>
+								</b:column>							
+							</b:row>
+													
+							<b:commandButton look="success" value="#{msgs.inserir}" action="#{editManagedBean.insertUserController}"></b:commandButton>
+						</b:form>
+					</b:column>
+				</b:row>
+			</b:container>
+		</ui:define>
+	</ui:composition>
+		
 	</h:body>
 </html>
