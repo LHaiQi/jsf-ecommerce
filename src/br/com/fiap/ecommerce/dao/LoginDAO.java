@@ -68,9 +68,7 @@ public class LoginDAO {
 		return existe;
 	}
 	
-	public boolean autenticarLogin(LoginBean login) throws SQLException{
-		boolean podeLogar = false;
-		
+	public LoginBean autenticarLogin(LoginBean login) throws SQLException {		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select * from LOGIN Where USERNAME = ? and PASSWORD = ?";
 		
@@ -81,10 +79,14 @@ public class LoginDAO {
 		resultSet = preparedStatement.executeQuery();
 		
 		if(resultSet.next()){
-			podeLogar = true;
+			login.setLoginId(resultSet.getInt("userID"));
+			login.setLoginType(resultSet.getInt("LoginType"));
+		}
+		else {
+			login = null;
 		}
 		
-		return podeLogar;
+		return login;
 	}
 	
 	public void alterarLogin(LoginBean login, String newPassword){
