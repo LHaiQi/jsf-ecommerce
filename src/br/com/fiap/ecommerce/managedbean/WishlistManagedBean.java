@@ -9,17 +9,31 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.fiap.ecommerce.bean.BookBean;
-import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bean.WishlistBean;
 import br.com.fiap.ecommerce.bo.WishlistBO;
 
 @ManagedBean
 @SessionScoped
 public class WishlistManagedBean {
-	private WishlistBean wishlist;
-	List<WishlistBean> listWishes = new ArrayList<>();
+	private WishlistBean wishlist = new WishlistBean();
+	List<WishlistBean> listWishes = new ArrayList<>();	
 	
+	public WishlistBean getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(WishlistBean wishlist) {
+		this.wishlist = wishlist;
+	}
+
+	public List<WishlistBean> getListWishes() {
+		return listWishes;
+	}
+
+	public void setListWishes(List<WishlistBean> listWishes) {
+		this.listWishes = listWishes;
+	}
+
 	public String setWishlist(){
 		WishlistBO wishlistBO = new WishlistBO();		
 		
@@ -60,5 +74,5 @@ public class WishlistManagedBean {
 		}
 		
 		return getAllWishes();
-	}
+	}	
 }

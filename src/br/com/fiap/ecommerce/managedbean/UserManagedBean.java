@@ -138,7 +138,7 @@ public class UserManagedBean {
 			loginAutenticado = loginBO.autenticarLogin(user.getLogin());
 			
 			if(loginAutenticado != null){
-				return "search-user";
+				return "show-books";
 			}
 			else {
 				throw new Exception("Usuário e/ou senha inválidos");
