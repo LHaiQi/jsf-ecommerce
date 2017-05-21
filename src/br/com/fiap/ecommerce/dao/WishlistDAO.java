@@ -16,7 +16,7 @@ public class WishlistDAO {
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 	private String sql;
-	
+		
 	public void setWishlist(WishlistBean wishlist) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Insert Into Wishlist Values(?,?)";

@@ -5,41 +5,41 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link href="css/estilo.css" rel="stylesheet" type="text/css" />
-</h:head>
-<f:event listener="#{bookManagedBean.searchListBookController}"
-	type="preRenderView" />
-<body>
-
-	<ui:composition template="index.xhtml">
-+		<ui:define name="content">
-
-			<b:container>
-				<b:row>
-
-					<b:column col-md="8" offset-md="2">
-						
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link href="css/estilo.css" rel="stylesheet" type="text/css" />
+	</h:head>
+	
+	<f:event listener="#{bookManagedBean.searchListBookController}" type="preRenderView" />
+	
+	<body>
+		<ui:composition template="index.xhtml">
+			<ui:define name="content">	
+				<b:container>
+					<b:row>	
+						<b:column col-md="8" offset-md="2">	
+							<b:messages />						
 							<div class="linha pequeno-up-2 grande-up-4">
-							<ui:repeat var="book" value="#{bookManagedBean.listBook}">
-								<div class="coluna">
-									<img class="miniatura" src="http://placehold.it/300x400" />
-									<h5>#{book.name}</h5>
-									<p>$400</p>
-									<b:button href="#" value="Comprar" iconAwesome="cart-plus" size="lg" />
-									<a></a>
-									<b:button look="info" iconAwesome="star" size="md" style="height:45px"/>
-									<br>  </br>
-								</div>
-									</ui:repeat>
-							</div>
-					
-					</b:column>
-				</b:row>
-			</b:container>
-
-		</ui:define>
-	</ui:composition>
-</body>
+								<ui:repeat var="book" value="#{bookManagedBean.listBook}">
+									<div class="coluna">
+										<img class="miniatura" src="http://placehold.it/300x400" />
+										<h5>#{book.name}</h5>
+										<p>$400</p>
+										<b:button href="#" value="Comprar" iconAwesome="cart-plus" size="lg" />										
+										<b:button look="info" iconAwesome="star" size="md" style="height:45px">
+											<b:form>
+												<h:commandLink value="#{msgs.editar}" action="#{wishlistManagedBean.setWishlist}">
+													<f:setPropertyActionListener value="#{book.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}" />
+												</h:commandLink>
+											</b:form>
+										</b:button>
+									</div>
+								</ui:repeat>
+							</div>						
+						</b:column>
+					</b:row>
+				</b:container>	
+			</ui:define>
+		</ui:composition>
+	</body>
 </html>

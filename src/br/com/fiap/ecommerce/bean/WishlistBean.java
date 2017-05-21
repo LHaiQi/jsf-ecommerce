@@ -4,6 +4,11 @@ public class WishlistBean {
 	private BookBean book;
 	private UserBean user;
 	
+	public WishlistBean() {
+		book = new BookBean();
+		user = new UserBean();
+	}
+
 	public WishlistBean(BookBean book, UserBean user) {
 		this.book = book;
 		this.user = user;
