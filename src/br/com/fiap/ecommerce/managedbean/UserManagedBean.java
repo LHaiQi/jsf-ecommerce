@@ -7,17 +7,17 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
@@ -171,11 +171,6 @@ public class UserManagedBean {
 		}
 		
 		return "search-user";
-	}
-	
-	public String logoutLoginUserController(){
-		user = null;
-		return "login";
 	}
 	
 	public void validateExistentUser(FacesContext context, UIComponent component, Object value) throws ValidatorException {
