@@ -23,7 +23,7 @@ public class WishlistDAO {
 		
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, wishlist.getBook().getBookID());
-		preparedStatement.setInt(2, wishlist.getUser().getId());
+		preparedStatement.setInt(2, wishlist.getLogin().getUserId());
 		
 		preparedStatement.execute();
 	}
@@ -38,14 +38,14 @@ public class WishlistDAO {
 			  + " Where userID = ?";
 		
 		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1, wishlist.getUser().getId());
+		preparedStatement.setInt(1, wishlist.getLogin().getUserId());
 		
 		resultSet = preparedStatement.executeQuery();
 		
 		while (resultSet.next()) {
 			bookBean.setName(resultSet.getString("Book"));
 			
-			listWishes.add(new WishlistBean(bookBean, wishlist.getUser()));
+			listWishes.add(new WishlistBean(bookBean, wishlist.getLogin()));
 		}
 		
 		return listWishes;
@@ -57,7 +57,7 @@ public class WishlistDAO {
 		
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, wishlist.getBook().getBookID());
-		preparedStatement.setInt(2, wishlist.getUser().getId());
+		preparedStatement.setInt(2, wishlist.getLogin().getUserId());
 		
 		preparedStatement.execute();
 	}

@@ -2,28 +2,31 @@ package br.com.fiap.ecommerce.bean;
 
 public class WishlistBean {
 	private BookBean book;
-	private UserBean user;
+	private LoginBean login;
 	
 	public WishlistBean() {
 		book = new BookBean();
-		user = new UserBean();
+		login = new LoginBean();
 	}
-
-	public WishlistBean(BookBean book, UserBean user) {
+	
+	public WishlistBean(BookBean book, LoginBean login) {
 		this.book = book;
-		this.user = user;
+		this.login = login;
 	}
 	
 	public BookBean getBook() {
 		return book;
 	}
+
 	public void setBook(BookBean book) {
 		this.book = book;
 	}
-	public UserBean getUser() {
-		return user;
+
+	public LoginBean getLogin() {
+		return login;
 	}
-	public void setUser(UserBean user) {
-		this.user = user;
+
+	public void setLogin(LoginBean login) {
+		this.login = login;
 	}
 }

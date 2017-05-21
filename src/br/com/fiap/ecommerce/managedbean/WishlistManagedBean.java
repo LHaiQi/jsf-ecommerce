@@ -74,5 +74,5 @@ public class WishlistManagedBean {
 		}
 		
 		return getAllWishes();
-	}
+	}	
 }

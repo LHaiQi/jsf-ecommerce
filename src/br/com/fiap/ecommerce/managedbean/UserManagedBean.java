@@ -12,12 +12,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
@@ -138,7 +139,7 @@ public class UserManagedBean {
 			loginAutenticado = loginBO.autenticarLogin(user.getLogin());
 			
 			if(loginAutenticado != null){
-				return "search-user";
+				return "show-books";
 			}
 			else {
 				throw new Exception("Usuário e/ou senha inválidos");
