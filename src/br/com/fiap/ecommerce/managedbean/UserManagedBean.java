@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
@@ -16,7 +17,7 @@ import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
@@ -131,21 +132,20 @@ public class UserManagedBean {
 	
 	public String loginUserController(){
 		LoginBO loginBO = new LoginBO();
-		
-		boolean podeLogar = false;
+		LoginBean loginAutenticado = null;
 		
 		try {
-			podeLogar = loginBO.autenticarLogin(user.getLogin());
-		} catch (SQLException e) {
+			loginAutenticado = loginBO.autenticarLogin(user.getLogin());
+			
+			if(loginAutenticado != null){
+				return "search-user";
+			}
+			else {
+				throw new Exception("Usuário e/ou senha inválidos");
+			}
+		} catch (Exception e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Logar", "Detalhes:  " + e));
-		}
-		
-		if(podeLogar){
-			return "search-user";
-		}
-		else {
-			System.out.println("Usuário e/ou senha inválido(s)");
 		}
 		
 		return "login";
@@ -174,6 +174,7 @@ public class UserManagedBean {
 	}
 	
 	public String logoutLoginUserController(){
+		user = null;
 		return "login";
 	}
 	
