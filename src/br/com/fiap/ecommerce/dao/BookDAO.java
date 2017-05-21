@@ -110,7 +110,7 @@ public class BookDAO {
 	            + " Order By Book";
 		
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, "%");
+			preparedStatement.setString(1, "%" + book.getName() + "%");
 			
 			resultSet = preparedStatement.executeQuery();
 			
@@ -129,7 +129,8 @@ public class BookDAO {
 		
 		return listBook;
 	}
-
+	
+	
 	public void deleteBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Delete From Books Where BookID = ?";
