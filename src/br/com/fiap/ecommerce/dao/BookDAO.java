@@ -129,7 +129,8 @@ public class BookDAO {
 		
 		return listBook;
 	}
-
+	
+	
 	public void deleteBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
 		sql = "Delete From Books Where BookID = ?";

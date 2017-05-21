@@ -10,9 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.xml.bind.ValidationException;
 
-import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
