@@ -1289,7 +1289,7 @@ body {
   margin-bottom: 1rem; }
   .miniatura:hover, .miniatura:focus {
     box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5); }.dropdown-toggle::after {  display:none;}
-
+select.form-control:not([size]):not([multiple]) {    height:auto;}
 
 
 

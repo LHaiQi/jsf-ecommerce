@@ -129,6 +129,18 @@ public class BookManagedBean {
 		return "search-book";
 	}
 	
+	public String searchListBookDiscountController(){
+		BookBO bookBO = new BookBO();
+		try {
+			listBook = bookBO.getListBooksDiscount(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
+		
+		return "search-book";
+	}
+	
 	public String deleteBookController(){
 		BookBO bookBO = new BookBO();
 		try {
