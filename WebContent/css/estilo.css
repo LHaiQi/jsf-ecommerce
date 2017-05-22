@@ -1,70 +1,69 @@
-body {
-	background-color: #f2efef !important;
-}
-
-#header{
-	background-color: #232B2B;
-	height: 110px;
-}
-#barrapesquisa {	
-	margin-top:40px;	}
-#carrinho{
-	margin-top:30px;
-}
-#icone{
-	margin-top:31px;
-	float:left;
-}
-#texto{	margin-top:35px;
-	margin-left: 50px;
-	color: #fff;
-	text-decoration: none;
-}
-#texto > a {
-	color: #fff;
-}
-#textoredes{
-	width:11%;
-	margin-top:25px;
-	float:left;
-}
-/* Footer */
-.footer {
-	margin-top: 50px;
-    padding: 5rem 0;
-    background: #000;
+body {
+	background-color: #f2efef !important;
 }
 
-.footer .headline {
-    color: #375E98;
-    text-transform: uppercase;
-}
-
-.footer .description {
-    color: #898989;
+#header{
+	background-color: #232B2B;
+	height: 110px;
+}
+#barrapesquisa {	
+	margin-top:40px;	}
+#carrinho{
+	margin-top:30px;
+}
+#icone{
+	margin-top:31px;
+	float:left;
+}
+#texto{	margin-top:35px;
+	margin-left: 50px;
+	color: #fff;
+	text-decoration: none;
+}
+#texto > a {
+	color: #fff;
+}
+#textoredes{
+	width:11%;
+	margin-top:25px;
+	float:left;
 }
-.footer .text {
-    font-size: 1.5rem;
-    color: #555555;
+/* Footer */
+.footer {
+	margin-top: 50px;
+    padding: 5rem 0;
+    background: #000;
+}
+
+.footer .headline {
+    color: #375E98;
+    text-transform: uppercase;
 }
-.footer form {
-   margin: 4rem 0; 
+
+.footer .description {
+    color: #898989;
+}
+.footer .text {
+    font-size: 1.5rem;
+    color: #555555;
+}
+.footer form {
+   margin: 4rem 0; 
+}
+.footer .btn-warning {
+    background-color: #fcdb00;       text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #000;
+}
+.footer .btn-warning:hover {
+    cursor: pointer;
+}
+.footer .nav {
+    margin-top: 5rem;
+    padding: 0 1.7rem;
 }
-.footer .btn-warning {
-    background-color: #fcdb00;       text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #000;
-}
-.footer .btn-warning:hover {
-    cursor: pointer;
-}
-.footer .nav {
-    margin-top: 5rem;
-    padding: 0 1.7rem;
-}
-
-/*provaveis erros*/
+
 .footer .nav-link {
     color: #fff;
     padding: 0;
@@ -1272,7 +1271,7 @@ body {
   margin-bottom: 1rem; }
   .miniatura:hover, .miniatura:focus {
     box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5); }.dropdown-toggle::after {  display:none;}
-
+select.form-control:not([size]):not([multiple]) {    height:auto;}
 
 
 
