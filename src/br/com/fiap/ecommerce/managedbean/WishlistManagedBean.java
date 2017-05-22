@@ -29,6 +29,17 @@ public class WishlistManagedBean {
 	}
 
 	public List<WishlistBean> getListWishes() {
+		WishlistBO wishlistBO = new WishlistBO();
+		
+		try {
+			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
+			listWishes = wishlistBO.getAllWishes(wishlist);
+		} 
+		catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Buscar Todos", "Detalhes:  " + e));
+		}
+		
 		return listWishes;
 	}
 

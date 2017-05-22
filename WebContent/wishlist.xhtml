@@ -5,11 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<b:head>
+	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 		<title>Wishlist</title>
-	</b:head>
-	<b:body>
+	</h:head>
+	
+	<h:body>
 		<ui:composition template="index.xhtml">
 			<ui:define name="content">
 				<b:container>
@@ -17,12 +18,12 @@
 						<b:column col-md="8" offset-md="2">
 							<b:form>
 								<div class="linha pequeno-up-2 grande-up-4">
-									<ui:repeat var="book" value="#{bookManagedBean.listBook}">
+									<ui:repeat var="wish" value="#{wishlistManagedBean.listWishes}">
 										<div class="coluna">
-										<br></br>
+											<br></br>
 											<img class="miniatura" src="#{book.bookImage}" />
-											<h5>#{book.name}</h5>
-											<p>R$ #{book.price}</p>
+											<h5>#{wish.name}</h5>
+											<p>R$ #{wish.price}</p>
 											<b:commandButton value="Comprar" iconAwesome="cart-plus" size="lg" >									
 											</b:commandButton>																					
 											<br></br>
@@ -35,5 +36,5 @@
 				</b:container>
 			</ui:define>
 		</ui:composition>
-	</b:body>
+	</h:body>
 </html>
