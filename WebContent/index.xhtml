@@ -41,9 +41,9 @@
 						<div id="texto">
 							Olá
 							<br/>
-							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">
-								<b:navLink value="Entrar" href="login.jsf" iconAwesome="sign-in"></b:navLink>
-								<b:navLink value="Cliente Novo? Cadastrar" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
+							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">								<b:form>
+									<b:navLink value="Entrar" rendered="#{!userManagedBean.estaLogado}" href="login.jsf" iconAwesome="sign-in"></b:navLink>								</b:form>								<b:form>
+									<b:navLink value="Cadastrar" rendered="#{!userManagedBean.estaLogado}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>								</b:form>								<b:form>										<b:navLink rendered="#{userManagedBean.apareceGerenciarUsuarios}" href="search-user.jsf" value="Gerenciar Usuários" iconAwesome="fa-cog"></b:navLink>								</b:form>								<b:form>										<b:navCommandLink value="Sair" rendered="#{userManagedBean.estaLogado}" action="#{userManagedBean.sairUserController}" iconAwesome="fa-sign-out"></b:navCommandLink>								</b:form>
 							</b:dropMenu>
 						</div>						
 					</b:column>

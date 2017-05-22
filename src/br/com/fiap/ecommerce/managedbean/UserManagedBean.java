@@ -22,7 +22,32 @@ public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
     String newPassword, repeatedNewPassword;
-        
+    boolean apareceGerenciarUsuarios = false;
+    boolean estaLogado = false;
+    boolean permissaoAdm = false;
+    
+    
+    
+	
+	
+	public boolean getPermissaoAdm() {
+		return permissaoAdm;
+	}
+	public void setPermissaoAdm(boolean permissaoAdm) {
+		this.permissaoAdm = permissaoAdm;
+	}
+	public boolean getEstaLogado() {
+		return estaLogado;
+	}
+	public void setEstaLogado(boolean estaLogado) {
+		this.estaLogado = estaLogado;
+	}
+	public boolean getApareceGerenciarUsuarios() {
+		return apareceGerenciarUsuarios;
+	}
+	public void setApareceGerenciarUsuarios(boolean apareceMinhaConta) {
+		this.apareceGerenciarUsuarios = apareceMinhaConta;
+	}
 	public String getNewPassword() {
 		return newPassword;
 	}
@@ -67,6 +92,7 @@ public class UserManagedBean {
 		try {
 			userBO.inserirUser(user);
 			loginBO.inserirLogin(user.getLogin());
+			estaLogado = true;
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -77,7 +103,7 @@ public class UserManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir", "Detalhes:  " + e));	
 		}
 		
-		return "insert-user";
+		return "login";
 	}
 	
 	public String deletarUserController(){
@@ -138,6 +164,12 @@ public class UserManagedBean {
 			loginAutenticado = loginBO.autenticarLogin(user.getLogin());
 			
 			if(loginAutenticado != null){
+				if(loginAutenticado.getLoginType() == 1){
+					apareceGerenciarUsuarios = true;
+				}else{
+					apareceGerenciarUsuarios = false;
+				}
+				estaLogado = true;
 				return "search-user";
 			}
 			else {
@@ -156,6 +188,7 @@ public class UserManagedBean {
 	}
 	
 	public String criarConta(){
+		user = new UserBean();
 		return "insert-user";
 	}
 	
@@ -196,5 +229,12 @@ public class UserManagedBean {
 			FacesMessage message = new FacesMessage("As senhas não conferem");
 			throw new ValidatorException(message);
 		}
+	}
+	
+	public String sairUserController(){
+		estaLogado = false;
+		apareceGerenciarUsuarios = false;
+		user = new UserBean();
+		return "show-books.jsf";
 	}
 }
