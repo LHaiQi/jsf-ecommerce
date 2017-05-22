@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Welcome</title>
+		<title>#{msgs.bemvindo}</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
 	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
 	</h:head>
@@ -21,9 +21,9 @@
 					</b:column>
 					<b:column col-md="6">
 						<b:form id="barrapesquisa" >
-							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="Que Livro Você Procura?">
+							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="#{msgs.quelivroprocura}">
 								<f:facet name="append">
-									<b:dropButton value="Filtrar">
+									<b:dropButton value="#{msgs.filtrar}">
 										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
 										<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
 									</b:dropButton>
@@ -39,11 +39,11 @@
 							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>
 						</div>
 						<div id="texto">
-							Olá
+							#{msgs.ola}
 							<br/>
-							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">
-								<b:navLink value="Entrar" href="login.jsf" iconAwesome="sign-in"></b:navLink>
-								<b:navLink value="Cliente Novo? Cadastrar" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
+							<b:dropMenu value="#{msgs.minhaconta}" iconAwesome="lock" iconAlign="right">
+								<b:navLink value="#{msgs.entrar}" href="login.jsf" iconAwesome="sign-in"></b:navLink>
+								<b:navLink value="#{msgs.clientenovo}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
 							</b:dropMenu>
 						</div>						
 					</b:column>
@@ -57,13 +57,13 @@
 		</div>	
 
 		<div class="content">
-			<ui:insert name="content">Default Content</ui:insert>
+			<ui:insert name="content">#{msgs.conteudopadrao}</ui:insert>
 		</div>
 		
 		<footer>
 		    <div class="footer">
 		      <div class="container">
-		        <h4 class="headline text-center">Keep in touch with us</h4>
+		        <h4 class="headline text-center">#{msgs.mantercontato}</h4>
 		        <p class="text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec
 		          rutrum sed sem quis venenatis.</p>
 		
@@ -96,31 +96,31 @@
 		          </div>
 		          <div class="col">
 		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Examples</a></li>
-		              <li><a class="nav-link" href="#">Shop</a></li>
-		              <li><a class="nav-link" href="#">License</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.exemplos}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.shop}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.licensa}</a></li>
 		            </ul>
 		          </div>
 		          <div class="col">
 		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Contact</a></li>
-		              <li><a class="nav-link" href="#">About</a></li>
-		              <li><a class="nav-link" href="#">Privacy</a></li>
-		              <li><a class="nav-link" href="#">Terms</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.contato}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.sobre}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.priv}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.terms}</a></li>
 		            </ul>
 		          </div>
 		          <div class="col">
 		            <ul class="nav flex-column">
 		              <li><a class="nav-link" href="#">Download</a></li>
-		              <li><a class="nav-link" href="#">Support</a></li>
-		              <li><a class="nav-link" href="#">Documents</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.suporte}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.documentos}</a></li>
 		            </ul>
 		          </div>
 		          <div class="col">
 		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Media</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.media}</a></li>
 		              <li><a class="nav-link" href="#">Blog</a></li>
-		              <li><a class="nav-link" href="#">Forum</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.forum}</a></li>
 		            </ul>
 		          </div>
 		        </div>
