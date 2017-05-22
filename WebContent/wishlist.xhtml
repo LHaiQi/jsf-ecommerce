@@ -15,7 +15,21 @@
 				<b:container>
 					<b:row>
 						<b:column col-md="8" offset-md="2">
-							
+							<b:form>
+								<div class="linha pequeno-up-2 grande-up-4">
+									<ui:repeat var="book" value="#{bookManagedBean.listBook}">
+										<div class="coluna">
+										<br></br>
+											<img class="miniatura" src="#{book.bookImage}" />
+											<h5>#{book.name}</h5>
+											<p>R$ #{book.price}</p>
+											<b:commandButton value="Comprar" iconAwesome="cart-plus" size="lg" >									
+											</b:commandButton>																					
+											<br></br>
+										</div>
+									</ui:repeat>
+								</div>
+						   </b:form>
 						</b:column>
 					</b:row>
 				</b:container>

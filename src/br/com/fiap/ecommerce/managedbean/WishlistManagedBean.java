@@ -9,8 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.WishlistBean;
 import br.com.fiap.ecommerce.bo.WishlistBO;
+import br.com.fiap.ecommerce.util.SessionUtil;
 
 @ManagedBean
 @SessionScoped
@@ -38,6 +40,7 @@ public class WishlistManagedBean {
 		WishlistBO wishlistBO = new WishlistBO();		
 		
 		try {
+			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
 			wishlistBO.setWishlist(wishlist);
 		} 
 		catch (SQLException e) {
@@ -52,6 +55,7 @@ public class WishlistManagedBean {
 		WishlistBO wishlistBO = new WishlistBO();
 		
 		try {
+			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
 			listWishes = wishlistBO.getAllWishes(wishlist);
 		} 
 		catch (Exception e) {
@@ -66,6 +70,7 @@ public class WishlistManagedBean {
 		WishlistBO wishlistBO = new WishlistBO();
 		
 		try {
+			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
 			wishlistBO.deleteWishItem(wishlist);
 		} 
 		catch (SQLException e) {

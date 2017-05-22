@@ -1,15 +1,25 @@
-body {
-	background-color: #f2efef !important;
-}
-
-#header{
-	background-color: #232B2B;
-	height: 110px;
-}
-#barrapesquisa {	
-	margin-top:40px;	}
+body {
+	background-color: #f2efef !important;
+}
+#header{
+	background-color: #232B2B;
+	height: 110px;
+}
+#barrapesquisa {	
+	margin-top:40px;	
+}
+
 #carrinho{
 	margin-top:30px;
+}
+
+.btn-wish {
+	height: 46px !important;
+	width: 37px !important;
+}
+
+.fa-wish {
+	margin-left: -6px;
 }
 #icone{
 	margin-top:31px;

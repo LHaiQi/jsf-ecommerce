@@ -23,7 +23,7 @@ public class WishlistDAO {
 		
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, wishlist.getBook().getBookID());
-		preparedStatement.setInt(2, wishlist.getLogin().getUserId());
+		preparedStatement.setInt(2, wishlist.getLogin().getLoginId());
 		
 		preparedStatement.execute();
 	}
