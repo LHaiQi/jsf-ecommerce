@@ -22,6 +22,11 @@ public class BookBO {
 		return bookDAO.getListBooks(book);
 	}
 	
+	public List<BookBean> getListBooksDiscount(BookBean book) throws SQLException {
+		BookDAO bookDAO = new BookDAO();
+		return bookDAO.getListBooksDiscount(book);
+	}
+	
 	public void deleteBook(BookBean book) throws SQLException {
 		BookDAO bookDAO = new BookDAO();
 		bookDAO.deleteBook(book);

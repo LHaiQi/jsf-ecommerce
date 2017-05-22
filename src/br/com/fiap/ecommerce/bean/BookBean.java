@@ -9,6 +9,9 @@ public class BookBean {
 	private AuthorBean author;
 	private PublisherBean publisher;
 	private GenreBean genre;
+	private String bookImage;
+	private int discount;
+	private int quantity;
 	
 	public BookBean () { 
 		author = new AuthorBean();
@@ -17,7 +20,7 @@ public class BookBean {
 	}
 	
 	public BookBean(int bookID, int iSBN, String name, String synopsis, double price, AuthorBean author,
-			PublisherBean publisher, GenreBean genre) {
+			PublisherBean publisher, GenreBean genre,String bookImage,int discount,int quantity) {
 		this.bookID = bookID;
 		ISBN = iSBN;
 		this.name = name;
@@ -26,6 +29,35 @@ public class BookBean {
 		this.author = author;
 		this.publisher = publisher;
 		this.genre = genre;
+		this.bookImage = bookImage;
+		this.discount = discount;
+		this.quantity = quantity;
+	}
+   
+	
+	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(String bookImage) {
+		this.bookImage = bookImage;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
 	public int getBookID() {
