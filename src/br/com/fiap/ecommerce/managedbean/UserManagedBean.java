@@ -24,12 +24,8 @@ public class UserManagedBean {
     String newPassword, repeatedNewPassword;
     boolean apareceGerenciarUsuarios = false;
     boolean estaLogado = false;
-    boolean permissaoAdm = false;
-    
-    
-    
-	
-	
+    boolean permissaoAdm = false;  
+		
 	public boolean getPermissaoAdm() {
 		return permissaoAdm;
 	}
@@ -103,7 +99,7 @@ public class UserManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir", "Detalhes:  " + e));	
 		}
 		
-		return "login";
+		return "show-books";
 	}
 	
 	public String deletarUserController(){
@@ -130,6 +126,9 @@ public class UserManagedBean {
 		UserBO userBO = new UserBO();
 	    
 		try {
+			if(permissaoAdm){
+				user.getLogin().setLoginType(1);
+			}
 			userBO.alterarUser(user);
 		} 
 	    catch (Exception e) {
@@ -170,7 +169,7 @@ public class UserManagedBean {
 					apareceGerenciarUsuarios = false;
 				}
 				estaLogado = true;
-				return "search-user";
+				return "show-books";
 			}
 			else {
 				throw new Exception("Usuário e/ou senha inválidos");

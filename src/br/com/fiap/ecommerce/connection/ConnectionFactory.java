@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 	private static Connection connection = null;
 	private static String url = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
-	private static String user = "rm73813"; 
-	private static String pass = "220697"; 
+	private static String user = "rm73612"; 
+	private static String pass = "040397"; 
 	
 	public static Connection getConnection(){
 		if (connection == null) {
