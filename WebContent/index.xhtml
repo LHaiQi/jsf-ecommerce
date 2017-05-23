@@ -1,131 +1,131 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Welcome</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
-	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
-	</h:head>
-	<f:event listener="#{bookManagedBean.searchListBookDiscountController}" type="preRenderView" />
-	<h:body>
-		<div id="header">
-			<b:container>
-				<b:row>
-					<b:column col-md="2">
-						<img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" />			
-					</b:column>
-					<b:column col-md="6">
-						<b:form id="barrapesquisa" >
-							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="Que Livro Você Procura?">
-								<f:facet name="append">
-									<b:dropButton value="Filtrar">
-										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
-										<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
-									</b:dropButton>
-								</f:facet>
-								<f:facet name="append">
-									<b:commandButton look="primary"  iconAwesome="search" icon-align="right"/>
-								</f:facet>
-							</b:inputText>
-						</b:form>
-					</b:column>
-					<b:column col-md="2">						
-						<div id="icone">
-							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>
-						</div>
-						<div id="texto">
-							Olá
-							<br/>
-							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">								<b:form>
-									<b:navLink value="Entrar" rendered="#{!userManagedBean.estaLogado}" href="login.jsf" iconAwesome="sign-in"></b:navLink>								</b:form>								<b:form>
-									<b:navLink value="Cadastrar" rendered="#{!userManagedBean.estaLogado}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>								</b:form>								<b:form>										<b:navLink rendered="#{userManagedBean.apareceGerenciarUsuarios}" href="search-user.jsf" value="Gerenciar Usuários" iconAwesome="fa-cog"></b:navLink>								</b:form>								<b:form>										<b:navCommandLink value="Mudar senha" rendered="#{userManagedBean.estaLogado}"  action="#{userManagedBean.mudarSenha}" iconAwesome="fa-key"></b:navCommandLink>								</b:form>								<b:form>										<b:navCommandLink value="Sair" rendered="#{userManagedBean.estaLogado}" action="#{userManagedBean.sairUserController}" iconAwesome="fa-sign-out"></b:navCommandLink>								</b:form>
-							</b:dropMenu>
-						</div>						
-					</b:column>
-					<b:column col-md="2">
-						<div id="carrinho">
-					    	<img src="https://cdn0.iconfinder.com/data/icons/mtt-web-icons/139/shoppingbag-128.png" width="60"/>
-						</div>
-					</b:column>
-				</b:row>
-			</b:container>
-		</div>	
-
-		<div class="content">
-			<ui:insert name="content">Default Content</ui:insert>
-		</div>
-		
-		<footer>
-		    <div class="footer">
-		      <div class="container">
-		        <h4 class="headline text-center">Keep in touch with us</h4>
-		        <p class="text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec
-		          rutrum sed sem quis venenatis.</p>
-		
-		       	<b:container>
-		       		<b:row>
-		       			<b:column col-md="4" offset-md="4">
-		       				<b:column col-md="4">
-		       					<img src="https://goo.gl/14gGFs" width="48"/>
-		       				</b:column>
-		       				<b:column col-md="4">
-		       					<img src="https://goo.gl/HstEQ3" width="48"/>
-		       				</b:column>
-		       				<b:column col-md="4">
-		       					<img src="https://goo.gl/MehkOC" width="48"/>
-		       				</b:column>
-		       			</b:column>
-		       		</b:row>
-		       	</b:container>
-		
-		        <div class="row">
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
-		              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
-		              <li><a class="nav-link" href="#">Da</a></li>
-		              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
-		              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
-		              <li><a class="nav-link" href="#">+844 35149182</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Examples</a></li>
-		              <li><a class="nav-link" href="#">Shop</a></li>
-		              <li><a class="nav-link" href="#">License</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Contact</a></li>
-		              <li><a class="nav-link" href="#">About</a></li>
-		              <li><a class="nav-link" href="#">Privacy</a></li>
-		              <li><a class="nav-link" href="#">Terms</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Download</a></li>
-		              <li><a class="nav-link" href="#">Support</a></li>
-		              <li><a class="nav-link" href="#">Documents</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">Media</a></li>
-		              <li><a class="nav-link" href="#">Blog</a></li>
-		              <li><a class="nav-link" href="#">Forum</a></li>
-		            </ul>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		  </footer>
-	</h:body>
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>#{msgs.bemvindo}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+	</h:head>
+	<f:event listener="#{bookManagedBean.searchListBookDiscountController}" type="preRenderView" />
+	<h:body>
+		<div id="header">
+			<b:container>
+				<b:row>
+					<b:column col-md="2">
+						<img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" />			
+					</b:column>
+					<b:column col-md="6">
+						<b:form id="barrapesquisa" >
+							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="#{msgs.quelivroprocura}">
+								<f:facet name="append">
+									<b:dropButton value="#{msgs.filtrar}">
+										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
+										<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
+									</b:dropButton>
+								</f:facet>
+								<f:facet name="append">
+									<b:commandButton look="primary"  iconAwesome="search" icon-align="right"/>
+								</f:facet>
+							</b:inputText>
+						</b:form>
+					</b:column>
+					<b:column col-md="2">						
+						<div id="icone">
+							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>
+						</div>
+						<div id="texto">
+							#{msgs.ola}
+							<br/>
+							<b:dropMenu value="#{msgs.minhaconta}" iconAwesome="lock" iconAlign="right">
+								<b:navLink value="#{msgs.entrar}" href="login.jsf" iconAwesome="sign-in"></b:navLink>
+								<b:navLink value="#{msgs.clientenovo}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>
+							</b:dropMenu>
+						</div>						
+					</b:column>
+					<b:column col-md="2">
+						<div id="carrinho">
+					    	<img src="https://cdn0.iconfinder.com/data/icons/mtt-web-icons/139/shoppingbag-128.png" width="60"/>
+						</div>
+					</b:column>
+				</b:row>
+			</b:container>
+		</div>	
+
+		<div class="content">
+			<ui:insert name="content">#{msgs.conteudopadrao}</ui:insert>
+		</div>
+		
+		<footer>
+		    <div class="footer">
+		      <div class="container">
+		        <h4 class="headline text-center">#{msgs.mantercontato}</h4>
+		        <p class="text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum. Donec
+		          rutrum sed sem quis venenatis.</p>
+		
+		       	<b:container>
+		       		<b:row>
+		       			<b:column col-md="4" offset-md="4">
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/14gGFs" width="48"/>
+		       				</b:column>
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/HstEQ3" width="48"/>
+		       				</b:column>
+		       				<b:column col-md="4">
+		       					<img src="https://goo.gl/MehkOC" width="48"/>
+		       				</b:column>
+		       			</b:column>
+		       		</b:row>
+		       	</b:container>
+		
+		        <div class="row">
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
+		              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
+		              <li><a class="nav-link" href="#">Da</a></li>
+		              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
+		              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
+		              <li><a class="nav-link" href="#">+844 35149182</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">#{msgs.exemplos}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.shop}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.licensa}</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">#{msgs.contato}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.sobre}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.priv}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.terms}</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">Download</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.suporte}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.documentos}</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">#{msgs.media}</a></li>
+		              <li><a class="nav-link" href="#">Blog</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.forum}</a></li>
+		            </ul>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </footer>
+	</h:body>
 </html>
