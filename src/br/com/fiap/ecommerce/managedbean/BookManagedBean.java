@@ -26,6 +26,8 @@ public class BookManagedBean {
 	private List<AuthorBean> listAuthor = new ArrayList<AuthorBean>();
 	private List<GenreBean> listGenre = new ArrayList<GenreBean>();
 	private List<PublisherBean> ListPublisher = new ArrayList<PublisherBean>();
+	private List<BookBean> listBook2 = new ArrayList<BookBean>();	
+	private List<BookBean> listBook3 = new ArrayList<BookBean>();	
 	
 	public BookBean getBook() {
 		return book;
@@ -33,6 +35,22 @@ public class BookManagedBean {
 
 	public void setBook(BookBean book) {
 		this.book = book;
+	}
+
+	public List<BookBean> getListBook2() {
+		return listBook2;
+	}
+
+	public void setListBook2(List<BookBean> listBook2) {
+		this.listBook2 = listBook2;
+	}
+
+	public List<BookBean> getListBook3() {
+		return listBook3;
+	}
+
+	public void setListBook3(List<BookBean> listBook3) {
+		this.listBook3 = listBook3;
 	}
 
 	public List<BookBean> getListBook() {
@@ -132,20 +150,21 @@ public class BookManagedBean {
 	public String searchListBookIndexController(){
 		BookBO bookBO = new BookBO();
 		try {
-			listBook=null;
-			listBook = bookBO.getListBooks(book);
+			setListBook3(null);
+			setListBook3(bookBO.getListBooks(book));
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
 		}
 		
-		return "show-books";
+		return "show-bookB";
 	}
 	
 	public String searchListBookDiscountController(){
 		BookBO bookBO = new BookBO();
 		try {
-			listBook = bookBO.getListBooksDiscount(book);
+			setListBook2(null);
+			setListBook2(bookBO.getListBooksDiscount(book));
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
