@@ -64,15 +64,16 @@ body {
 	float:left;
 }
 /* Footer */
-.footer {
-	margin-top: 50px;
-    padding: 5rem 0;
-    background: #000;
-}
-
-.footer .headline {
-    color: #375E98;
-    text-transform: uppercase;
+.footer {
+	margin-top: 25px;
+    padding: 10px;
+    background: #000;
+}
+.footer .headline {
+	margin-top: 15px;
+    color: #375E98;
+    text-transform: uppercase;
+	font-size: 24px;
 }
 
 .footer .description {
