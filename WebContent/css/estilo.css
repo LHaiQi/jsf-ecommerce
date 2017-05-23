@@ -79,7 +79,7 @@ float:left;
 .footer .nav {
     margin-top: 5rem;
     padding: 0 1.7rem;
-}
+}.antigo{	text-decoration:line-through;}
 /*provaveis erros*/
 
 .footer .nav-link {

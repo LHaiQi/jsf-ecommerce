@@ -85,6 +85,7 @@ public class BookDAO {
 				int bookID  = resultSet.getInt("BookID");
 				String name = resultSet.getString("NAME");
 				double price = resultSet.getDouble("Price");
+				Double bprice = price;
 				authorBean.setName(resultSet.getString("Author"));
 				genreBean.setGenre(resultSet.getString("Genre"));
 				publisherBean.setPublisher(resultSet.getString("Publisher"));
@@ -95,13 +96,13 @@ public class BookDAO {
 				double desconto = discount;
 				desconto = desconto /100;
 				desconto = 1-desconto;
-				price = price * desconto;
-				BigDecimal bd = new BigDecimal(price);
+				bprice = bprice * desconto;
+				BigDecimal bd = new BigDecimal(bprice);
 				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
                 Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");
 				
-				bookBean = new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity);
+				bookBean = new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity,preco);
 			}
 		
 		return bookBean;
@@ -131,6 +132,7 @@ public class BookDAO {
 				int bookID  = resultSet.getInt("BookID");
 				String name = resultSet.getString("NAME");
 				double price = resultSet.getDouble("Price");
+				Double bprice = price;
 				authorBean.setName(resultSet.getString("Author"));
 				genreBean.setGenre(resultSet.getString("Genre"));
 				publisherBean.setPublisher(resultSet.getString("Publisher"));
@@ -141,12 +143,12 @@ public class BookDAO {
 				double desconto = discount;
 				desconto = desconto /100;
 				desconto = 1-desconto;
-				price = price * desconto;
-				BigDecimal bd = new BigDecimal(price);
+				bprice = bprice * desconto;
+				BigDecimal bd = new BigDecimal(bprice);
 				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
                 Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");	
-				listBook.add(new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
+				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity,preco));
 			}
 		
 		return listBook;
@@ -170,6 +172,7 @@ public class BookDAO {
 				int bookID  = resultSet.getInt("BookID");
 				String name = resultSet.getString("NAME");
 				double price = resultSet.getDouble("Price");
+				Double bprice = price;
 				authorBean.setId(resultSet.getInt("AuthorID"));
 				genreBean.setId(resultSet.getInt("GenreID"));
 				publisherBean.setId(resultSet.getInt("PublisherID"));
@@ -180,13 +183,13 @@ public class BookDAO {
 				double desconto = discount;
 				desconto = desconto /100;
 				desconto = 1-desconto;
-				price = price * desconto;
-				BigDecimal bd = new BigDecimal(price);
+				bprice = bprice * desconto;
+				BigDecimal bd = new BigDecimal(bprice);
 				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
                 Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");
 				
-				listBook.add(new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
+				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity,preco));
 			}
 		
 		return listBook;
