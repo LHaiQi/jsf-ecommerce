@@ -15,6 +15,7 @@ import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.bo.LoginBO;
 import br.com.fiap.ecommerce.bo.UserBO;
+import br.com.fiap.ecommerce.util.SessionUtil;
 
 @ManagedBean
 @SessionScoped
@@ -132,13 +133,14 @@ public class UserManagedBean {
 	
 	public String loginUserController(){
 		LoginBO loginBO = new LoginBO();
-		LoginBean loginAutenticado = null;
+	    LoginBean login = null;	
 		
 		try {
-			loginAutenticado = loginBO.autenticarLogin(user.getLogin());
+			login = loginBO.autenticarLogin(user.getLogin());
 			
-			if(loginAutenticado != null){
-				return "search-user";
+			if(login != null){
+				SessionUtil.setParam("login", login);
+				return "show-books";
 			}
 			else {
 				throw new Exception("Usuário e/ou senha inválidos");

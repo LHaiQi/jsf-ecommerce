@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Wishlist</title>
+	</h:head>
+	
+	<h:body>
+		<ui:composition template="index.xhtml">
+			<ui:define name="content">
+				<b:container>
+					<b:row>
+						<b:column col-md="10" offset-md="1">
+							<b:messages/>
+							<b:form>
+								<ui:repeat var="wish" value="#{wishlistManagedBean.listWishes}">
+									<div class="wishItem">
+										<b:row>
+											<b:column>
+												<b:row>												
+													<b:column col-md="2">
+														<img class="miniatura" src="#{wish.bookImage}" height="100"/>
+													</b:column>
+													<b:column col-md="4">
+														<h5 class="wish-name">#{wish.name}</h5>
+													</b:column>
+													<b:column col-md="2">
+														<p class="wish-price">R$#{wish.price}</p>
+													</b:column>
+													<b:column col-md="2">
+														<h:commandLink styleClass="btn btn-default btn-remove-wish btn-md wish-button" value="Comprar" action="#{carrinhoAqui}">
+															<i class="fa fa-cart-plus  fa-wish-remove"></i>
+															<f:setPropertyActionListener value="#{wish.bookID}" target="#{carrinhoAqui}"/>
+														</h:commandLink>
+													</b:column>		
+													<b:column col-md="2">
+														<h:commandLink styleClass="btn btn-remove-wish btn-danger btn-md wish-button" value="Remover" action="#{wishlistManagedBean.deleteWishItem}">
+															<i class="fa fa-times fa-wish-remove"></i>
+															<f:setPropertyActionListener value="#{wish.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}"/>
+														</h:commandLink>
+													</b:column>										
+												</b:row>
+											</b:column>
+										</b:row>
+									</div>									
+								</ui:repeat>							
+						   </b:form>
+						</b:column>
+					</b:row>
+				</b:container>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

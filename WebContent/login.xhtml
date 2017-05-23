@@ -5,46 +5,38 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Login</title>
-</h:head>
-<h:body>
-<ui:composition template="index.xhtml">
-    	<ui:define name="content">
-        <b:container>
-<b:row>
-<b:column>
-<h1>Login</h1>
-</b:column>
-</b:row>
-</b:container>
-<b:container>
-<b:row>
-<b:column col-md="8" offset="2">
-<b:form>
-<p>#{msgs.nome_usuario}</p>
-<b:inputText value="#{userManagedBean.user.login.user}" />
-<p>#{msgs.senha}</p>
-<b:inputText value="#{userManagedBean.user.login.password}" />
-<b:column col-md="2">
-<b:commandButton look="success" value="#{msgs.logar}" action="#{userManagedBean.loginUserController}"></b:commandButton>
-</b:column>
-<b:column col-md="3">
-<b:commandButton look="success" value="#{msgs.mudar_senha}" action="#{userManagedBean.mudarSenha}"></b:commandButton>
-</b:column>
-<b:column col-md="4">
-<b:commandButton look="success" value="#{msgs.criar_conta}" action="#{userManagedBean.criarConta}"></b:commandButton>
-</b:column>
-</b:form>
-</b:column>
-</b:row>
-</b:container>
-        
-        
-        </ui:define>
-</ui:composition>
-
-
-</h:body>
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Login</title>
+	</h:head>
+	<h:body>
+		<ui:composition template="index.xhtml">
+			<ui:define name="content">
+				<b:container>
+					<b:row>
+						<b:column>
+							<h1>Login</h1>
+						</b:column>
+					</b:row>
+				</b:container>
+				<b:container>
+					<b:row>
+						<b:column col-md="5" offset="4">
+							<b:form>
+								<p>#{msgs.nome_usuario}</p>
+								<b:inputText value="#{userManagedBean.user.login.user}" />
+								
+								<p>#{msgs.senha}</p>
+								<b:inputText value="#{userManagedBean.user.login.password}" />								
+								
+								<b:commandButton look="primary" value="#{msgs.logar}" action="#{userManagedBean.loginUserController}"></b:commandButton>													
+								<b:commandButton look="primary" value="#{msgs.mudar_senha}" action="#{userManagedBean.mudarSenha}"></b:commandButton>													
+								<b:commandButton look="primary" value="#{msgs.criar_conta}" action="#{userManagedBean.criarConta}"></b:commandButton>							
+							</b:form>
+						</b:column>
+					</b:row>
+				</b:container>       
+			</ui:define>
+		</ui:composition>
+	</h:body>
 </html>
