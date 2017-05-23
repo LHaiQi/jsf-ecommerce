@@ -42,8 +42,8 @@ public class BookDAO {
 	
 	public void setBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
-		String sql = "Insert Into Books(BookID, Name, Price, AuthorID, GenreID, PublisherID, ISBN, Synopsis) "
-				+ "Values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "Insert Into Books(BookID, Name, Price, AuthorID, GenreID, PublisherID, ISBN, Synopsis,BookImage,Discount,Quantity) "
+				+ "Values(?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, generateID());
@@ -54,7 +54,9 @@ public class BookDAO {
 			preparedStatement.setInt(6, book.getPublisher().getId());
 			preparedStatement.setInt(7, book.getISBN());
 			preparedStatement.setString(8, book.getSynopsis());
-			
+			preparedStatement.setString(9, book.getBookImage());
+			preparedStatement.setInt(10, book.getDiscount());
+			preparedStatement.setInt(11, book.getQuantity());
 			preparedStatement.execute();
 		
 	}
@@ -66,7 +68,7 @@ public class BookDAO {
 		GenreBean genreBean = new GenreBean();
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select B.BookID, B.Name Book, B.Price Price, A.Name Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis "
+		sql = "Select B.BookID, B.Name, B.Price Price, A.Name Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis,B.BookImage,B.discount,B.quantity"
 		    + " From Books B "
 		    + " Inner Join Author A On B.Authorid = A.Authorid "
 		    + " Inner Join Genre G On B.Genreid = G.Genreid "
@@ -104,13 +106,13 @@ public class BookDAO {
 		GenreBean genreBean = new GenreBean();
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select B.BookID, B.Name Book, B.Price Price, A.Name || A.lastName Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis "
+		sql = "Select B.BookID, B.Name, B.Price Price, A.Name || A.lastName Author, G.Genre Genre, P.Publisher Publisher, B.Isbn ISBN, B.Synopsis Synopsis,B.BookImage,B.discount,B.quantity "
 			    + " From Books B "
 			    + " Inner Join Author A On B.Authorid = A.Authorid "
 			    + " Inner Join Genre G On B.Genreid = G.Genreid "
 	            + " Inner Join Publisher P On B.Publisherid = P.Publisherid "
 	            + " Where B.Name like ? "
-	            + " Order By Book";
+	            + " Order By B.Name";
 		
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, "%" + book.getName() + "%");
@@ -128,8 +130,7 @@ public class BookDAO {
 				String synopsis = resultSet.getString("Synopsis");
 				String bookImage= resultSet.getString("BookImage");
 				int discount = resultSet.getInt("Discount");
-				int quantity = resultSet.getInt("Quantity");
-				
+				int quantity = resultSet.getInt("Quantity");	
 				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
 			}
 		
@@ -184,7 +185,7 @@ public class BookDAO {
 
 	public void alterBook(BookBean book) throws SQLException {
 		connection = ConnectionFactory.getConnection();
-		String sql = "Update Books Set Name = ?, Price = ?, AuthorID = ?, GenreID = ?, PublisherID = ?, ISBN = ?, Synopsis = ? "
+		String sql = "Update Books Set Name = ?, Price = ?, AuthorID = ?, GenreID = ?, PublisherID = ?, ISBN = ?, Synopsis = ? ,BookImage = ?,Discount = ?, Quantity = ?"
 				+ "Where BookId = ?";
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -195,7 +196,10 @@ public class BookDAO {
 			preparedStatement.setInt(5, book.getPublisher().getId());
 			preparedStatement.setInt(6, book.getISBN());
 			preparedStatement.setString(7, book.getSynopsis());
-			preparedStatement.setInt(8, book.getBookID());
+			preparedStatement.setInt(11, book.getBookID());
+			preparedStatement.setString(8, book.getBookImage());
+			preparedStatement.setInt(9, book.getDiscount());
+			preparedStatement.setInt(10, book.getQuantity());
 			
 			preparedStatement.execute();
 	}

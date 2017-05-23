@@ -80,8 +80,8 @@ public class BookManagedBean {
 		try {
 			ListPublisher = publisherBO.getListPubliser();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de COMBO", "Detalhes:  " + e));
 		}
 		
 		return ListPublisher;
@@ -129,6 +129,19 @@ public class BookManagedBean {
 		return "search-book";
 	}
 	
+	public String searchListBookIndexController(){
+		BookBO bookBO = new BookBO();
+		try {
+			listBook=null;
+			listBook = bookBO.getListBooks(book);
+		} catch (SQLException e) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+		}
+		
+		return "show-books";
+	}
+	
 	public String searchListBookDiscountController(){
 		BookBO bookBO = new BookBO();
 		try {
@@ -138,7 +151,7 @@ public class BookManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
 		}
 		
-		return "search-book";
+		return "show-books";
 	}
 	
 	public String deleteBookController(){
