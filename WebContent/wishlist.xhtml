@@ -15,21 +15,34 @@
 			<ui:define name="content">
 				<b:container>
 					<b:row>
-						<b:column col-md="8" offset-md="2">
+						<b:column col-md="10" offset-md="1">
+							<b:messages/>
 							<b:form>
-								<div class="linha pequeno-up-2 grande-up-4">
-									<ui:repeat var="wish" value="#{wishlistManagedBean.listWishes}">
-										<div class="coluna">
-											<br></br>
-											<img class="miniatura" src="#{book.bookImage}" />
-											<h5>#{wish.name}</h5>
-											<p>R$ #{wish.price}</p>
-											<b:commandButton value="Comprar" iconAwesome="cart-plus" size="lg" >									
-											</b:commandButton>																					
-											<br></br>
-										</div>
-									</ui:repeat>
-								</div>
+								<ui:repeat var="wish" value="#{wishlistManagedBean.listWishes}">
+									<div class="wishItem">
+										<b:row>
+											<b:column>
+												<b:row>												
+													<b:column col-md="2">
+														<img class="miniatura" src="#{wish.bookImage}" height="100"/>
+													</b:column>
+													<b:column col-md="4">
+														<h5 class="wish-name">#{wish.name}</h5>
+													</b:column>
+													<b:column col-md="2">
+														<p class="wish-price">R$#{wish.price}</p>
+													</b:column>
+													<b:column col-md="2">
+														<b:commandButton styleClass="wish-button" value="Comprar" iconAwesome="cart-plus" size="md" ></b:commandButton>
+													</b:column>		
+													<b:column col-md="2">
+														<b:commandButton look="danger" styleClass="wish-button" value="Remover" iconAwesome="fa-times" size="md" ></b:commandButton>
+													</b:column>										
+												</b:row>
+											</b:column>
+										</b:row>
+									</div>									
+								</ui:repeat>							
 						   </b:form>
 						</b:column>
 					</b:row>

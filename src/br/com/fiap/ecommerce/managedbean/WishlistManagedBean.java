@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.fiap.ecommerce.bean.BookBean;
 import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.WishlistBean;
 import br.com.fiap.ecommerce.bo.WishlistBO;
@@ -18,7 +19,8 @@ import br.com.fiap.ecommerce.util.SessionUtil;
 @SessionScoped
 public class WishlistManagedBean {
 	private WishlistBean wishlist = new WishlistBean();
-	List<WishlistBean> listWishes = new ArrayList<>();	
+	List<WishlistBean> listWishes = new ArrayList<>();
+	List<BookBean> listWishesItem = new ArrayList<>();
 	
 	public WishlistBean getWishlist() {
 		return wishlist;
@@ -28,19 +30,19 @@ public class WishlistManagedBean {
 		this.wishlist = wishlist;
 	}
 
-	public List<WishlistBean> getListWishes() {
+	public List<BookBean> getListWishes() {
 		WishlistBO wishlistBO = new WishlistBO();
 		
 		try {
 			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
-			listWishes = wishlistBO.getAllWishes(wishlist);
+			listWishesItem = wishlistBO.getAllWishes(wishlist);
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Buscar Todos", "Detalhes:  " + e));
 		}
 		
-		return listWishes;
+		return listWishesItem;
 	}
 
 	public void setListWishes(List<WishlistBean> listWishes) {
@@ -67,7 +69,7 @@ public class WishlistManagedBean {
 		
 		try {
 			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
-			listWishes = wishlistBO.getAllWishes(wishlist);
+			listWishesItem = wishlistBO.getAllWishes(wishlist);
 		} 
 		catch (Exception e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();

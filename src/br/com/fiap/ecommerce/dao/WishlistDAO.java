@@ -31,12 +31,8 @@ public class WishlistDAO {
 		preparedStatement.execute();
 	}
 
-	public List<WishlistBean> getAllWishes(WishlistBean wishlist) throws SQLException {
-		BookBean bookBean = null;
-		AuthorBean authorBean = new AuthorBean();
-		PublisherBean publisherBean = new PublisherBean();
-		GenreBean genreBean = new GenreBean();
-		List<WishlistBean> listWishes = new ArrayList<>();
+	public List<BookBean> getAllWishes(WishlistBean wishlist) throws SQLException {				
+		List<BookBean> listWishes = new ArrayList<>();
 		
 		connection = ConnectionFactory.getConnection();
 		sql = "Select b.* From Wishlist w "
@@ -44,24 +40,19 @@ public class WishlistDAO {
 			  + " Where userID = ?";
 		
 		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1, wishlist.getLogin().getUserId());
+		preparedStatement.setInt(1, wishlist.getLogin().getLoginId());
 		
 		resultSet = preparedStatement.executeQuery();
 		
 		while (resultSet.next()) {
 			int bookID  = resultSet.getInt("BookID");
-			String name = resultSet.getString("NAME");
-			double price = resultSet.getDouble("Price");
-			authorBean.setName(resultSet.getString("Author"));
-			genreBean.setGenre(resultSet.getString("Genre"));
-			publisherBean.setPublisher(resultSet.getString("Publisher"));
-			int ISBN = resultSet.getInt("ISBN");
-			String synopsis = resultSet.getString("Synopsis");
+			String name = resultSet.getString("Name");
+			double price = resultSet.getDouble("Price");			
 			String bookImage= resultSet.getString("BookImage");
 			int discount = resultSet.getInt("Discount");
 			int quantity = resultSet.getInt("Quantity");
 			
-			bookBean = new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity);
+			listWishes.add(new BookBean(bookID, name, price, bookImage, discount, quantity));
 		}
 		
 		return listWishes;
