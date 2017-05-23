@@ -1,5 +1,6 @@
 package br.com.fiap.ecommerce.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,9 +92,16 @@ public class BookDAO {
 				String synopsis = resultSet.getString("Synopsis");
 				String bookImage= resultSet.getString("BookImage");
 				int discount = resultSet.getInt("Discount");
+				double desconto = discount;
+				desconto = desconto /100;
+				desconto = 1-desconto;
+				price = price * desconto;
+				BigDecimal bd = new BigDecimal(price);
+				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
+                Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");
 				
-				bookBean = new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity);
+				bookBean = new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity);
 			}
 		
 		return bookBean;
@@ -130,8 +138,15 @@ public class BookDAO {
 				String synopsis = resultSet.getString("Synopsis");
 				String bookImage= resultSet.getString("BookImage");
 				int discount = resultSet.getInt("Discount");
+				double desconto = discount;
+				desconto = desconto /100;
+				desconto = 1-desconto;
+				price = price * desconto;
+				BigDecimal bd = new BigDecimal(price);
+				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
+                Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");	
-				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
+				listBook.add(new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
 			}
 		
 		return listBook;
@@ -162,9 +177,16 @@ public class BookDAO {
 				String synopsis = resultSet.getString("Synopsis");
 				String bookImage= resultSet.getString("BookImage");
 				int discount = resultSet.getInt("Discount");
+				double desconto = discount;
+				desconto = desconto /100;
+				desconto = 1-desconto;
+				price = price * desconto;
+				BigDecimal bd = new BigDecimal(price);
+				bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
+                Double preco  = bd.doubleValue();
 				int quantity = resultSet.getInt("Quantity");
 				
-				listBook.add(new BookBean(bookID, ISBN, name, synopsis, price, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
+				listBook.add(new BookBean(bookID, ISBN, name, synopsis, preco, authorBean, publisherBean, genreBean,bookImage,discount,quantity));
 			}
 		
 		return listBook;

@@ -22,7 +22,7 @@
 							<ui:repeat var="book" value="#{bookManagedBean.listBook3}">
 								<div class="coluna">
 								<br> </br>
-									<img class="miniatura" src="#{book.bookImage}" />
+									<img class="miniatura" src="#{book.bookImage}" height="222px" width="169px" title="#{book.synopsis}" alt="#{book.synopsis}" />
 									<h5>#{book.name}</h5>
 									<p>R$ #{book.price}</p>
 									<b:commandButton  value="Comprar" iconAwesome="cart-plus" size="lg" >
