@@ -60,11 +60,11 @@ public class WishlistDAO {
 
 	public void deleteWishItem(WishlistBean wishlist) throws SQLException {
 		connection = ConnectionFactory.getConnection();
-		sql = "Delete From Wishlist Where bookid = ? and userid = ?";
-		
-		preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1, wishlist.getBook().getBookID());
-		preparedStatement.setInt(2, wishlist.getLogin().getUserId());
+		sql = "Delete From Wishlist Where UserID= ? And BookID = ?";
+				
+		preparedStatement = connection.prepareStatement(sql);		
+		preparedStatement.setInt(1, wishlist.getLogin().getLoginId());
+		preparedStatement.setInt(2,  wishlist.getBook().getBookID());
 		
 		preparedStatement.execute();
 	}
