@@ -18,8 +18,16 @@ body {
 	width: 35px !important;
 }
 
+.btn-remove-wish {
+	width: 102px !important;
+}
+
 .fa-wish {
 	margin-left: -7px;
+}
+
+.fa-wish-remove {
+	margin-left: 5px;
 }
 
 .wishItem {

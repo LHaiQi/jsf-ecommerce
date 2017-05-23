@@ -85,12 +85,13 @@ public class WishlistManagedBean {
 		try {
 			wishlist.setLogin((LoginBean) SessionUtil.getParam("login"));
 			wishlistBO.deleteWishItem(wishlist);
+			listWishesItem = getListWishes();
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Deletar Item", "Detalhes:  " + e));
 		}
 		
-		return getAllWishes();
+		return "wishlist";
 	}	
 }

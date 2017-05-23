@@ -33,10 +33,16 @@
 														<p class="wish-price">R$#{wish.price}</p>
 													</b:column>
 													<b:column col-md="2">
-														<b:commandButton styleClass="wish-button" value="Comprar" iconAwesome="cart-plus" size="md" ></b:commandButton>
+														<h:commandLink styleClass="btn btn-default btn-remove-wish btn-md wish-button" value="Comprar" action="#{carrinhoAqui}">
+															<i class="fa fa-cart-plus  fa-wish-remove"></i>
+															<f:setPropertyActionListener value="#{wish.bookID}" target="#{carrinhoAqui}"/>
+														</h:commandLink>
 													</b:column>		
 													<b:column col-md="2">
-														<b:commandButton look="danger" styleClass="wish-button" value="Remover" iconAwesome="fa-times" size="md" ></b:commandButton>
+														<h:commandLink styleClass="btn btn-remove-wish btn-danger btn-md wish-button" value="Remover" action="#{wishlistManagedBean.deleteWishItem}">
+															<i class="fa fa-times fa-wish-remove"></i>
+															<f:setPropertyActionListener value="#{wish.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}"/>
+														</h:commandLink>
 													</b:column>										
 												</b:row>
 											</b:column>

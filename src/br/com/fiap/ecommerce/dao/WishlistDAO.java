@@ -37,7 +37,7 @@ public class WishlistDAO {
 		connection = ConnectionFactory.getConnection();
 		sql = "Select b.* From Wishlist w "
 			  + " Inner Join Books b On b.bookID = w.bookID "
-			  + " Where userID = ?";
+			  + " Where userID = ? Order By w.BookID";
 		
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, wishlist.getLogin().getLoginId());
@@ -60,7 +60,7 @@ public class WishlistDAO {
 
 	public void deleteWishItem(WishlistBean wishlist) throws SQLException {
 		connection = ConnectionFactory.getConnection();
-		sql = "Delete From Wishlist Where BookId = ? and UserID = ?";
+		sql = "Delete From Wishlist Where bookid = ? and userid = ?";
 		
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, wishlist.getBook().getBookID());
