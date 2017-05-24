@@ -13,6 +13,11 @@ body {
 	margin-top:30px;
 }
 
+.btn-cart {
+	padding: 12px;
+    width: 131px !important;
+}
+
 .btn-wish {
 	margin-left:2px;
 	width: 35px !important;
@@ -23,7 +28,7 @@ body {
 }
 
 .fa-wish {
-	margin-left: -7px;
+	margin-left: -8px;
 }
 
 .fa-wish-remove {
@@ -48,6 +53,20 @@ body {
 
 .wish-button {
 	margin-top: 29px;
+}
+
+.cart-payment {
+	border-radius: 10px;
+	background: #fff;
+    padding: 30px;
+    height: 170px;
+    margin-bottom: 10px;
+    margin-top: 10px; 
+}
+
+.cart-payment h3 {
+	float: right;
+	margin-right: 30px;
 }
 
 #icone {
