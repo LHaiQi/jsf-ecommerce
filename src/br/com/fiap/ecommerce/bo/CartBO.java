@@ -23,6 +23,13 @@ public class CartBO {
 	public List<BookBean> getCart() {
 		return (List<BookBean>) SessionUtil.getParam("cartList");
 	}
-	
+
+	public void removeCart(BookBean book) {
+		List<BookBean> cartList = (List<BookBean>) SessionUtil.getParam("cartList");
+			
+		cartList.remove(book);
+		
+		SessionUtil.setParam("cartList", cartList);
+	}
 	
 }

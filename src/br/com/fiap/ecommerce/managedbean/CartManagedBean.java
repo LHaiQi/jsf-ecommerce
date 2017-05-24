@@ -14,6 +14,8 @@ import br.com.fiap.ecommerce.bo.CartBO;
 public class CartManagedBean {
 	private BookBean book = new BookBean();
 	private List<BookBean> cartlistBook = new ArrayList<>();
+	private int payment;
+	private int shipping;	
 	
 	public BookBean getBook() {
 		return book;
@@ -40,4 +42,10 @@ public class CartManagedBean {
 		
 		return "cart";
 	}	
+	
+	public String removeCartController() {
+		CartBO cartBO = new CartBO();
+		cartBO.removeCart(book);
+		return "cart";
+	}
 }

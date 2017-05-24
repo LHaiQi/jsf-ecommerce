@@ -32,11 +32,17 @@
 													<b:column col-md="2">
 														<img class="miniatura" src="#{cart.bookImage}" height="100"/>
 													</b:column>
-													<b:column offset-md="1" col-md="6">
+													<b:column col-md="6">
 														<h5 class="wish-name">#{cart.name}</h5>
 													</b:column>
-													<b:column offset-md="1" col-md="2">
+													<b:column col-md="2">
 														<p class="wish-price">R$#{cart.price}</p>
+													</b:column>						
+													<b:column col-md="2">
+														<h:commandLink styleClass="btn btn-remove-cart btn-danger btn-md wish-button" action="#{cartManagedBean.removeCartController}">
+															<i class="fa fa-times fa-cart-remove"></i>
+															<f:setPropertyActionListener value="#{cart}" target="#{cartManagedBean.book}"/>
+														</h:commandLink>
 													</b:column>							
 												</b:row>
 											</b:column>
@@ -47,29 +53,35 @@
 						   		<b:row>
 								<b:column offset-md="6" col-md="6">
 									<h3>Finalizar Compra</h3>
-									<div class="cart-payment">
-										
-																			
+									<div class="cart-payment">																		
 										<b:row>
-											<b:column col-md="4">
+											<b:column>
 												<p>#{msgs.pagamento}</p>
-												<b:selectOneMenu required="true" requiredMessage="#{msgs.genero_autor_erro}" value="#{authorManagedBean.author.gender}" converter="omnifaces.SelectItemsConverter">
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.cartao}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.boleto}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.bitcoin}"></f:selectItem>
+												<b:selectOneMenu value="#{cartManagedBean.payment}" converter="omnifaces.SelectItemsConverter">
+													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}" itemValue="0"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.cartao}" itemValue="1"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.boleto}" itemValue="2"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.bitcoin}" itemValue="3"></f:selectItem>
 												</b:selectOneMenu>
 											</b:column>
 										</b:row>
 										<b:row>
-											<b:column col-md="4">
+											<b:column>
 												<p>#{msgs.frete}</p>
-												<b:selectOneMenu required="true" requiredMessage="#{msgs.genero_autor_erro}" value="#{authorManagedBean.author.gender}" converter="omnifaces.SelectItemsConverter">
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.masculino}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.feminino}"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.indefinido}"></f:selectItem>
+												<b:selectOneMenu  value="#{cartManagedBean.cart}" converter="omnifaces.SelectItemsConverter">
+													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}" itemValue="0"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="Sedex" itemValue="1"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="Pac" itemValue="2"></f:selectItem>
+													<f:selectItem noSelectionOption="true" itemLabel="Jato" itemValue="3"></f:selectItem>
 												</b:selectOneMenu>
+											</b:column>
+										</b:row>
+										<b:row>
+											<b:column col-md="9">
+												<p class="price-total">R$0,00</p>
+											</b:column>
+											<b:column col-md="3">
+												<b:commandButton look="primary" value="Finalizar"></b:commandButton>
 											</b:column>
 										</b:row>
 									</div>
