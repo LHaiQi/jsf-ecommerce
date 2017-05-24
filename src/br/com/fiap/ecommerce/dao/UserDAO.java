@@ -174,9 +174,10 @@ public class UserDAO {
 		
 		preparedStatement.execute();
 		
-		sql = "Update Login set loginType = ?";
+		sql = "Update Login set loginType = ? where userid = ?";
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, user.getLogin().getLoginType());
+		preparedStatement.setInt(2, user.getLogin().getUserId());
 		
 		preparedStatement.execute();
 	}	

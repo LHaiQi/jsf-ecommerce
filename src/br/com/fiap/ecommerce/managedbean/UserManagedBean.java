@@ -21,7 +21,7 @@ import br.com.fiap.ecommerce.bo.UserBO;
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
-    String newPassword, repeatedNewPassword;
+    String newPassword;
     boolean apareceGerenciarUsuarios = false;
     boolean estaLogado = false;
     boolean permissaoAdm = false;  
@@ -49,12 +49,6 @@ public class UserManagedBean {
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
-	}
-	public String getRepeatedNewPassword() {
-		return repeatedNewPassword;
-	}
-	public void setRepeatedNewPassword(String repeatedNewPassword) {
-		this.repeatedNewPassword = repeatedNewPassword;
 	}
 	public UserBean getUser() {
 		return user;
@@ -202,7 +196,7 @@ public class UserManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Editar", "Detalhes:  " + e));
 		}
 		
-		return "search-user";
+		return "show-books";
 	}
 	
 	public void validateExistentUser(FacesContext context, UIComponent component, Object value) throws ValidatorException {
@@ -219,13 +213,6 @@ public class UserManagedBean {
 		
 		if (exists) {
 			FacesMessage message = new FacesMessage("O nome de usuario ja esta em uso");
-			throw new ValidatorException(message);
-		}
-	}
-	
-	public void validateNewPassword(FacesContext context, UIComponent component, Object value) {
-		if (!newPassword.equals(repeatedNewPassword)) {
-			FacesMessage message = new FacesMessage("As senhas não conferem");
 			throw new ValidatorException(message);
 		}
 	}
