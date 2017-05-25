@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bean.UserBean;
 import br.com.fiap.ecommerce.connection.ConnectionFactory;
 import br.com.fiap.ecommerce.managedbean.GenreManagedBean;
@@ -43,7 +44,8 @@ public class UserDAO {
 		UserBean newUser = null;
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select * from USUARIO Where USERID = ?";
+//		sql = "Select * from USUARIO Where USERID = ?";
+		sql = "Select u.*, l.* From usuario u join login l on u.userid = l.userid Where u.USERID = ?";
 		
 	    preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setInt(1, user.getId());
@@ -65,7 +67,13 @@ public class UserDAO {
 			  String street = resultSet.getString("STREET");
 			  int housenumber = resultSet.getInt("HOUSENUMBER");
 			  
+			  int loginId = resultSet.getInt("LOGINID");
+			  String username = resultSet.getString("USERNAME");
+			  String password = resultSet.getString("PASSWORD");
+			  int loginType = resultSet.getInt("LOGINTYPE");
+			  
 			  newUser = new UserBean(id, name, cpf, lastname, email, gender, birthdate, phonenumber, zipcode, city, state, street, housenumber);
+			  newUser.setLogin(new LoginBean(loginId,loginType,id,username,password));
 		}
 			
 		return newUser;
@@ -75,7 +83,7 @@ public class UserDAO {
 		List<UserBean> listUsers = new ArrayList<UserBean>();
 		
 		connection = ConnectionFactory.getConnection();
-		sql = "Select * From USUARIO Where NAME Like ?";
+		sql = "Select u.*, l.* From usuario u join login l on u.userid = l.userid Where u.name Like ?";
 				
 		preparedStatement = connection.prepareStatement(sql);
 		preparedStatement.setString(1, "%" + user.getName() + "%");
@@ -96,8 +104,15 @@ public class UserDAO {
 		  String state = resultSet.getString("CSTATE");
 		  String street = resultSet.getString("STREET");
 		  int housenumber = resultSet.getInt("HOUSENUMBER");
+		  
+		  int loginId = resultSet.getInt("LOGINID");
+		  String username = resultSet.getString("USERNAME");
+		  String password = resultSet.getString("PASSWORD");
+		  int loginType = resultSet.getInt("LOGINTYPE");
 		 
-		  listUsers.add(new UserBean(id, name, cpf, lastname, email, gender, birthdate, phonenumber, zipcode, city, state, street, housenumber));
+		  UserBean us = new UserBean(id, name, cpf, lastname, email, gender, birthdate, phonenumber, zipcode, city, state, street, housenumber);
+		  us.setLogin(new LoginBean(loginId,loginType,id,username,password));
+		  listUsers.add(us);
 		}
 		
 		return listUsers;
@@ -156,6 +171,13 @@ public class UserDAO {
 		preparedStatement.setString(11, user.getStreet());
 		preparedStatement.setInt(12, user.getHousenumber());
 		preparedStatement.setInt(13, user.getId());
+		
+		preparedStatement.execute();
+		
+		sql = "Update Login set loginType = ? where userid = ?";
+		preparedStatement = connection.prepareStatement(sql);
+		preparedStatement.setInt(1, user.getLogin().getLoginType());
+		preparedStatement.setInt(2, user.getLogin().getUserId());
 		
 		preparedStatement.execute();
 	}	

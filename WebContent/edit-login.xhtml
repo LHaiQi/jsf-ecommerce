@@ -33,9 +33,6 @@
 		                        <p>#{msgs.nova_senha}</p>
 		                        <b:inputText value="#{userManagedBean.newPassword}"
 		                        			required="true" requiredMessage="#{msgs.novaSenha_usuario_erro}"/>
-		                        <p>#{msgs.repetir_nova_senha}</p>
-		                        <b:inputText value="#{userManagedBean.repeatedNewPassword}" validator="#{userManagedBean.validateNewPassword}"
-		                        			required="true" requiredMessage="#{msgs.repetirNovaSenha_usuario_erro}"/>
 								
 								<b:commandButton look="success" action="#{userManagedBean.editLoginUserController}" value="#{msgs.alterar}"></b:commandButton>
 							</b:form>

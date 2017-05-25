@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>Pesquisar Login</title>
+	</h:head>
+	<h:body>
+		<ui:composition template="index.xhtml">
+ 			<ui:define name="content">
+ 			<b:container>
+			<b:row>
+				<b:column>
+					<h1>Pesquisar Login</h1>
+				</b:column>
+			</b:row>
+		</b:container>
+		
+		<b:container>
+			<b:row>
+				<b:column col-md="8" offset="2">
+					<b:messages/>
+					<b:form>
+						<b:column col-md="3">
+							<h5>#{msgs.nomeUsuario}</h5>
+						</b:column>
+						<b:column col-md="5">
+							<b:inputText value="#{userManagedBean.user.name}" 
+								required="true" requiredMessage="#{msgs.nome_usuario_erro}"/>	
+						</b:column>
+						<b:column col-md="2">
+							<b:commandButton action="#{userManagedBean.searchUserController}" value="#{msgs.pesquisar}"></b:commandButton>
+						</b:column>
+					</b:form>					
+				</b:column>
+			</b:row>
+		</b:container>
+		<b:container>
+			<b:row>
+				<b:column>
+				  			<b:form>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#{msgs.nome}</th>
+									<th>CPF</th>
+									<th>#{msgs.sobrenome}</th>
+									<th>Email</th>
+									<th>#{msgs.genero}</th>
+									<th>#{msgs.dataNascimento}</th>
+									<th>#{msgs.telefone}</th>
+									<th>#{msgs.cep}</th>
+									<th>#{msgs.cidade}</th>
+									<th>#{msgs.estado}</th>
+									<th>#{msgs.rua}</th>
+									<th>#{msgs.numeroCasa}</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<ui:repeat var="user" value="#{userManagedBean.listUsers}">
+									<tr>
+										<td>#{user.name}</td>
+										<td>#{user.cpf}</td>
+										<td>#{user.lastname}</td>
+										<td>#{user.email}</td>
+										<td>#{user.gender}</td>
+										<td>#{user.birthdate}</td>
+										<td>#{user.phonenumber}</td>
+										<td>#{user.zipcode}</td>
+										<td>#{user.city}</td>
+										<td>#{user.state}</td>
+										<td>#{user.street}</td>
+										<td>#{user.housenumber}</td>
+                                        <td>
+											<h:commandLink value="#{msgs.editar}" action="#{userManagedBean.preencherUserController}">
+												<f:setPropertyActionListener value="#{user.id}" target="#{userManagedBean.user.id}" />
+											</h:commandLink>
+										</td>
+										
+										<td>
+										</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>	
+					</b:form>
+				</b:column>
+			</b:row>
+		</b:container>	
+		     </ui:define>
+		</ui:composition>
+		
+	</h:body>
+</html>

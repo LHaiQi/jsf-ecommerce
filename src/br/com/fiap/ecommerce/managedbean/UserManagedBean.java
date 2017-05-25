@@ -22,19 +22,34 @@ import br.com.fiap.ecommerce.util.SessionUtil;
 public class UserManagedBean {
     UserBean user = new UserBean();
     List<UserBean> listUsers = new ArrayList<UserBean>();
-    String newPassword, repeatedNewPassword;
-        
+    String newPassword;
+    boolean apareceGerenciarUsuarios = false;
+    boolean estaLogado = false;
+    boolean permissaoAdm = false;  
+		
+	public boolean getPermissaoAdm() {
+		return permissaoAdm;
+	}
+	public void setPermissaoAdm(boolean permissaoAdm) {
+		this.permissaoAdm = permissaoAdm;
+	}
+	public boolean getEstaLogado() {
+		return estaLogado;
+	}
+	public void setEstaLogado(boolean estaLogado) {
+		this.estaLogado = estaLogado;
+	}
+	public boolean getApareceGerenciarUsuarios() {
+		return apareceGerenciarUsuarios;
+	}
+	public void setApareceGerenciarUsuarios(boolean apareceMinhaConta) {
+		this.apareceGerenciarUsuarios = apareceMinhaConta;
+	}
 	public String getNewPassword() {
 		return newPassword;
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
-	}
-	public String getRepeatedNewPassword() {
-		return repeatedNewPassword;
-	}
-	public void setRepeatedNewPassword(String repeatedNewPassword) {
-		this.repeatedNewPassword = repeatedNewPassword;
 	}
 	public UserBean getUser() {
 		return user;
@@ -68,6 +83,7 @@ public class UserManagedBean {
 		try {
 			userBO.inserirUser(user);
 			loginBO.inserirLogin(user.getLogin());
+			estaLogado = true;
 		} 
 		catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -78,7 +94,7 @@ public class UserManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Inserir", "Detalhes:  " + e));	
 		}
 		
-		return "insert-user";
+		return "show-books";
 	}
 	
 	public String deletarUserController(){
@@ -105,6 +121,9 @@ public class UserManagedBean {
 		UserBO userBO = new UserBO();
 	    
 		try {
+			if(permissaoAdm){
+				user.getLogin().setLoginType(1);
+			}
 			userBO.alterarUser(user);
 		} 
 	    catch (Exception e) {
@@ -140,6 +159,14 @@ public class UserManagedBean {
 			
 			if(login != null){
 				SessionUtil.setParam("login", login);
+
+				if(login.getLoginType() == 1){
+					apareceGerenciarUsuarios = true;
+				}else{
+					apareceGerenciarUsuarios = false;
+				}
+				estaLogado = true;
+
 				return "show-books";
 			}
 			else {
@@ -158,6 +185,7 @@ public class UserManagedBean {
 	}
 	
 	public String criarConta(){
+		user = new UserBean();
 		return "insert-user";
 	}
 	
@@ -172,7 +200,7 @@ public class UserManagedBean {
 			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao Editar", "Detalhes:  " + e));
 		}
 		
-		return "search-user";
+		return "show-books";
 	}
 	
 	public void validateExistentUser(FacesContext context, UIComponent component, Object value) throws ValidatorException {
@@ -193,10 +221,10 @@ public class UserManagedBean {
 		}
 	}
 	
-	public void validateNewPassword(FacesContext context, UIComponent component, Object value) {
-		if (!newPassword.equals(repeatedNewPassword)) {
-			FacesMessage message = new FacesMessage("As senhas não conferem");
-			throw new ValidatorException(message);
-		}
+	public String sairUserController(){
+		estaLogado = false;
+		apareceGerenciarUsuarios = false;
+		user = new UserBean();
+		return "show-books.jsf";
 	}
 }

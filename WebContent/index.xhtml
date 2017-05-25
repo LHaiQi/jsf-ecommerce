@@ -37,11 +37,12 @@
 							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>						</div>
 						<div id="texto">
 							Olá
-							<br/>
-							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">
-								<b:navLink value="Entrar" href="login.jsf" iconAwesome="sign-in"></b:navLink>
-								<b:navLink value="Cliente Novo? Cadastrar" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>							</b:dropMenu>
-						</div>
+							<br/>							<b:form>
+							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">							
+									<b:navLink value="Entrar" rendered="#{!userManagedBean.estaLogado}" href="login.jsf" iconAwesome="sign-in"></b:navLink>
+									<b:navLink value="Cadastrar" rendered="#{!userManagedBean.estaLogado}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>									<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="Inserir" iconAwesome="fa-arrow-up" iconAlign="left">											<b:navLink href="insert-book.jsf" value="Livro" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="insert-author.jsf" value="Autor" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="insert-genre.jsf" value="Genero" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="insert-publisher.jsf" value="Editora" iconAwesome="fa-paragraph"></b:navLink>									</b:dropMenu>																		<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="Pesquisar" iconAwesome="fa-search" iconAlign="left">																						<b:navLink href="search-book.jsf" value="Livro" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="search-author.jsf" value="Autor" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="search-genre.jsf" value="Genero" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="search-publisher.jsf" value="Editora" iconAwesome="fa-paragraph"></b:navLink>																				</b:dropMenu>																		<b:navLink rendered="#{userManagedBean.apareceGerenciarUsuarios}" href="search-user.jsf" value="Gerenciar Usuários" iconAwesome="fa-cog"></b:navLink>																		<b:navLink value="Lista de desejos" rendered="#{userManagedBean.estaLogado}"  href="wishlist.jsf" iconAwesome="fa-star"></b:navLink>																		<b:navCommandLink value="Mudar senha" rendered="#{userManagedBean.estaLogado}"  action="#{userManagedBean.mudarSenha}" iconAwesome="fa-key"></b:navCommandLink>										<b:navCommandLink value="Sair" rendered="#{userManagedBean.estaLogado}" action="#{userManagedBean.sairUserController}" iconAwesome="fa-sign-out"></b:navCommandLink>								
+							</b:dropMenu>							</b:form>
+						</div>						
 					</b:column>
 					<b:column col-md="2">
 						<div id="carrinho">
