@@ -52,7 +52,7 @@
 						   
 						   		<b:row>
 								<b:column offset-md="6" col-md="6">
-									<h3>Finalizar Compra</h3>
+									<h3>#{msgs.msgFinalizarCompra}</h3>
 									<div class="cart-payment">																		
 										<b:row>
 											<b:column>
@@ -72,7 +72,7 @@
 											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="Sedex" itemValue="1" required="true" />
 											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="PAC" itemValue="2" />
 											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="A Jato" itemValue="3" />											        
-											    	<b:commandButton styleClass="btn-calc-shipping" look="primary" size="sm" value="Calcular Frete"></b:commandButton>
+											    	<b:commandButton styleClass="btn-calc-shipping" look="primary" size="sm" value="#{msgs.calcularFrete}"></b:commandButton>
 											    </b:panelGrid>
 											</b:column>
 										</b:row>
@@ -81,7 +81,7 @@
 												<p id="price" class="price-total">R$#{cartManagedBean.total}</p>
 											</b:column>
 											<b:column col-md="3">
-												<b:commandButton action="#{cartManagedBean.finishCartController}" styleClass="btn-finish-cart btn-calc-shipping" look="primary" size="sm" value="Finalizar"></b:commandButton>
+												<b:commandButton action="#{cartManagedBean.finishCartController}" styleClass="btn-finish-cart btn-calc-shipping" look="primary" size="sm" value="#{msgs.finalizar}"></b:commandButton>
 											</b:column>
 										</b:row>
 									</div>

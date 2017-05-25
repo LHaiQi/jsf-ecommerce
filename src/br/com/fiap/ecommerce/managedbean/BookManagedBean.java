@@ -3,6 +3,7 @@ package br.com.fiap.ecommerce.managedbean;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -63,11 +64,21 @@ public class BookManagedBean {
 
 	public List<AuthorBean> getListAuthor() {
 		AuthorBO authorBO = new AuthorBO();
+		
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgRetornaAutor");
+		String message = text.getString("msgDetalhes");
+		
+		
+		
 		try {
 			listAuthor = authorBO.getListAuthor();
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de autores", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+ " " + e));
 		}
 		
 		return listAuthor;
@@ -79,11 +90,21 @@ public class BookManagedBean {
 	
 	public List<GenreBean> getListGenre() {
 		GenreBO genreBO = new GenreBO();
+		
+		
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgRetornaCombo");
+		String message = text.getString("msgDetalhes");
+		
+		
 		try {
 			listGenre = genreBO.getListGenre();
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de generos", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return listGenre;
@@ -95,11 +116,19 @@ public class BookManagedBean {
 
 	public List<PublisherBean> getListPublisher() {
 		PublisherBO publisherBO = new PublisherBO();
+		
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgRetornaCombo");
+		String message = text.getString("msgDetalhes");
+		
 		try {
 			ListPublisher = publisherBO.getListPubliser();
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar lista de COMBO", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,message, v+" " + e));
 		}
 		
 		return ListPublisher;
@@ -110,12 +139,19 @@ public class BookManagedBean {
 	}
 
 	public String insertBookController() {
-		BookBO bookBO = new BookBO();		
+		BookBO bookBO = new BookBO();
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgRetornaCombo");
+		String message = text.getString("msgDetalhes");
+		
 		try {
 			bookBO.setBook(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao inserir", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}		
 		
 		book = new BookBean();
@@ -125,11 +161,20 @@ public class BookManagedBean {
 		
 	public String searchBookController(){
 		BookBO bookBO = new BookBO();
+		
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
+		
 		try {
 			book = bookBO.getBook(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return "search-book";
@@ -137,11 +182,20 @@ public class BookManagedBean {
 
 	public String searchListBookController(){
 		BookBO bookBO = new BookBO();
+		
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
+		
 		try {
 			listBook = bookBO.getListBooks(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return "search-book";
@@ -149,12 +203,19 @@ public class BookManagedBean {
 	
 	public String searchListBookIndexController(){
 		BookBO bookBO = new BookBO();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
 		try {
 			setListBook3(null);
 			setListBook3(bookBO.getListBooks(book));
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return "show-bookB";
@@ -162,12 +223,19 @@ public class BookManagedBean {
 	
 	public String searchListBookDiscountController(){
 		BookBO bookBO = new BookBO();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
 		try {
 			setListBook2(null);
 			setListBook2(bookBO.getListBooksDiscount(book));
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao procurar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return "show-books";
@@ -175,11 +243,18 @@ public class BookManagedBean {
 	
 	public String deleteBookController(){
 		BookBO bookBO = new BookBO();
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
+		
 		try {
 			bookBO.deleteBook(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao apagar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return searchListBookController();
@@ -187,11 +262,19 @@ public class BookManagedBean {
 	
 	public String fillEditBookController(){
 		BookBO bookBO = new BookBO();
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
+		
 		try {
 			book = bookBO.getBook(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao retornar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+" " + e));
 		}
 		
 		return "edit-book";
@@ -199,11 +282,19 @@ public class BookManagedBean {
 	
 	public String editBookController(){
 		BookBO bookBO = new BookBO();
+		
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		ResourceBundle text = ResourceBundle.getBundle("language", context.getViewRoot().getLocale());
+		String v = text.getString("msgValidaProcura");
+		String message = text.getString("msgDetalhes");
+		
 		try {
 			bookBO.alterBook(book);
 		} catch (SQLException e) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Erro ao editar", "Detalhes:  " + e));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, message, v+ " " + e));
 		}
 		
 		return "edit-book";
