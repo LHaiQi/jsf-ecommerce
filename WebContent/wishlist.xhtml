@@ -33,9 +33,9 @@
 														<p class="wish-price">R$#{wish.price}</p>
 													</b:column>
 													<b:column col-md="2">
-														<h:commandLink styleClass="btn btn-default btn-remove-wish btn-md wish-button" value="Comprar" action="#{carrinhoAqui}">
+														<h:commandLink styleClass="btn btn-default btn-remove-wish btn-md wish-button" value="Comprar" action="#{cartManagedBean.setCartController}">
 															<i class="fa fa-cart-plus  fa-wish-remove"></i>
-															<f:setPropertyActionListener value="#{wish.bookID}" target="#{carrinhoAqui}"/>
+															<f:setPropertyActionListener value="#{wish}" target="#{cartManagedBean.book}"/>
 														</h:commandLink>
 													</b:column>		
 													<b:column col-md="2">
