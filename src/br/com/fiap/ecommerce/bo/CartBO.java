@@ -32,4 +32,29 @@ public class CartBO {
 		SessionUtil.setParam("cartList", cartList);
 	}
 	
+	public double getTotal(int shipping){
+		double total = 0;
+		
+		List<BookBean> cartList = (List<BookBean>) SessionUtil.getParam("cartList");
+		
+		if (cartList == null) {
+			return total = 0.00;
+		}
+		
+		for (BookBean bookBean : cartList) {
+			total += bookBean.getPrice();
+		}
+		
+		if (shipping == 1) {
+			total += 10;
+		}
+		else if (shipping == 2) {
+			total += 5;
+		}
+		else if (shipping == 3) {
+			total += 15;
+		}
+		
+		return total;
+	}
 }

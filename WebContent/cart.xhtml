@@ -68,20 +68,20 @@
 										<b:row>
 											<b:column>
 												<p>#{msgs.frete}</p>
-												<b:selectOneMenu  value="#{cartManagedBean.cart}" converter="omnifaces.SelectItemsConverter">
-													<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}" itemValue="0"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="Sedex" itemValue="1"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="Pac" itemValue="2"></f:selectItem>
-													<f:selectItem noSelectionOption="true" itemLabel="Jato" itemValue="3"></f:selectItem>
-												</b:selectOneMenu>
+												<b:panelGrid size="md" columns="4">
+											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="Sedex" itemValue="1" required="true" />
+											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="PAC" itemValue="2" />
+											        <b:radiobutton onclick="#{cartManagedBean.total}" value="#{cartManagedBean.shipping}" itemLabel="A Jato" itemValue="3" />											        
+											    	<b:commandButton styleClass="btn-calc-shipping" look="primary" size="sm" value="Calcular Frete"></b:commandButton>
+											    </b:panelGrid>
 											</b:column>
 										</b:row>
 										<b:row>
 											<b:column col-md="9">
-												<p class="price-total">R$0,00</p>
+												<p id="price" class="price-total">R$#{cartManagedBean.total}</p>
 											</b:column>
 											<b:column col-md="3">
-												<b:commandButton look="primary" value="Finalizar"></b:commandButton>
+												<b:commandButton action="#{cartManagedBean.finishCartController}" styleClass="btn-finish-cart btn-calc-shipping" look="primary" size="sm" value="Finalizar"></b:commandButton>
 											</b:column>
 										</b:row>
 									</div>

@@ -18,6 +18,15 @@ body {
     width: 131px !important;
 }
 
+.btn-calc-shipping {
+    margin-top: 5px !important;
+    margin-left: -12px !important;
+}
+
+.btn-finish-cart {
+    width: 99px;
+}
+
 .btn-wish {
 	margin-left:2px;
 	width: 35px !important;
