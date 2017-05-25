@@ -15,11 +15,11 @@
 		<div id="header">
 			<b:container>
 				<b:row>					<b:column col-md="2">
-						<img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" />
+						<a href="show-books.jsf"><img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" /></a>
 					</b:column>
 					<b:column col-md="6">
 						<b:form id="barrapesquisa" >
-							<b:inputText id="inputMenu" value="#{testBean.val6}" placeholder="#{msgs.quelivroprocura}">
+							<b:inputText id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
 								<f:facet name="append">
 									<b:dropButton value="#{msgs.filtrar}">
 										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
@@ -27,7 +27,7 @@
 									</b:dropButton>
 								</f:facet>
 								<f:facet name="append">
-									<b:commandButton look="primary"  iconAwesome="search" icon-align="right"/>
+									<b:commandButton look="primary" action="#{bookManagedBean.searchListBookIndexController}" iconAwesome="search" icon-align="right"/>
 								</f:facet>
 							</b:inputText>
 						</b:form>
