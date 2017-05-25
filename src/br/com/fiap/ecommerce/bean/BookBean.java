@@ -12,6 +12,7 @@ public class BookBean {
 	private String bookImage;
 	private int discount;
 	private int quantity;
+	private double discountprice;
 	
 	public BookBean () { 
 		author = new AuthorBean();
@@ -29,7 +30,7 @@ public class BookBean {
 	}
 	
 	public BookBean(int bookID, int iSBN, String name, String synopsis, double price, AuthorBean author,
-			PublisherBean publisher, GenreBean genre,String bookImage,int discount,int quantity) {
+			PublisherBean publisher, GenreBean genre,String bookImage,int discount,int quantity, double discountprice) {
 		this.bookID = bookID;
 		ISBN = iSBN;
 		this.name = name;
@@ -41,8 +42,17 @@ public class BookBean {
 		this.bookImage = bookImage;
 		this.discount = discount;
 		this.quantity = quantity;
+		this.discountprice = discountprice;
 	}
 	
+	public double getDiscountprice() {
+		return discountprice;
+	}
+
+	public void setDiscountprice(double discountprice) {
+		this.discountprice = discountprice;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}

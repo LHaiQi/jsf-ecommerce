@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link href="css/estilo.css" rel="stylesheet" type="text/css" />
@@ -24,7 +25,10 @@
 										<br></br>
 											<img class="miniatura" src="#{book.bookImage}" height="230" />
 											<h5>#{book.name}</h5>
-											<p>R$ #{book.price}</p>
+											<p class="antigo">R$ #{book.price}</p>
+									        <p>R$ #{book.discountprice} <a> </a> 
+									         (-#{book.discount}%)
+									        </p>
 											<h:commandLink styleClass="btn btn-default btn-cart btn-lg" value="Comprar" action="#{cartManagedBean.setCartController}">												<i class="fa fa-cart-plus  fa-wish-remove"></i>												<f:setPropertyActionListener value="#{book}" target="#{cartManagedBean.book}"/>											</h:commandLink>											<h:commandLink styleClass="btn btn-wish btn-info btn-lg" action="#{wishlistManagedBean.setWishlist}">												<i class="fa fa-star fa-wish"></i>												<f:setPropertyActionListener value="#{book.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}"/>											</h:commandLink>
 											<br></br>
 										</div>
@@ -33,4 +37,5 @@
 			</ui:define>
 		</ui:composition>
 	</h:body>
+
 </html>
