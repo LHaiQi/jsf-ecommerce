@@ -42,7 +42,7 @@ public class CartBO {
 		}
 		
 		for (BookBean bookBean : cartList) {
-			total += bookBean.getPrice();
+			total += bookBean.getDiscountprice();
 		}
 		
 		if (shipping == 1) {

@@ -1,5 +1,6 @@
 package br.com.fiap.ecommerce.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,12 +48,20 @@ public class WishlistDAO {
 		while (resultSet.next()) {
 			int bookID  = resultSet.getInt("BookID");
 			String name = resultSet.getString("Name");
-			double price = resultSet.getDouble("Price");			
+			double price = resultSet.getDouble("Price");
+			Double bprice = price;
 			String bookImage= resultSet.getString("BookImage");
 			int discount = resultSet.getInt("Discount");
+			double desconto = discount;
+			desconto = desconto /100;
+			desconto = 1-desconto;
+			bprice = bprice * desconto;
+			BigDecimal bd = new BigDecimal(bprice);
+			bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);
+            Double preco  = bd.doubleValue();
 			int quantity = resultSet.getInt("Quantity");
 			
-			listWishes.add(new BookBean(bookID, name, price, bookImage, discount, quantity));
+			listWishes.add(new BookBean(bookID, name, price, bookImage, discount, quantity,preco));
 		}
 		
 		return listWishes;

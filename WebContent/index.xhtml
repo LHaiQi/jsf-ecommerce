@@ -19,7 +19,7 @@
 					</b:column>
 					<b:column col-md="6">
 						<b:form id="barrapesquisa" >
-							<b:inputText id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
+							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
 								<f:facet name="append">
 									<b:dropButton value="#{msgs.filtrar}">
 										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>

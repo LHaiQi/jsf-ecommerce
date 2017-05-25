@@ -83,8 +83,37 @@
 	                        <b:row>
 								<b:column col-md="6">
 									 <p>#{msgs.estado}</p>
-	                       		     <b:inputText value="#{userManagedBean.user.state}"
-	                        			required="true" requiredMessage="#{msgs.estado_usuario_erro}"/>
+	                       		        <b:selectOneMenu required="true" requiredMessage="#{msgs.estado_usuario_erro}" value="#{userManagedBean.user.state}" 
+		                        		 converter="omnifaces.SelectItemsConverter">
+									<f:selectItem noSelectionOption="true" itemLabel="#{msgs.selecione}"></f:selectItem>
+									<f:selectItem noSelectionOption="true" itemLabel="AC"></f:selectItem>
+									<f:selectItem noSelectionOption="true" itemLabel="AL"></f:selectItem>
+									<f:selectItem noSelectionOption="true" itemLabel="AP"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="AM"></f:selectItem>		
+									<f:selectItem noSelectionOption="true" itemLabel="BA"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="CE"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="DF"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="ES"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="GO"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="MA"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="MT"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="MS"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="MG"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="PA"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="PB"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="PR"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="PE"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="PI"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="RJ"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="RN"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="RS"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="RO"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="RR"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="SC"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="SP"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="SE"></f:selectItem>	
+									<f:selectItem noSelectionOption="true" itemLabel="TO"></f:selectItem>						
+								</b:selectOneMenu>
 								</b:column>	
 								<b:column col-md="6">
 									<p>#{msgs.cidade}</p>

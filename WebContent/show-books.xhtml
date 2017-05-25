@@ -23,7 +23,7 @@
 									<ui:repeat var="book" value="#{bookManagedBean.listBook2}">
 										<div class="coluna">
 										<br></br>
-											<img class="miniatura" src="#{book.bookImage}" height="230" />
+											<img class="miniatura" src="#{book.bookImage}" height="230" title="#{book.synopsis}" />
 											<h5>#{book.name}</h5>
 											<p class="antigo">R$ #{book.price}</p>
 									        <p>R$ #{book.discountprice} <a> </a> 

@@ -20,13 +20,14 @@ public class BookBean {
 		genre = new GenreBean();
 	}
 	
-	public BookBean(int bookID, String name, double price, String bookImage, int discount, int quantity) {
+	public BookBean(int bookID, String name, double price, String bookImage, int discount, int quantity,double discountprice) {
 		this.bookID = bookID;
 		this.name = name;
 		this.price = price;
 		this.bookImage = bookImage;
 		this.discount = discount;
 		this.quantity = quantity;
+		this.discountprice = discountprice;
 	}
 	
 	public BookBean(int bookID, int iSBN, String name, String synopsis, double price, AuthorBean author,
