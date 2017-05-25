@@ -10,8 +10,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.faces.view.facelets.FaceletContext;
 
+import br.com.fiap.ecommerce.bean.AuthorBean;
 import br.com.fiap.ecommerce.bean.BookBean;
+import br.com.fiap.ecommerce.bean.LoginBean;
 import br.com.fiap.ecommerce.bo.CartBO;
+import br.com.fiap.ecommerce.bo.LoginBO;
+import br.com.fiap.ecommerce.util.SessionUtil;
 
 @ManagedBean
 @SessionScoped
@@ -20,9 +24,8 @@ public class CartManagedBean {
 	private List<BookBean> cartlistBook = new ArrayList<>();
 	private int payment;
 	private int shipping;	
-	private double total = 10;
-	
-		
+	private double total = 0;
+			
 	public double getTotal() {
 		CartBO cartBO = new CartBO();	
 		return cartBO.getTotal(shipping);
@@ -81,9 +84,18 @@ public class CartManagedBean {
 	}
 	
 	public String finishCartController() {
-		FacesMessage message = new FacesMessage("Compra Finalizada");
-		message.setSeverity(FacesMessage.SEVERITY_INFO);
-		FacesContext.getCurrentInstance().addMessage("Sucesso!S", message);
+		LoginBean loginBean = (LoginBean) SessionUtil.getParam("login");
+		
+		if(loginBean != null){
+			FacesMessage message = new FacesMessage("Compra Finalizada");
+			message.setSeverity(FacesMessage.SEVERITY_INFO);
+			FacesContext.getCurrentInstance().addMessage("Sucesso!", message);
+		}
+		else {
+			FacesMessage message = new FacesMessage("Você deve estar logado para finalizar uma compra");
+			message.setSeverity(FacesMessage.SEVERITY_FATAL);
+			FacesContext.getCurrentInstance().addMessage("Sucesso!", message);
+		}
 		
 		return "cart";
 	}

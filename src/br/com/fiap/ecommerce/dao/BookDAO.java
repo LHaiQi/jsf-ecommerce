@@ -74,7 +74,7 @@ public class BookDAO {
 		    + " Inner Join Author A On B.Authorid = A.Authorid "
 		    + " Inner Join Genre G On B.Genreid = G.Genreid "
             + " Inner Join Publisher P On B.Publisherid = P.Publisherid "
-            + " Where B.BookID = ? ";
+            + " Where B.BookID = ?";
 		
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, book.getBookID());
