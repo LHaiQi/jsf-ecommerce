@@ -224,7 +224,12 @@ public class UserManagedBean {
 	public String sairUserController(){
 		estaLogado = false;
 		apareceGerenciarUsuarios = false;
+		
 		user = new UserBean();
+		LoginBO login = null;
+		
+		SessionUtil.setParam("login", login);
+		
 		return "show-books.jsf";
 	}
 }
