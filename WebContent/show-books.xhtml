@@ -29,7 +29,7 @@
 									        <p>R$ #{book.discountprice} <a> </a> 
 									         (-#{book.discount}%)
 									        </p>
-											<h:commandLink styleClass="btn btn-default btn-cart btn-lg" value="Comprar" action="#{cartManagedBean.setCartController}">												<i class="fa fa-cart-plus  fa-wish-remove"></i>												<f:setPropertyActionListener value="#{book}" target="#{cartManagedBean.book}"/>											</h:commandLink>											<h:commandLink styleClass="btn btn-wish btn-info btn-lg" action="#{wishlistManagedBean.setWishlist}">												<i class="fa fa-star fa-wish"></i>												<f:setPropertyActionListener value="#{book.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}"/>											</h:commandLink>
+											<h:commandLink styleClass="btn btn-default btn-cart btn-lg" value="#{msgs.comprar}" action="#{cartManagedBean.setCartController}">												<i class="fa fa-cart-plus  fa-wish-remove"></i>												<f:setPropertyActionListener value="#{book}" target="#{cartManagedBean.book}"/>											</h:commandLink>											<h:commandLink styleClass="btn btn-wish btn-info btn-lg" action="#{wishlistManagedBean.setWishlist}">												<i class="fa fa-star fa-wish"></i>												<f:setPropertyActionListener value="#{book.bookID}" target="#{wishlistManagedBean.wishlist.book.bookID}"/>											</h:commandLink>
 											<br></br>
 										</div>
 									</ui:repeat>								</div>						   </b:form>						</b:column>

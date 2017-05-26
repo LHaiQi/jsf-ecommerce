@@ -1,92 +1,92 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?>
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>#{msgs.bemvindo}</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
-	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
-	</h:head>
-	<f:event listener="#{bookManagedBean.searchListBookDiscountController}" type="preRenderView" />
-	<h:body>
-		<div id="header">
-			<b:container>
-				<b:row>								<b:modal id="amodal" title="Pesquisa Avançada" styleClass="modalPseudoClass">				<b:form>	<p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.name}" placeholder="Nome do Livro" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.author.name}" placeholder="Autor" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.genre.genre}" placeholder="Genero" /></p>    <p><b:button value="Close" dismiss="modal" /></p>    <p><b:commandButton look="primary" action="#{bookManagedBean.searchAdvancedController}" iconAwesome="search" icon-align="right" dismiss="modal"/></p>        </b:form></b:modal>					<b:column col-md="2">                        
-						<a href="show-books.jsf"><img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" /></a>
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>#{msgs.bemvindo}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"/>
+	    <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
+	</h:head>
+	<f:event listener="#{bookManagedBean.searchListBookDiscountController}" type="preRenderView" />
+	<h:body>
+		<div id="header">
+			<b:container>
+				<b:row>								<b:modal id="amodal" title="#{msgs.pesquisaa}" styleClass="modalPseudoClass">				<b:form>	<p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.name}" placeholder="#{msgs.livro}" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.author.name}" placeholder="#{msgs.autor}" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.genre.genre}" placeholder="#{msgs.generolivro}" /></p>    <p><b:button value="Close" dismiss="modal" /></p>    <p><b:commandButton look="primary" action="#{bookManagedBean.searchAdvancedController}" iconAwesome="search" icon-align="right" dismiss="modal"/></p>        </b:form></b:modal>					<b:column col-md="2">                        
+						<a href="show-books.jsf"><img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" /></a>
+					</b:column>
+					<b:column col-md="6">
+						<b:form id="barrapesquisa" >
+							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
+								<f:facet name="append">
+									<b:commandButton look="primary" action="#{bookManagedBean.searchListBookIndexController}" iconAwesome="search" icon-align="right"/>
+								</f:facet>
+							</b:inputText>							<a id="atrigger"                                                                                                       href="#amodal" data-toggle="modal">#{msgs.pesquisaa}</a>
+						</b:form>
 					</b:column>
-					<b:column col-md="6">
-						<b:form id="barrapesquisa" >
-							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
-								<f:facet name="append">
-									<b:commandButton look="primary" action="#{bookManagedBean.searchListBookIndexController}" iconAwesome="search" icon-align="right"/>
-								</f:facet>
-							</b:inputText>							<a id="atrigger"                                                                                                       href="#amodal" data-toggle="modal">Pesquisa Avançada</a>
-						</b:form>
-					</b:column>
-					<b:column col-md="2">
-						<div id="icone">
-							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>						</div>
-						<div id="texto">
-							OlÃ¡
-							<br/>							<b:form>
-							<b:dropMenu value="Minha Conta" iconAwesome="lock" iconAlign="right">							
-									<b:navLink value="Entrar" rendered="#{!userManagedBean.estaLogado}" href="login.jsf" iconAwesome="sign-in"></b:navLink>
-									<b:navLink value="Cadastrar" rendered="#{!userManagedBean.estaLogado}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>									<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="Inserir" iconAwesome="fa-arrow-up" iconAlign="left">											<b:navLink href="insert-book.jsf" value="Livro" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="insert-author.jsf" value="Autor" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="insert-genre.jsf" value="Genero" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="insert-publisher.jsf" value="Editora" iconAwesome="fa-paragraph"></b:navLink>									</b:dropMenu>																		<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="Pesquisar" iconAwesome="fa-search" iconAlign="left">																						<b:navLink href="search-book.jsf" value="Livro" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="search-author.jsf" value="Autor" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="search-genre.jsf" value="Genero" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="search-publisher.jsf" value="Editora" iconAwesome="fa-paragraph"></b:navLink>																				</b:dropMenu>																		<b:navLink rendered="#{userManagedBean.apareceGerenciarUsuarios}" href="search-user.jsf" value="Gerenciar UsuÃ¡rios" iconAwesome="fa-cog"></b:navLink>																		<b:navLink value="Lista de desejos" rendered="#{userManagedBean.estaLogado}"  href="wishlist.jsf" iconAwesome="fa-star"></b:navLink>																		<b:navCommandLink value="Mudar senha" rendered="#{userManagedBean.estaLogado}"  action="#{userManagedBean.mudarSenha}" iconAwesome="fa-key"></b:navCommandLink>										<b:navCommandLink value="Sair" rendered="#{userManagedBean.estaLogado}" action="#{userManagedBean.sairUserController}" iconAwesome="fa-sign-out"></b:navCommandLink>								
-							</b:dropMenu>							</b:form>
-						</div>						
-					</b:column>
-					<b:column col-md="2">
-						<div id="carrinho">
-					    	<img src="https://cdn0.iconfinder.com/data/icons/mtt-web-icons/139/shoppingbag-128.png" width="60"/>
-						</div>
-					</b:column>
-				</b:row>
-			</b:container>
-		</div>
-		<div class="content">
-			<ui:insert name="content">Default Content</ui:insert>
-		</div>		
-		<footer>
-		    <div class="footer">
-		      <div class="container">		        <h4 class="headline text-center">Keep in touch with us</h4>						
-		        <div class="row">
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
-		              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
-		              <li><a class="nav-link" href="#">Da</a></li>
-		              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
-		              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
-		              <li><a class="nav-link" href="#">+844 35149182</a></li>
-		            </ul>
+					<b:column col-md="2">
+						<div id="icone">
+							<img src="https://cdn2.iconfinder.com/data/icons/air-passenger-transportation/512/adult-128.png" width="56"/>						</div>
+						<div id="texto">
+							#{msgs.ola}
+							<br/>							<b:form>
+							<b:dropMenu value="#{msgs.msgcount}" iconAwesome="lock" iconAlign="right">							
+									<b:navLink value="#{msgs.entrar}" rendered="#{!userManagedBean.estaLogado}" href="login.jsf" iconAwesome="sign-in"></b:navLink>
+									<b:navLink value="#{msgs.cadastrar}" rendered="#{!userManagedBean.estaLogado}" href="insert-user.jsf" iconAwesome="user-plus"></b:navLink>									<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="#{msgs.inserir}" iconAwesome="fa-arrow-up" iconAlign="left">											<b:navLink href="insert-book.jsf" value="#{msgs.livro}" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="insert-author.jsf" value="#{msgs.autor}" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="insert-genre.jsf" value="#{msgs.generolivro}" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="insert-publisher.jsf" value="#{msgs.editora}" iconAwesome="fa-paragraph"></b:navLink>									</b:dropMenu>																		<b:dropMenu rendered="#{userManagedBean.apareceGerenciarUsuarios}" value="#{msgs.pesquisar}" iconAwesome="fa-search" iconAlign="left">																						<b:navLink href="search-book.jsf" value="#{msgs.livro}" iconAwesome="fa-book"></b:navLink>																						<b:navLink href="search-author.jsf" value="#{msgs.autor}" iconAwesome="fa-address-book"></b:navLink>																						<b:navLink href="search-genre.jsf" value="#{msgs.generolivro}" iconAwesome="fa-magic"></b:navLink>																						<b:navLink href="search-publisher.jsf" value="#{msgs.editora}" iconAwesome="fa-paragraph"></b:navLink>																				</b:dropMenu>																		<b:navLink rendered="#{userManagedBean.apareceGerenciarUsuarios}" href="search-user.jsf" value="#{msgs.gerenciarUser}" iconAwesome="fa-cog"></b:navLink>																		<b:navLink value="#{msgs.wishlist}" rendered="#{userManagedBean.estaLogado}"  href="wishlist.jsf" iconAwesome="fa-star"></b:navLink>																		<b:navCommandLink value="#{msgs.mudar_senha}" rendered="#{userManagedBean.estaLogado}"  action="#{userManagedBean.mudarSenha}" iconAwesome="fa-key"></b:navCommandLink>										<b:navCommandLink value="#{msgs.sair}" rendered="#{userManagedBean.estaLogado}" action="#{userManagedBean.sairUserController}" iconAwesome="fa-sign-out"></b:navCommandLink>								
+							</b:dropMenu>							</b:form>
+						</div>						
+					</b:column>
+					<b:column col-md="2">
+						<div id="carrinho">
+					    	<img src="https://cdn0.iconfinder.com/data/icons/mtt-web-icons/139/shoppingbag-128.png" width="60"/>
+						</div>
+					</b:column>
+				</b:row>
+			</b:container>
+		</div>
+		<div class="content">
+			<ui:insert name="content">Default Content</ui:insert>
+		</div>		
+		<footer>
+		    <div class="footer">
+		      <div class="container">		        <h4 class="headline text-center">Keep in touch with us</h4>						
+		        <div class="row">
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">HALOVIETNAM LTD</a></li>
+		              <li><a class="nav-link" href="#">66, Dang Van ngu, Dong </a></li>
+		              <li><a class="nav-link" href="#">Da</a></li>
+		              <li><a class="nav-link" href="#">Hanoi, Vietnam</a></li>
+		              <li><a class="nav-link" href="#">contact@halovietnam.com</a></li>
+		              <li><a class="nav-link" href="#">+844 35149182</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">#{msgs.contato}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.sobre}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.priv}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.terms}</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">		              <li><a class="nav-link" href="#">Download</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.suporte}</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.documentos}</a></li>
+		            </ul>
+		          </div>
+		          <div class="col">
+		            <ul class="nav flex-column">
+		              <li><a class="nav-link" href="#">#{msgs.media}</a></li>
+		              <li><a class="nav-link" href="#">Blog</a></li>
+		              <li><a class="nav-link" href="#">#{msgs.forum}</a></li>
+		            </ul>
 		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">#{msgs.contato}</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.sobre}</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.priv}</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.terms}</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">		              <li><a class="nav-link" href="#">Download</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.suporte}</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.documentos}</a></li>
-		            </ul>
-		          </div>
-		          <div class="col">
-		            <ul class="nav flex-column">
-		              <li><a class="nav-link" href="#">#{msgs.media}</a></li>
-		              <li><a class="nav-link" href="#">Blog</a></li>
-		              <li><a class="nav-link" href="#">#{msgs.forum}</a></li>
-		            </ul>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-		  </footer>
-	</h:body>
+		        </div>
+		      </div>
+		    </div>
+		  </footer>
+	</h:body>
 </html>
