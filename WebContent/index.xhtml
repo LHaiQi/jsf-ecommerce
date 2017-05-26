@@ -14,22 +14,16 @@
 	<h:body>
 		<div id="header">
 			<b:container>
-				<b:row>					<b:column col-md="2">
+				<b:row>								<b:modal id="amodal" title="Pesquisa Avançada" styleClass="modalPseudoClass">				<b:form>	<p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.name}" placeholder="Nome do Livro" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.author.name}" placeholder="Autor" /></p>    <p><b:inputText  requiredMessage="#{msgs.procurar_nome_book_erro}"  value="#{bookManagedBean.book.genre.genre}" placeholder="Genero" /></p>    <p><b:button value="Close" dismiss="modal" /></p>    <p><b:commandButton look="primary" action="#{bookManagedBean.searchAdvancedController}" iconAwesome="search" icon-align="right" dismiss="modal"/></p>        </b:form></b:modal>					<b:column col-md="2">                        
 						<a href="show-books.jsf"><img src="http://tangocomunicacao.com/wp-content/uploads/2017/01/Logo-1-100x100.png" /></a>
 					</b:column>
 					<b:column col-md="6">
 						<b:form id="barrapesquisa" >
-							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
-								<f:facet name="append">
-									<b:dropButton value="#{msgs.filtrar}">
-										<b:navLink value="Autor" href="#"   iconAwesome="user-circle"></b:navLink>
-										<b:navLink value="Editora" href="#" iconAwesome="address-book"></b:navLink>
-									</b:dropButton>
-								</f:facet>
+							<b:inputText required="true" requiredMessage="#{msgs.procurar_nome_book_erro}" id="inputMenu" value="#{bookManagedBean.book.name}" placeholder="#{msgs.quelivroprocura}">
 								<f:facet name="append">
 									<b:commandButton look="primary" action="#{bookManagedBean.searchListBookIndexController}" iconAwesome="search" icon-align="right"/>
 								</f:facet>
-							</b:inputText>
+							</b:inputText>							<a id="atrigger"                                                                                                       href="#amodal" data-toggle="modal">Pesquisa Avançada</a>
 						</b:form>
 					</b:column>
 					<b:column col-md="2">

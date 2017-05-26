@@ -50,7 +50,7 @@
 									<b:column col-md="4">
 										<p>#{msgs.autor}</p>						
 										<b:selectOneMenu required="true" requiredMessage="#{msgs.autor_book_erro}" value="#{bookManagedBean.book.author}" converter="omnifaces.SelectItemsConverter">
-											<f:selectItem noSelectionOption="true" itemLabel="Select..."></f:selectItem>
+											<f:selectItem noSelectionOption="true" itemLabel="Select..." ></f:selectItem>
 											<f:selectItems value="#{bookManagedBean.listAuthor}" var="author" itemLabel="#{author.name}" itemValue="#{author}"></f:selectItems>
 										</b:selectOneMenu>
 									</b:column>
